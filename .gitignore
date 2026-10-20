@@ -20,3 +20,9 @@ module_stats/
 sim/sim
 *.vcd
 *.csv
+# FPGA build artifacts
+*.bin
+*.asc
+*.json
+*.blif
+*.log
