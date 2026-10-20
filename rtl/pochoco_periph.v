@@ -24,6 +24,13 @@ module pochoco_periph (
 );
 
   wire [5:0] off    = addr_i[7:2];
+  wire [31:0] cycles;
+
+  cycle_counter u_counter (
+      .clk(clk_i),
+      .rst_ni(rst_ni),
+      .cycles(cycles)
+  );
   wire       access = sel_i & req_i;
 
   // LEDs and raw digit registers
@@ -79,7 +86,8 @@ module pochoco_periph (
     if (!rst_ni) rdata_o <= 32'b0;
     else if (access & ~we_i) begin
       case (off)
-        6'd2: rdata_o <= {28'b0, btn_i}; // Buttons
+        6'd2: rdata_o <= {28'b0, btn_i};
+        6'd3: rdata_o <= cycles;        
         default: rdata_o <= 32'b0;
       endcase
     end

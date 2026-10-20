@@ -9,11 +9,11 @@
 # - Nicolás Villegas <navillegas@miuandes.cl>
 
 # Configuration
-TOP  := pochoco_soc
+TOP  := game_top
 PCF  := goboard.pcf
 
 # RTL Sources
-SRC  := $(wildcard ./rtl/*.v ./rtl/**/*.v)
+SRC := $(shell find rtl -name '*.v')
 
 # Build Targets
 JSON := $(TOP).json

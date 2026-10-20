@@ -70,9 +70,9 @@ module espino_alu (
       ALU_SLT:  result_o = {31'b0, cmp_lt};
       ALU_SLTU: result_o = {31'b0, cmp_ltu};
       // Shifts disabled to save LUTs
-      // ALU_SLL:  result_o = operand_a_i << shamt;
-      // ALU_SRL:  result_o = operand_a_i >> shamt;
-      // ALU_SRA:  result_o = a_s >>> shamt;
+      //ALU_SLL:  result_o = operand_a_i << shamt;
+      //ALU_SRL:  result_o = operand_a_i >> shamt;
+      //ALU_SRA:  result_o = a_s >>> shamt;
       default:  result_o = operand_a_i + operand_b_i;
     endcase
   end
