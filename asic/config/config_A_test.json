@@ -1,0 +1,29 @@
+{
+  "DESIGN_NAME": "asic_top",
+  "VERILOG_FILES": [
+    "dir::../rtl/asic_top.v",
+    "dir::../rtl/pochoco_soc_asic.v",
+    "dir::../rtl/espino_register_file_asic.v",
+    "dir::../rtl/memory/asic_data_ram.v",
+    "dir::../rtl/memory/asic_instruction_rom.v",
+    "dir::../rtl/memory/asic_unified_ram.v",
+    "dir::../verification/game_rom_test.v",
+    "dir::../../rtl/espino_core/espino_alu.v",
+    "dir::../../rtl/espino_core/espino_controller.v",
+    "dir::../../rtl/espino_core/espino_core.v",
+    "dir::../../rtl/espino_core/espino_decoder.v",
+    "dir::../../rtl/espino_core/espino_id_stage.v",
+    "dir::../../rtl/espino_core/espino_if_stage.v",
+    "dir::../../rtl/espino_core/espino_load_store_unit.v",
+    "dir::../../rtl/pochoco_periph.v",
+    "dir::../../rtl/pochoco_spi_slave.v",
+    "dir::../../rtl/cycle_counter.v"
+  ],
+  "VERILOG_DEFINES": [],
+  "SYNTH_PARAMETERS": [
+    "USE_UNIFIED_MEMORY=0"
+  ],
+  "CLOCK_PORT": "i_Clk",
+  "CLOCK_PERIOD": 100,
+  "FP_CORE_UTIL": 40
+}

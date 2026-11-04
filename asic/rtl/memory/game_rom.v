@@ -1,0 +1,99 @@
+module game_rom (
+    input wire [31:0] addr_i,
+    output reg [31:0] data_o
+);
+
+always @(*) begin
+    case (addr_i)
+        32'd0: data_o = 32'h800002b7;
+        32'd4: data_o = 32'h00028293;
+        32'd8: data_o = 32'h00000313;
+        32'd12: data_o = 32'h00000393;
+        32'd16: data_o = 32'h0002a023;
+        32'd20: data_o = 32'h00f00413;
+        32'd24: data_o = 32'h0082a223;
+        32'd28: data_o = 32'h00c2a403;
+        32'd32: data_o = 32'h01c9c4b7;
+        32'd36: data_o = 32'h38048493;
+        32'd40: data_o = 32'h00c2a603;
+        32'd44: data_o = 32'h408606b3;
+        32'd48: data_o = 32'hfe96ece3;
+        32'd52: data_o = 32'h0082a583;
+        32'd56: data_o = 32'hfe059ee3;
+        32'd60: data_o = 32'h00c2a403;
+        32'd64: data_o = 32'h00347413;
+        32'd68: data_o = 32'h00100513;
+        32'd72: data_o = 32'h02040063;
+        32'd76: data_o = 32'h00200513;
+        32'd80: data_o = 32'h00100613;
+        32'd84: data_o = 32'h00c40a63;
+        32'd88: data_o = 32'h00400513;
+        32'd92: data_o = 32'h00200613;
+        32'd96: data_o = 32'h00c40463;
+        32'd100: data_o = 32'h00800513;
+        32'd104: data_o = 32'h00a2a223;
+        32'd108: data_o = 32'h00c2a403;
+        32'd112: data_o = 32'h0082a583;
+        32'd116: data_o = 32'hfe058ee3;
+        32'd120: data_o = 32'h00c2a483;
+        32'd124: data_o = 32'h06a59a63;
+        32'd128: data_o = 32'h408484b3;
+        32'd132: data_o = 32'h000f4637;
+        32'd136: data_o = 32'h24060613;
+        32'd140: data_o = 32'h00000693;
+        32'd144: data_o = 32'h00c4e863;
+        32'd148: data_o = 32'h40c484b3;
+        32'd152: data_o = 32'h00168693;
+        32'd156: data_o = 32'hff5ff06f;
+        32'd160: data_o = 32'h00d383b3;
+        32'd164: data_o = 32'h06300713;
+        32'd168: data_o = 32'h00d76663;
+        32'd172: data_o = 32'h00068713;
+        32'd176: data_o = 32'h0080006f;
+        32'd180: data_o = 32'h06300713;
+        32'd184: data_o = 32'h00000793;
+        32'd188: data_o = 32'h00a00613;
+        32'd192: data_o = 32'h00c76863;
+        32'd196: data_o = 32'h40c70733;
+        32'd200: data_o = 32'h01078793;
+        32'd204: data_o = 32'hff1ff06f;
+        32'd208: data_o = 32'h00e787b3;
+        32'd212: data_o = 32'h00f2a023;
+        32'd216: data_o = 32'h00130313;
+        32'd220: data_o = 32'h00a00613;
+        32'd224: data_o = 32'h02c30463;
+        32'd228: data_o = 32'h0082a583;
+        32'd232: data_o = 32'hfe059ee3;
+        32'd236: data_o = 32'hf25ff06f;
+        32'd240: data_o = 32'h0002a223;
+        32'd244: data_o = 32'h0ee00613;
+        32'd248: data_o = 32'h00c2a023;
+        32'd252: data_o = 32'h0082a583;
+        32'd256: data_o = 32'hfe059ee3;
+        32'd260: data_o = 32'hf0dff06f;
+        32'd264: data_o = 32'h0002a223;
+        32'd268: data_o = 32'h00000693;
+        32'd272: data_o = 32'h00a00613;
+        32'd276: data_o = 32'h00c3e863;
+        32'd280: data_o = 32'h40c383b3;
+        32'd284: data_o = 32'h00168693;
+        32'd288: data_o = 32'hff5ff06f;
+        32'd292: data_o = 32'h06300713;
+        32'd296: data_o = 32'h00d76663;
+        32'd300: data_o = 32'h00068713;
+        32'd304: data_o = 32'h0080006f;
+        32'd308: data_o = 32'h06300713;
+        32'd312: data_o = 32'h00000793;
+        32'd316: data_o = 32'h00a00613;
+        32'd320: data_o = 32'h00c76863;
+        32'd324: data_o = 32'h40c70733;
+        32'd328: data_o = 32'h01078793;
+        32'd332: data_o = 32'hff1ff06f;
+        32'd336: data_o = 32'h00e787b3;
+        32'd340: data_o = 32'h00f2a023;
+        32'd344: data_o = 32'h0000006f;
+        default: data_o = 32'h00000013;
+    endcase
+end
+
+endmodule

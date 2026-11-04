@@ -26,3 +26,19 @@ sim/sim
 *.json
 *.blif
 *.log
+
+# ASIC / LibreLane
+asic/config/runs/
+
+# Keep ASIC configuration files
+!asic/
+!asic/config/
+!asic/config/config_*.json
+
+# Keep ASIC experiment results
+!asic/reports/
+!asic/reports/*.csv
+
+# ASIC evidence: preserve CSV reports and verification logs
+!asic/reports/**/*.csv
+!asic/verification/*.log

@@ -1,0 +1,38 @@
+Net: net805
+  Pin:   fanout804/I (gf180mcu_fd_sc_mcu7t5v0__dlyb_1)
+    Layer: Via1
+      Partial area ratio:    0.17
+      Required ratio:   20.00 (Gate area) 
+      Cumulative area ratio:    0.17
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: Metal2
+      Partial area ratio:  121.04
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:  121.04
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:  467.62
+      Required ratio:  400.00 (Side area) (VIOLATED)
+      Cumulative area ratio:  467.62
+      Required ratio:    0.00 (Cumulative side area) 
+
+    Layer: Via2
+      Partial area ratio:    0.34
+      Required ratio:   20.00 (Gate area) 
+      Cumulative area ratio:    0.51
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: Metal3
+      Partial area ratio:    0.44
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:  121.48
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:    1.85
+      Required ratio:  400.00 (Side area) 
+      Cumulative area ratio:  469.47
+      Required ratio:    0.00 (Cumulative side area) 
+
+
+
+[INFO ANT-0002] Found 1 net violations.
+[INFO ANT-0001] Found 1 pin violations.

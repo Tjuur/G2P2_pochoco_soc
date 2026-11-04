@@ -1,0 +1,12 @@
+metric,utilization_40,utilization_30
+target_utilization,0.40,0.30
+core_area_um2,910038,1214580
+die_area_um2,955993,1266870
+stdcell_area_um2,464441,474648
+actual_utilization,0.510353,0.3908
+worst_setup_slack_ns,28.119047,31.5571
+hold_violations,0,0
+route_drc_errors,0,0
+magic_drc_errors,0,0
+lvs_errors,0,0
+antenna_violations,0,1

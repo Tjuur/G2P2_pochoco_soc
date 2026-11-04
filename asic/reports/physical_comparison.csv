@@ -1,0 +1,17 @@
+metric,architecture_A,architecture_B
+synthesis_cells,10693,22121
+flip_flops,2851,4901
+synthesis_area_um2,365107.8592,688796.68
+core_area_um2,910038,1717880
+die_area_um2,955993,1781200
+final_utilization,0.510353,0.551766
+setup_slack_slow_ns,28.119047,18.859098
+setup_slack_typical_ns,60.609325,55.616349
+setup_slack_fast_ns,73.652183,69.410918
+hold_violations,0,0
+route_drc_errors,0,0
+magic_drc_errors,0,0
+lvs_errors,0,0
+antenna_violations,0,1
+max_slew_violations,4576,21558
+max_cap_violations,33,1435

@@ -1,0 +1,4 @@
+period_ns,frequency_mhz,setup_wns_typical_ns,setup_tns_typical_ns,setup_wns_slow_ns,setup_tns_slow_ns,hold_wns_typical_ns,hold_tns_typical_ns,hold_wns_slow_ns,hold_tns_slow_ns,worst_setup_wns_ns,worst_setup_tns_ns,worst_hold_wns_ns,worst_hold_tns_ns,timing_closed
+100,10.0,62.186986,0,28.119047,0,0.387409,0,0.969611,0,28.119047,0,0.136668,0,yes
+80,12.5,42.186995,0,8.119052,0,0.387409,0,0.969611,0,8.119052,0,0.136668,0,yes
+60,16.666667,22.186992,0,-11.880950,-4373.145326,0.387409,0,0.969611,0,-11.880950,-4373.145326,0.136668,0,no

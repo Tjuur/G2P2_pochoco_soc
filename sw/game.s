@@ -12,8 +12,8 @@
 .equ TIMER,   0x8000000C
 
 # Reloj de 25 MHz
-.equ THREE_SECONDS, 75000000
-.equ DECISECOND,     2500000
+.equ THREE_SECONDS, 30000000
+.equ DECISECOND,     1000000
 
 # Registros:
 # x5  = base MMIO

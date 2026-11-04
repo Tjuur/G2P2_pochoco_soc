@@ -1,0 +1,10 @@
+metric,original,optimized,difference
+design__instance__area,910038,914854,4816
+design__instance__area__stdcell,464441,465611,1170
+design__instance__count__stdcell,19119,19208,89
+timing__setup__ws,28.11904744194061,39.49066607721224,11.37161863527163
+timing__setup__tns,0,0,0
+timing__hold__ws,0.13666790308507673,0.11944678917385972,-0.017221113911217015
+timing__hold__tns,0,0,0
+timing__setup__ws__corner:max_ss_125C_4v50,28.11904744194061,39.49066607721224,11.37161863527163
+timing__setup__ws__corner:nom_tt_025C_5v00,62.18698620958635,68.07955281103482,5.892566601448465

@@ -1,0 +1,11 @@
+metric,original,optimized,difference,difference_percent
+stdcell_area_um2,464441,465747,1306,0.2812
+core_area_um2,910038,914854,4816,0.5292
+die_area_um2,955993,958919,2926,0.3061
+setup_wns_ns,28.11904744194061,39.40982762787854,11.290780185937933,40.1535
+hold_wns_ns,0.13666790308507673,0.1153660533091364,-0.021301849775940337,-15.5866
+setup_tns_ns,0,0,0,
+route_drc_errors,0,0,0,
+magic_drc_errors,0,0,0,
+lvs_errors,0,0,0,
+antenna_violating_nets,0,0,0,
