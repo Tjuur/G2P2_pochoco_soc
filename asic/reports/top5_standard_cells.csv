@@ -1,0 +1,6 @@
+rank,cell,count,percentage
+1,gf180mcu_fd_sc_mcu7t5v0__mux2_2,2568,24.02
+2,gf180mcu_fd_sc_mcu7t5v0__dffq_1,2110,19.73
+3,gf180mcu_fd_sc_mcu7t5v0__nand2_1,1360,12.72
+4,gf180mcu_fd_sc_mcu7t5v0__aoi22_1,796,7.44
+5,gf180mcu_fd_sc_mcu7t5v0__dffrnq_1,738,6.9

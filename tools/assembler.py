@@ -573,6 +573,37 @@ def assemble(source):
     return words
 
 
+
+def generate_verilog_rom(words, module_name="game_rom"):
+    """Genera una ROM combinacional sintetizable para ASIC."""
+
+    lines = [
+        f"module {module_name} (",
+        "    input wire [31:0] addr_i,",
+        "    output reg [31:0] data_o",
+        ");",
+        "",
+        "always @(*) begin",
+        "    case (addr_i)",
+    ]
+
+    for index, word in enumerate(words):
+        address = index * 4
+        lines.append(
+            f"        32'd{address}: data_o = 32'h{word:08x};"
+        )
+
+    lines.extend([
+        "        default: data_o = 32'h00000013;",
+        "    endcase",
+        "end",
+        "",
+        "endmodule",
+        "",
+    ])
+
+    return "\n".join(lines)
+
 def main():
     parser = argparse.ArgumentParser(
         description="Assembler RV32E para Pochoco SoC"
@@ -580,6 +611,12 @@ def main():
 
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
+
+    parser.add_argument(
+        "--rom",
+        type=Path,
+        help="Genera una ROM combinacional Verilog"
+    )
 
     args = parser.parse_args()
 
@@ -596,6 +633,19 @@ def main():
             "".join(f"{word:08x}\n" for word in words),
             encoding="utf-8"
         )
+
+        if args.rom:
+            args.rom.parent.mkdir(
+                parents=True,
+                exist_ok=True
+            )
+
+            args.rom.write_text(
+                generate_verilog_rom(words),
+                encoding="utf-8"
+            )
+
+            print(f"OK: ROM generada en {args.rom}")
 
         print(
             f"OK: {len(words)} instrucciones generadas "

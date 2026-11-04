@@ -1,0 +1,27 @@
+ASIC POST-SYNTHESIS FUNCTIONAL VERIFICATION
+Architecture: A
+Program: game_test.hex (85 instructions)
+Clock period: 100 ns
+
+=== RTL SIMULATION ===
+EVENT startup cycle=20
+EVENT selection cycle=146 led=0010
+EVENT correct_press cycle=146
+EVENT correct_advance cycle=210
+EVENT selection cycle=335 led=0001
+EVENT wrong_press cycle=335
+EVENT wrong_reset cycle=365
+ALL TESTS PASSED
+
+=== GATE-LEVEL SIMULATION ===
+EVENT startup cycle=20
+EVENT selection cycle=146 led=0010
+EVENT correct_press cycle=146
+EVENT correct_advance cycle=210
+EVENT selection cycle=335 led=0001
+EVENT wrong_press cycle=335
+EVENT wrong_reset cycle=365
+ALL TESTS PASSED
+
+=== COMPARISON ===
+PASS: All recorded events match exactly.

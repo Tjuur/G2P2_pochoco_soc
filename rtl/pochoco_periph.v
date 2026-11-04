@@ -81,16 +81,20 @@ module pochoco_periph (
   assign seg1_o = hex2seg(digit_q[7:4]);
   assign seg2_o = hex2seg(digit_q[3:0]);
 
-  // Registered read data
+  // Registered read data - optimized selection logic
+  wire read_en = access & ~we_i;
+  wire read_buttons = (off == 6'd2);
+  wire read_cycles = (off == 6'd3);
+
+  wire [31:0] read_value =
+      ({32{read_buttons}} & {28'b0, btn_i}) |
+      ({32{read_cycles}} & cycles);
+
   always @(posedge clk_i or negedge rst_ni) begin
-    if (!rst_ni) rdata_o <= 32'b0;
-    else if (access & ~we_i) begin
-      case (off)
-        6'd2: rdata_o <= {28'b0, btn_i};
-        6'd3: rdata_o <= cycles;        
-        default: rdata_o <= 32'b0;
-      endcase
-    end
+    if (!rst_ni)
+      rdata_o <= 32'b0;
+    else if (read_en)
+      rdata_o <= read_value;
   end
 
 endmodule
