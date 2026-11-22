@@ -61,30 +61,37 @@ module pochoco_soc #(
     .data_rdata_i  (data_rdata)
   );
 
-  wire is_mmio, spi_sel, per_sel;
-  assign is_mmio = data_addr[31];
-  assign per_sel = is_mmio & ~data_addr[16];
-  assign spi_sel = is_mmio &  data_addr[16];
+  wire is_mmio, spi_sel, per_sel, accel_sel;
+  assign is_mmio  = data_addr[31];
+  assign per_sel  = is_mmio & (data_addr[17:16] == 2'b00);
+  assign spi_sel  = is_mmio & (data_addr[17:16] == 2'b01);
+  assign accel_sel = is_mmio & (data_addr[17:16] == 2'b10);
 
-  wire ram_b_req, per_req, spi_req;
+  wire ram_b_req, per_req, spi_req, accel_req;
   assign ram_b_req = data_req & ~is_mmio;
-  assign per_req   = data_req &  per_sel;
-  assign spi_req   = data_req &  spi_sel;
+  assign per_req   = data_req & per_sel;
+  assign spi_req   = data_req & spi_sel;
+  assign accel_req = data_req & accel_sel;
 
-  wire [31:0] ram_b_rdata, per_rdata, spi_rdata;
+  wire [31:0] ram_b_rdata, per_rdata, spi_rdata, accel_rdata;
 
-  reg rd_is_per, rd_is_spi;
+  reg rd_is_per, rd_is_spi, rd_is_accel;
   always @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
-      rd_is_per <= 1'b0;
-      rd_is_spi <= 1'b0;
+      rd_is_per   <= 1'b0;
+      rd_is_spi   <= 1'b0;
+      rd_is_accel <= 1'b0;
     end else if (data_req & ~data_we) begin
-      rd_is_per <= per_sel;
-      rd_is_spi <= spi_sel;
+      rd_is_per   <= per_sel;
+      rd_is_spi   <= spi_sel;
+      rd_is_accel <= accel_sel;
     end
   end
-  assign data_rdata = rd_is_per ? per_rdata :
-                      rd_is_spi ? spi_rdata : ram_b_rdata;
+
+  assign data_rdata = rd_is_per   ? per_rdata :
+                      rd_is_spi   ? spi_rdata :
+                      rd_is_accel ? accel_rdata :
+                                    ram_b_rdata;
 
   pochoco_ram #(.NumWords(NumWords), .MemFile(MemFile)) u_ram (
     .clk_i     (clk),
@@ -115,6 +122,18 @@ module pochoco_soc #(
     .btn_i     (i_Switch),
     .seg1_o    (seg1),
     .seg2_o    (seg2)
+  );
+
+  // Price history accelerator
+  pochoco_price_accel u_price_accel (
+    .clk_i   (clk),
+    .rst_ni  (rst_ni),
+    .sel_i   (accel_sel),
+    .req_i   (accel_req),
+    .we_i    (data_we),
+    .addr_i  (data_addr[7:0]),
+    .wdata_i (data_wdata),
+    .rdata_o (accel_rdata)
   );
 
   // SPI Slave

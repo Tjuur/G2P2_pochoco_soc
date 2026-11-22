@@ -2,13 +2,11 @@
 .globl _start
 
 .equ SPI_BASE, 0x80010000
-.equ HISTORY_BASE, 0x400
+.equ ACCEL_BASE, 0x80020000
 
 _start:
     li x5, SPI_BASE
-    li x6, HISTORY_BASE
-
-    li x9, 0
+    li x6, ACCEL_BASE
     li x10, 0
     li x11, 0
 
@@ -22,23 +20,13 @@ wait_price:
 
     lw x8, 4(x5)
 
+    sw x8, 0(x6)
+    lw x14, 4(x6)
+
     li x12, 0
-
-    add x13, x9, x9
-    add x13, x13, x13
-    add x13, x13, x6
-
-    lw x14, 0(x13)
-
-    sw x8, 0(x13)
-
-    addi x9, x9, 1
-    andi x9, x9, 7
 
     li x15, 8
     blt x11, x15, warming_up
-
-    sub x14, x8, x14
 
     beq x10, x0, check_buy
 
