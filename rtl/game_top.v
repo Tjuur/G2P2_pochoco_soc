@@ -26,7 +26,7 @@ module game_top (
 );
 
     pochoco_soc #(
-        .MemFile("sw/game.hex")
+        .MemFile("sw/trade.hex")
     ) u_pochoco (
         .i_Clk(i_Clk),
         .i_Switch(i_Switch),
