@@ -101,6 +101,32 @@ module tb_proyecto_4;
     end
   end
 
+
+  // Metricas de arquitectura: contadores solo para simulacion.
+  longint unsigned cpu_cycles = 0;
+  longint unsigned retired_instructions = 0;
+  longint unsigned processing_cycles = 0;
+  longint unsigned processing_instructions = 0;
+
+  wire instruction_retired =
+      dut.u_core.instr_valid_id && !dut.u_core.stall;
+
+  always @(posedge clk) begin
+    if (dut.rst_ni) begin
+      cpu_cycles++;
+
+      if (instruction_retired)
+        retired_instructions++;
+
+      if (esperando) begin
+        processing_cycles++;
+
+        if (instruction_retired)
+          processing_instructions++;
+      end
+    end
+  end
+
   // Chequeos
   int total_tests = 0, tests_aprobados = 0;
 
@@ -139,6 +165,24 @@ module tb_proyecto_4;
     $display("Comprar y mantener:        %0d", ref_w);
     $display("Peor caso precio->decision: %0d ciclos (disponibles: %0d)", peor_caso, presupuesto);
     $display("Detalle por tick en decisiones.csv");
+
+    $display("");
+    $display("=== METRICAS DE ARQUITECTURA ===");
+    $display("Ciclos totales:           %0d", cpu_cycles);
+    $display("Instrucciones ejecutadas: %0d", retired_instructions);
+
+    if (retired_instructions > 0)
+      $display("CPI global:               %0.3f",
+               real'(cpu_cycles) / real'(retired_instructions));
+
+    $display("Ciclos de procesamiento:  %0d", processing_cycles);
+    $display("IC de procesamiento:      %0d", processing_instructions);
+
+    if (processing_instructions > 0)
+      $display("CPI procesamiento:        %0.3f",
+               real'(processing_cycles) / real'(processing_instructions));
+
+
 
     chequear(bits_x == 0,           "MISO sin valores X");
     chequear(respuestas > 0,        "el programa escribe DECISION");
