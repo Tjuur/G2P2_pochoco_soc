@@ -32,12 +32,15 @@ module pochoco_soc #(
   assign clk = i_Clk;
 
   // Power-on reset
-  reg  [3:0] por_cnt = 4'b0;
-  wire       rst_ni;
+  reg [17:0] por_cnt = 18'd0;
+  wire rst_ni;
+
   always @(posedge clk) begin
-    if (por_cnt != 4'hF) por_cnt <= por_cnt + 4'd1;
+    if (por_cnt != 18'd249999)
+      por_cnt <= por_cnt + 18'd1;
   end
-  assign rst_ni = (por_cnt == 4'hF);
+
+  assign rst_ni = (por_cnt == 18'd249999);
 
   // Core-memory wiring
   wire        instr_req;
@@ -110,7 +113,14 @@ module pochoco_soc #(
   wire [6:0] seg1, seg2;
 
   assign per_rdata = 32'b0;
-  assign o_LED = 4'b0;
+  wire [3:0] spi_debug;
+
+
+
+  assign o_LED = spi_debug;
+
+
+
   assign seg1 = 7'b0;
   assign seg2 = 7'b0;
 
@@ -126,6 +136,8 @@ module pochoco_soc #(
     .rdata_o (accel_rdata)
   );
 
+
+
   // SPI Slave
   pochoco_spi_slave u_spi (
     .clk_i      (clk),
@@ -139,7 +151,8 @@ module pochoco_soc #(
     .spi_sclk_i (i_SPI_SCLK),
     .spi_mosi_i (i_SPI_MOSI),
     .spi_cs_n_i (i_SPI_CS_n),
-    .spi_miso_o (o_SPI_MISO)
+    .spi_miso_o (o_SPI_MISO),
+    .debug_o    (spi_debug)
   );
 
   // 7-seg is active-low on the board

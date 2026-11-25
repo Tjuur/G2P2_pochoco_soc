@@ -24,7 +24,8 @@ module pochoco_spi_slave (
   input  wire        spi_sclk_i,
   input  wire        spi_mosi_i,
   input  wire        spi_cs_n_i,
-  output wire        spi_miso_o
+  output wire        spi_miso_o,
+  output wire [3:0]  debug_o
 );
 
   // Register offsets
@@ -64,7 +65,7 @@ module pochoco_spi_slave (
   reg [7:0] price_q;
   reg       new_price_q;
 
-  wire byte_done = sclk_r & (bit_cnt == 4'd7);
+  wire byte_done = cs_active && sclk_r && (bit_cnt == 4'd7);
 
   always @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni) begin
@@ -86,6 +87,31 @@ module pochoco_spi_slave (
   end
 
   assign spi_miso_o = cs_active ? tx_shift[7] : 1'b0;
+
+
+  // Diagnóstico persistente
+  reg [3:0] debug_q;
+
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni)
+      debug_q <= 4'b0000;
+    else begin
+      if (byte_done)
+        debug_q[0] <= 1'b1;
+
+      if (wr && off == REG_DECISION) begin
+        debug_q[1] <= 1'b1;
+
+        if (wdata_i[7:6] == 2'b01)
+          debug_q[2] <= 1'b1;
+
+        if (wdata_i[7:6] == 2'b10)
+          debug_q[3] <= 1'b1;
+      end
+    end
+  end
+
+  assign debug_o = debug_q;
 
   // PRICE latch
   wire price_read = rd & (off == REG_PRICE);

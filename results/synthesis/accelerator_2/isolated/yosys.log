@@ -1,0 +1,1451 @@
+
+-- Running command `read_verilog rtl/pochoco_price_accel.v; synth_ice40 -top pochoco_price_accel; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/pochoco_price_accel.v
+Parsing Verilog input from `rtl/pochoco_price_accel.v' to AST representation.
+Generating RTLIL representation for module `\pochoco_price_accel'.
+Warning: Replacing memory \history with list of registers. See rtl/pochoco_price_accel.v:42
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH_ICE40 pass.
+
+2.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+2.2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.2.1. Analyzing design hierarchy..
+Top module:  \pochoco_price_accel
+
+2.2.2. Analyzing design hierarchy..
+Top module:  \pochoco_price_accel
+Removed 0 unused modules.
+
+2.3. Executing PROC pass (convert processes to netlists).
+
+2.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/pochoco_price_accel.v:28$29 in module pochoco_price_accel.
+Marked 1 switch rules as full_case in process $proc$rtl/pochoco_price_accel.v:28$29 in module pochoco_price_accel.
+Marked 5 switch rules as full_case in process $proc$rtl/pochoco_price_accel.v:32$9 in module pochoco_price_accel.
+Removed a total of 1 dead cases.
+
+2.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 4 assignments to connections.
+
+2.3.4. Executing PROC_INIT pass (extract init attributes).
+
+2.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_ni in `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+
+2.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~9 debug messages>
+
+2.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:28$29'.
+     1/1: $1$mem2reg_rd$\history$rtl/pochoco_price_accel.v:28$2_DATA[7:0]$31
+Creating decoders for process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+     1/19: $2$mem2reg_wr$\history$rtl/pochoco_price_accel.v:49$3_ADDR[2:0]$17
+     2/19: $2$mem2reg_wr$\history$rtl/pochoco_price_accel.v:49$3_DATA[7:0]$18
+     3/19: $1$mem2reg_wr$\history$rtl/pochoco_price_accel.v:49$3_DATA[7:0]$14
+     4/19: $1$mem2reg_wr$\history$rtl/pochoco_price_accel.v:49$3_ADDR[2:0]$13
+     5/19: $1\i[31:0]
+     6/19: $0\history[7][7:0]
+     7/19: $0\history[6][7:0]
+     8/19: $0\history[5][7:0]
+     9/19: $0\history[4][7:0]
+    10/19: $0\history[3][7:0]
+    11/19: $0\history[2][7:0]
+    12/19: $0\history[1][7:0]
+    13/19: $0\history[0][7:0]
+    14/19: $0\position[0:0]
+    15/19: $0\decision[7:0]
+    16/19: $0\delta[8:0]
+    17/19: $0\count[3:0]
+    18/19: $0\index[2:0]
+    19/19: $0\rdata_o[31:0]
+
+2.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\pochoco_price_accel.$mem2reg_rd$\history$rtl/pochoco_price_accel.v:28$2_DATA' from process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:28$29'.
+
+2.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\pochoco_price_accel.\i' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$537' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\rdata_o' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$542' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\index' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$547' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\count' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$552' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\delta' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$557' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\decision' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$562' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\position' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$567' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[0]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$572' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[1]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$577' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[2]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$582' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[3]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$587' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[4]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$592' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[5]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$597' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[6]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$602' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[7]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$607' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.$mem2reg_wr$\history$rtl/pochoco_price_accel.v:49$3_ADDR' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$612' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.$mem2reg_wr$\history$rtl/pochoco_price_accel.v:49$3_DATA' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+  created $adff cell `$procdff$617' with positive edge clock and positive level reset.
+
+2.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:28$29'.
+Removing empty process `pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:28$29'.
+Found and cleaned up 8 empty switches in `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+Removing empty process `pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:32$9'.
+Cleaned up 9 empty switches.
+
+2.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+<suppressed ~37 debug messages>
+
+2.4. Executing CHECK pass (checking for obvious problems).
+Checking module pochoco_price_accel...
+Found and reported 0 problems.
+
+2.5. Executing FLATTEN pass (flatten design).
+
+2.6. Executing TRIBUF pass.
+
+2.7. Executing DEMINOUT pass (demote inout ports to input or output).
+
+2.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.9. Executing CHECK pass (checking for obvious problems).
+Checking module pochoco_price_accel...
+Found and reported 0 problems.
+
+2.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 23 unused cells and 93 unused wires.
+<suppressed ~25 debug messages>
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 81 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 73 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+2.11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+2.11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 73 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+2.11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+2.11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 73 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.11.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.12. Executing FSM pass (extract and optimize FSM).
+
+2.12.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking pochoco_price_accel.decision as FSM state register:
+    Users of register don't seem to benefit from recoding.
+
+2.12.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+2.12.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.12.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+2.12.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+2.12.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+2.12.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+2.13. Executing OPT pass (performing simple optimizations).
+
+2.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 73 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+2.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 73 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.13.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$577 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[1]).
+Adding EN signal on $procdff$572 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[0]).
+Adding EN signal on $procdff$592 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[4]).
+Adding EN signal on $procdff$542 ($adff) from module pochoco_price_accel (D = $procmux$527_Y, Q = \rdata_o).
+Adding EN signal on $procdff$607 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[7]).
+Adding EN signal on $procdff$582 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[2]).
+Adding EN signal on $procdff$547 ($adff) from module pochoco_price_accel (D = $add$rtl/pochoco_price_accel.v:50$19_Y, Q = \index).
+Adding EN signal on $procdff$567 ($adff) from module pochoco_price_accel (D = $procmux$499_Y, Q = \position).
+Adding EN signal on $procdff$552 ($adff) from module pochoco_price_accel (D = $add$rtl/pochoco_price_accel.v:53$21_Y, Q = \count).
+Adding EN signal on $procdff$602 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[6]).
+Adding EN signal on $procdff$557 ($adff) from module pochoco_price_accel (D = \new_delta, Q = \delta).
+Adding EN signal on $procdff$562 ($adff) from module pochoco_price_accel (D = $procmux$511_Y, Q = \decision).
+Adding EN signal on $procdff$587 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[3]).
+Adding EN signal on $procdff$597 ($adff) from module pochoco_price_accel (D = \wdata_i [7:0], Q = \history[5]).
+
+2.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 24 unused cells and 24 unused wires.
+<suppressed ~25 debug messages>
+
+2.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+<suppressed ~1 debug messages>
+
+2.13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+2.13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 60 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.13.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.14. Executing WREDUCE pass (reducing word size of cells).
+Converting cell pochoco_price_accel.$sub$rtl/pochoco_price_accel.v:27$8 ($sub) from signed to unsigned.
+Removed top 1 bits (of 9) from port A of cell pochoco_price_accel.$sub$rtl/pochoco_price_accel.v:27$8 ($sub).
+Removed top 1 bits (of 9) from port B of cell pochoco_price_accel.$sub$rtl/pochoco_price_accel.v:27$8 ($sub).
+Removed top 2 bits (of 3) from port B of cell pochoco_price_accel.$add$rtl/pochoco_price_accel.v:50$19 ($add).
+Removed top 28 bits (of 32) from port B of cell pochoco_price_accel.$lt$rtl/pochoco_price_accel.v:52$20 ($lt).
+Removed top 3 bits (of 4) from port B of cell pochoco_price_accel.$add$rtl/pochoco_price_accel.v:53$21 ($add).
+Removed top 28 bits (of 32) from port B of cell pochoco_price_accel.$ge$rtl/pochoco_price_accel.v:57$22 ($ge).
+Removed top 29 bits (of 32) from port B of cell pochoco_price_accel.$le$rtl/pochoco_price_accel.v:59$24 ($le).
+Removed top 28 bits (of 32) from port B of cell pochoco_price_accel.$ge$rtl/pochoco_price_accel.v:64$26 ($ge).
+Removed top 1 bits (of 3) from port B of cell pochoco_price_accel.$procmux$459_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell pochoco_price_accel.$procmux$469_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell pochoco_price_accel.$procmux$480_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell pochoco_price_accel.$procmux$528_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell pochoco_price_accel.$procmux$529_CMP0 ($eq).
+Removed top 5 bits (of 6) from port B of cell pochoco_price_accel.$procmux$530_CMP0 ($eq).
+
+2.15. Executing PEEPOPT pass (run peephole optimizers).
+
+2.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.17. Executing SHARE pass (SAT-based resource sharing).
+
+2.18. Executing TECHMAP pass (map to technology primitives).
+
+2.18.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+2.18.2. Continuing TECHMAP pass.
+Using template $paramod$909cd69b6f23bd8cb612659b1263f26e598d4912\_90_lut_cmp_ for cells of type $lt.
+Using template $paramod$62a947ff69aed6b25e12e46f5582449016fdd8d6\_90_lut_cmp_ for cells of type $ge.
+No more expansions possible.
+<suppressed ~115 debug messages>
+
+2.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.20. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+2.21. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module pochoco_price_accel:
+  creating $macc model for $add$rtl/pochoco_price_accel.v:53$21 ($add).
+  creating $macc model for $add$rtl/pochoco_price_accel.v:50$19 ($add).
+  creating $macc model for $sub$rtl/pochoco_price_accel.v:27$8 ($sub).
+  creating $alu model for $macc $sub$rtl/pochoco_price_accel.v:27$8.
+  creating $alu model for $macc $add$rtl/pochoco_price_accel.v:50$19.
+  creating $alu model for $macc $add$rtl/pochoco_price_accel.v:53$21.
+  creating $alu model for $ge$rtl/pochoco_price_accel.v:64$26 ($ge): new $alu
+  creating $alu model for $le$rtl/pochoco_price_accel.v:59$24 ($le): new $alu
+  creating $alu cell for $le$rtl/pochoco_price_accel.v:59$24: $auto$alumacc.cc:578:replace_alu$661
+  creating $alu cell for $ge$rtl/pochoco_price_accel.v:64$26: $auto$alumacc.cc:578:replace_alu$672
+  creating $alu cell for $add$rtl/pochoco_price_accel.v:53$21: $auto$alumacc.cc:578:replace_alu$687
+  creating $alu cell for $add$rtl/pochoco_price_accel.v:50$19: $auto$alumacc.cc:578:replace_alu$690
+  creating $alu cell for $sub$rtl/pochoco_price_accel.v:27$8: $auto$alumacc.cc:578:replace_alu$693
+  created 5 $alu and 0 $macc cells.
+
+2.22. Executing OPT pass (performing simple optimizations).
+
+2.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 70 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.22.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+2.22.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.22.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 70 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.22.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.22.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+2.22.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.22.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.22.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+2.22.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.22.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 70 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.22.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.22.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.22.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.22.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.23. Executing MEMORY pass.
+
+2.23.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+2.23.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+2.23.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+2.23.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+2.23.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+2.23.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.23.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.23.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+2.23.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.23.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.25. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+
+2.26. Executing TECHMAP pass (map to technology primitives).
+
+2.26.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_RAM4K_'.
+Successfully finished Verilog frontend.
+
+2.26.2. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/spram_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/spram_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_SPRAM_'.
+Successfully finished Verilog frontend.
+
+2.26.3. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+2.27. Executing ICE40_BRAMINIT pass.
+
+2.28. Executing OPT pass (performing simple optimizations).
+
+2.28.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+<suppressed ~4 debug messages>
+
+2.28.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 73 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 71 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+2.28.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.28.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~1 debug messages>
+
+2.28.5. Finished fast OPT passes.
+
+2.29. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+2.30. Executing OPT pass (performing simple optimizations).
+
+2.30.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.30.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 71 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.30.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~10 debug messages>
+
+2.30.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+    Consolidated identical input bits for $mux cell $procmux$506:
+      Old ports: A=8'00000000, B=8'10111111, Y=$procmux$506_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$506_Y [0]
+      New connections: $procmux$506_Y [7:1] = { $procmux$506_Y [0] 1'0 $procmux$506_Y [0] $procmux$506_Y [0] $procmux$506_Y [0] $procmux$506_Y [0] $procmux$506_Y [0] }
+    Consolidated identical input bits for $pmux cell $procmux$527:
+      Old ports: A=0, B={ \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta [8] \delta 31'0000000000000000000000000000000 $eq$rtl/pochoco_price_accel.v:75$28_Y 24'000000000000000000000000 \decision }, Y=$procmux$527_Y
+      New ports: A=9'000000000, B={ \delta 8'00000000 $eq$rtl/pochoco_price_accel.v:75$28_Y 1'0 \decision }, Y=$procmux$527_Y [8:0]
+      New connections: $procmux$527_Y [31:9] = { $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] $procmux$527_Y [8] }
+  Optimizing cells in module \pochoco_price_accel.
+    Consolidated identical input bits for $mux cell $procmux$509:
+      Old ports: A=$procmux$506_Y, B=8'01111111, Y=$procmux$509_Y
+      New ports: A={ $procmux$506_Y [0] 1'0 $procmux$506_Y [0] }, B=3'011, Y={ $procmux$509_Y [7:6] $procmux$509_Y [0] }
+      New connections: $procmux$509_Y [5:1] = { $procmux$509_Y [0] $procmux$509_Y [0] $procmux$509_Y [0] $procmux$509_Y [0] $procmux$509_Y [0] }
+  Optimizing cells in module \pochoco_price_accel.
+    Consolidated identical input bits for $mux cell $procmux$511:
+      Old ports: A=8'00000000, B=$procmux$509_Y, Y=$procmux$511_Y
+      New ports: A=3'000, B={ $procmux$509_Y [7:6] $procmux$509_Y [0] }, Y={ $procmux$511_Y [7:6] $procmux$511_Y [0] }
+      New connections: $procmux$511_Y [5:1] = { $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] }
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 4 changes.
+
+2.30.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 71 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.30.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.30.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.30.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.30.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.30.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~10 debug messages>
+
+2.30.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.30.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 71 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.30.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.30.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.30.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.30.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.31. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+2.32. Executing TECHMAP pass (map to technology primitives).
+
+2.32.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+2.32.2. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+2.32.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$4ccbe221165818e15f326ddee3d1183c7924e12f\_80_ice40_alu for cells of type $alu.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_80_ice40_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$a999c469eebfb11714d8034f85b1465915105f24\_80_ice40_alu for cells of type $alu.
+Using template $paramod$085438112a9a585bd2301e4fd5091b088904ba66\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $lut.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+<suppressed ~258 debug messages>
+
+2.33. Executing OPT pass (performing simple optimizations).
+
+2.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+<suppressed ~160 debug messages>
+
+2.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 459 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 406 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 398 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+<suppressed ~183 debug messages>
+Removed a total of 61 cells.
+
+2.33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 11 unused cells and 172 unused wires.
+<suppressed ~12 debug messages>
+
+2.33.5. Finished fast OPT passes.
+
+2.34. Executing ICE40_OPT pass (performing simple optimizations).
+
+2.34.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$661.slice[0].carry: CO=\new_delta [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$672.slice[0].carry: CO=\new_delta [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$687.slice[0].carry: CO=\count [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$690.slice[0].carry: CO=\index [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$693.slice[8].carry: CO=$auto$alumacc.cc:578:replace_alu$693.C [8]
+
+2.34.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.34.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 387 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 386 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.34.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.34.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+2.34.6. Rerunning OPT passes. (Removed registers in this run.)
+
+2.34.7. Running ICE40 specific optimizations.
+
+2.34.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.34.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 385 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.34.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.34.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.34.12. Finished OPT passes. (There is nothing left to do.)
+
+2.35. Executing DFFLEGALIZE pass (convert FFs and LATCHes to types supported by the target).
+
+2.36. Executing TECHMAP pass (map to technology primitives).
+
+2.36.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+2.36.2. Continuing TECHMAP pass.
+Using template $_DFFE_PP0P_ for cells of type $_DFFE_PP0P_.
+No more expansions possible.
+<suppressed ~115 debug messages>
+
+2.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+Mapping pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$687.slice[0].carry ($lut).
+Mapping pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$690.slice[0].carry ($lut).
+Mapping pochoco_price_accel.$auto$alumacc.cc:578:replace_alu$693.slice[8].carry ($lut).
+
+2.39. Executing ICE40_OPT pass (performing simple optimizations).
+
+2.39.1. Running ICE40 specific optimizations.
+
+2.39.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+<suppressed ~56 debug messages>
+
+2.39.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 477 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 383 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+<suppressed ~282 debug messages>
+Removed a total of 94 cells.
+
+2.39.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.39.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 0 unused cells and 662 unused wires.
+<suppressed ~1 debug messages>
+
+2.39.6. Rerunning OPT passes. (Removed registers in this run.)
+
+2.39.7. Running ICE40 specific optimizations.
+
+2.39.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.39.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 383 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.39.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.39.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.39.12. Finished OPT passes. (There is nothing left to do.)
+
+2.40. Executing CHECK pass (checking for obvious problems).
+Checking module pochoco_price_accel...
+Found and reported 0 problems.
+
+2.41. Executing TECHMAP pass (map to technology primitives).
+
+2.41.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `$_DLATCH_N_'.
+Generating RTLIL representation for module `$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+2.41.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+2.42. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/abc9_model.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_CARRY_WRAPPER'.
+Successfully finished Verilog frontend.
+
+2.43. Executing ABC9 pass.
+
+2.43.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+2.43.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+2.43.3. Executing PROC pass (convert processes to netlists).
+
+2.43.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.43.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$223 in module SB_DFFER.
+Removed a total of 0 dead cases.
+
+2.43.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 1 assignment to connection.
+
+2.43.3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:660$226'.
+  Set init value: \Q = 1'0
+
+2.43.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \R in `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$223'.
+
+2.43.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~1 debug messages>
+
+2.43.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:660$226'.
+Creating decoders for process `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$223'.
+     1/1: $0\Q[0:0]
+
+2.43.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.43.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\SB_DFFER.\Q' using process `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$223'.
+  created $adff cell `$procdff$2023' with positive edge clock and positive level reset.
+
+2.43.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.43.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:660$226'.
+Found and cleaned up 1 empty switch in `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$223'.
+Removing empty process `SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$223'.
+Cleaned up 1 empty switch.
+
+2.43.4. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module pochoco_price_accel.
+Found 0 SCCs.
+
+2.43.5. Executing ABC9_OPS pass (helper functions for ABC9).
+
+2.43.6. Executing TECHMAP pass (map to technology primitives).
+
+2.43.6.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+2.43.6.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~131 debug messages>
+
+2.43.7. Executing OPT pass (performing simple optimizations).
+
+2.43.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SB_DFFER.
+
+2.43.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SB_DFFER'.
+Computing hashes of 2 cells of `\SB_DFFER'.
+Finding duplicate cells in `\SB_DFFER'.
+Removed a total of 0 cells.
+
+2.43.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SB_DFFER..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.43.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SB_DFFER.
+Performed a total of 0 changes.
+
+2.43.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SB_DFFER'.
+Computing hashes of 2 cells of `\SB_DFFER'.
+Finding duplicate cells in `\SB_DFFER'.
+Removed a total of 0 cells.
+
+2.43.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.43.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SB_DFFER..
+
+2.43.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SB_DFFER.
+
+2.43.7.9. Finished fast OPT passes. (There is nothing left to do.)
+
+2.43.8. Executing TECHMAP pass (map to technology primitives).
+
+2.43.8.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_map.v' to AST representation.
+Lexer warning: The SystemVerilog keyword `bit' (at /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_map.v:35) is not recognized unless read_verilog is called with -sv!
+Generating RTLIL representation for module `$__ABC9_BARRIER_MAP'.
+Successfully finished Verilog frontend.
+
+2.43.8.2. Continuing TECHMAP pass.
+Using template SB_DFFER for cells of type SB_DFFER.
+No more expansions possible.
+<suppressed ~97 debug messages>
+
+2.43.9. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_model.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ABC9_DELAY'.
+Generating RTLIL representation for module `$__ABC9_BARRIER'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__DFF_N__$abc9_flop'.
+Generating RTLIL representation for module `$__DFF_P__$abc9_flop'.
+Successfully finished Verilog frontend.
+
+2.43.10. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~2 debug messages>
+
+2.43.11. Executing ABC9_OPS pass (helper functions for ABC9).
+
+2.43.12. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~2 debug messages>
+
+2.43.13. Executing TECHMAP pass (map to technology primitives).
+
+2.43.13.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+2.43.13.2. Continuing TECHMAP pass.
+Using template $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 for cells of type $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1.
+Using template $paramod\SB_LUT4\LUT_INIT=16'0110100110010110 for cells of type SB_LUT4.
+Using template SB_CARRY for cells of type SB_CARRY.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_or.
+No more expansions possible.
+<suppressed ~150 debug messages>
+
+2.43.14. Executing OPT pass (performing simple optimizations).
+
+2.43.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+<suppressed ~4 debug messages>
+
+2.43.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 30 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 20 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Computing hashes of 18 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+<suppressed ~29 debug messages>
+Removed a total of 12 cells.
+
+2.43.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.43.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.43.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 18 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.43.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.43.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+Removed 0 unused cells and 24 unused wires.
+<suppressed ~1 debug messages>
+
+2.43.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.43.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.43.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \pochoco_price_accel..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.43.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \pochoco_price_accel.
+Performed a total of 0 changes.
+
+2.43.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\pochoco_price_accel'.
+Computing hashes of 18 cells of `\pochoco_price_accel'.
+Finding duplicate cells in `\pochoco_price_accel'.
+Removed a total of 0 cells.
+
+2.43.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+2.43.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \pochoco_price_accel..
+
+2.43.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module pochoco_price_accel.
+
+2.43.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+2.43.15. Executing AIGMAP pass (map logic to AIG).
+Module pochoco_price_accel: replaced 111 cells with 483 new cells, skipped 365 cells.
+  replaced 3 cell types:
+       9 $_MUX_
+      98 $_OR_
+       4 $_XOR_
+  not replaced 5 cell types:
+     114 $_AND_
+      40 $_NOT_
+      93 SB_DFFER
+      93 SB_DFFER_$abc9_byp
+      25 $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1
+
+2.43.15.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+2.43.15.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+2.43.15.3. Executing XAIGER2 backend.
+<suppressed ~434 debug messages>
+Extracted 531 AND gates and 0 wires from module `pochoco_price_accel' to a netlist network with 281 inputs and 717 outputs.
+
+2.43.15.4. Executing ABC9_EXE pass (technology mapping using ABC9).
+
+2.43.15.5. Executing ABC9.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_lut <abc-temp-dir>/input.lut 
+ABC: + read_box <abc-temp-dir>/input.box 
+ABC: + &read <abc-temp-dir>/input.xaig 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =    138/    406  and =     249  lev =   10 (0.81)  mem = 0.02 MB  box = 118  bb = 93
+ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 4 carries.
+ABC: + &scorr 
+ABC: Warning: The network is combinational.
+ABC: + &sweep 
+ABC: + &dc2 
+ABC: + &dch -f -r 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =    138/    406  and =     310  lev =    9 (0.77)  mem = 0.02 MB  ch =   27  box = 118  bb = 93
+ABC: cst =       0  cls =     19  lit =      27  unused =     545  proof =     0
+ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 4 carries.
+ABC: + &if -W 250 -v 
+ABC: K = 4. Memory (bytes): Truth =    0. Cut =   64. Obj =  144. Set =  672. CutMin = no
+ABC: Node =     310.  Ch =    19.  Total mem =    0.20 MB. Peak cut mem =    0.01 MB.
+ABC: P:  Del = 5963.00.  Ar =     123.0.  Edge =      460.  Cut =     1596.  T =     0.00 sec
+ABC: P:  Del = 5963.00.  Ar =     121.0.  Edge =      452.  Cut =     1579.  T =     0.00 sec
+ABC: P:  Del = 5963.00.  Ar =     104.0.  Edge =      376.  Cut =     1600.  T =     0.00 sec
+ABC: F:  Del = 5963.00.  Ar =      96.0.  Edge =      340.  Cut =     1247.  T =     0.00 sec
+ABC: A:  Del = 5963.00.  Ar =      95.0.  Edge =      310.  Cut =     1116.  T =     0.00 sec
+ABC: A:  Del = 5963.00.  Ar =      95.0.  Edge =      310.  Cut =     1144.  T =     0.00 sec
+ABC: Total time =     0.00 sec
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &mfs 
+ABC: + &ps -l 
+ABC: <abc-temp-dir>/input : i/o =    138/    406  and =     204  lev =    7 (0.76)  mem = 0.02 MB  box = 116  bb = 93
+ABC: Mapping (K=4)  :  lut =     90  edge =     294  lev =    4 (0.57)  levB =   16  mem = 0.01 MB
+ABC: LUT = 90 : 2=22 24.4 %  3=22 24.4 %  4=46 51.1 %  Ave = 3.27
+ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 2 carries.
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &verify 
+ABC: Networks are equivalent.  Time =     0.01 sec
+ABC: + time 
+ABC: elapse: 0.05 seconds, total: 0.05 seconds
+
+2.43.15.6. Executing AIGER frontend.
+<suppressed ~10 debug messages>
+Removed 211 unused cells and 841 unused wires.
+
+2.43.15.7. Executing ABC_OPS_REINTEGRATE pass (reintegrate ABC mapped design into module).
+ABC RESULTS:              $lut cells:       94
+ABC RESULTS:   \SB_DFFER_$abc9_byp cells:       93
+ABC RESULTS:   $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 cells:       23
+ABC RESULTS:           input signals:      101
+ABC RESULTS:          output signals:        1
+<suppressed ~546 debug messages>
+Removing temp directory.
+
+2.43.16. Executing TECHMAP pass (map to technology primitives).
+
+2.43.16.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_unmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_unmap.v' to AST representation.
+Generating RTLIL representation for module `$__DFF_x__$abc9_flop'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__ABC9_BARRIER'.
+Successfully finished Verilog frontend.
+
+2.43.16.2. Continuing TECHMAP pass.
+Using template SB_DFFER_$abc9_byp for cells of type SB_DFFER_$abc9_byp.
+Using template $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 for cells of type $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1.
+No more expansions possible.
+<suppressed ~124 debug messages>
+
+2.44. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+2.45. Executing TECHMAP pass (map to technology primitives).
+
+2.45.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+2.45.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~22 debug messages>
+Removed 21 unused cells and 1484 unused wires.
+
+2.46. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:      107
+  1-LUT                4
+  2-LUT               24
+  3-LUT               33
+  4-LUT               46
+  with \SB_CARRY    (#0)   11
+  with \SB_CARRY    (#1)   10
+
+Eliminating LUTs.
+Number of LUTs:      107
+  1-LUT                4
+  2-LUT               24
+  3-LUT               33
+  4-LUT               46
+  with \SB_CARRY    (#0)   11
+  with \SB_CARRY    (#1)   10
+
+Combining LUTs.
+Number of LUTs:      107
+  1-LUT                4
+  2-LUT               24
+  3-LUT               33
+  4-LUT               46
+  with \SB_CARRY    (#0)   11
+  with \SB_CARRY    (#1)   10
+
+Eliminated 0 LUTs.
+Combined 0 LUTs.
+<suppressed ~507 debug messages>
+
+2.47. Executing TECHMAP pass (map to technology primitives).
+
+2.47.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `$lut'.
+Successfully finished Verilog frontend.
+
+2.47.2. Continuing TECHMAP pass.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod$873c285bdccf0ac2b60d2304ea5cd14bf211d2a6$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000010 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00100000 for cells of type $lut.
+Using template $paramod$f8f63b209b7230e81958663ff24fef1613156af7$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001000 for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9$lut for cells of type $lut.
+Using template $paramod$fd904e9e35cfd343a9df248824bd3f1408724879$lut for cells of type $lut.
+Using template $paramod$47a8214374025465e226fa66bee690ff33268a25$lut for cells of type $lut.
+Using template $paramod$364c9ffbffac467d60dfec81bba4e18476c15602$lut for cells of type $lut.
+Using template $paramod$11ec7271d8e6e5aeaace08c13e4c601f10e31038$lut for cells of type $lut.
+Using template $paramod$a5516fc31d1e552de2435200bb732b4d4ad63a9c$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000111 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
+Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8$lut for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6$lut for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8$lut for cells of type $lut.
+Using template $paramod$5dc745bb48e2cf535179547ba13f0fe5364d6d54$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$722bfd9af0ae56ca9d1d12a221cb5ede16461f26$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod$18455d4fd1270af2266bf4bb1c44971b2eb6b37a$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11101100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$d6ca727e39f31d51d29072e0f33aa09c65e37336$lut for cells of type $lut.
+Using template $paramod$7d813eb49700f971f2635a434700eafdfa816bc3$lut for cells of type $lut.
+No more expansions possible.
+<suppressed ~451 debug messages>
+Removed 0 unused cells and 288 unused wires.
+
+2.48. Executing AUTONAME pass.
+Renamed 359 objects in module pochoco_price_accel.
+<suppressed ~359 debug messages>
+
+2.49. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `pochoco_price_accel'. Setting top module to pochoco_price_accel.
+
+2.49.1. Analyzing design hierarchy..
+Top module:  \pochoco_price_accel
+
+2.49.2. Analyzing design hierarchy..
+Top module:  \pochoco_price_accel
+Removed 0 unused modules.
+
+2.50. Printing statistics.
+
+=== pochoco_price_accel ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      147 wires
+      419 wire bits
+      147 public wires
+      419 public wire bits
+        8 ports
+       77 port bits
+      221 submodules
+       21   SB_CARRY
+       93   SB_DFFER
+      107   SB_LUT4
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+        - pochoco_price_accel
+
+        +----------Count including submodules.
+        | 
+      147 wires
+      419 wire bits
+      147 public wires
+      419 public wire bits
+        8 ports
+       77 port bits
+        - memories
+        - memory bits
+        - processes
+        - cells
+      221 submodules
+       21   SB_CARRY
+       93   SB_DFFER
+      107   SB_LUT4
+
+2.51. Executing CHECK pass (checking for obvious problems).
+Checking module pochoco_price_accel...
+Found and reported 0 problems.
+
+3. Printing statistics.
+
+=== pochoco_price_accel ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      147 wires
+      419 wire bits
+      147 public wires
+      419 public wire bits
+        8 ports
+       77 port bits
+      221 cells
+       21   SB_CARRY
+       93   SB_DFFER
+      107   SB_LUT4
+

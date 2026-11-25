@@ -1,0 +1,2566 @@
+
+-- Running command `read_verilog rtl/*.v rtl/espino_core/*.v; synth_ice40 -top game_top -json results/synthesis/accelerator_2/no_periph/game_top.json; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/cycle_counter.v
+Parsing Verilog input from `rtl/cycle_counter.v' to AST representation.
+Generating RTLIL representation for module `\cycle_counter'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/game_top.v
+Parsing Verilog input from `rtl/game_top.v' to AST representation.
+Generating RTLIL representation for module `\game_top'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/pochoco_periph.v
+Parsing Verilog input from `rtl/pochoco_periph.v' to AST representation.
+Generating RTLIL representation for module `\pochoco_periph'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/pochoco_price_accel.v
+Parsing Verilog input from `rtl/pochoco_price_accel.v' to AST representation.
+Generating RTLIL representation for module `\pochoco_price_accel'.
+Warning: Replacing memory \history with list of registers. See rtl/pochoco_price_accel.v:36
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/pochoco_ram.v
+Parsing Verilog input from `rtl/pochoco_ram.v' to AST representation.
+Generating RTLIL representation for module `\pochoco_ram'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/pochoco_soc.v
+Parsing Verilog input from `rtl/pochoco_soc.v' to AST representation.
+Generating RTLIL representation for module `\pochoco_soc'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/pochoco_spi_slave.v
+Parsing Verilog input from `rtl/pochoco_spi_slave.v' to AST representation.
+Generating RTLIL representation for module `\pochoco_spi_slave'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/espino_core/espino_alu.v
+Parsing Verilog input from `rtl/espino_core/espino_alu.v' to AST representation.
+Generating RTLIL representation for module `\espino_alu'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/espino_core/espino_controller.v
+Parsing Verilog input from `rtl/espino_core/espino_controller.v' to AST representation.
+Generating RTLIL representation for module `\espino_controller'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: rtl/espino_core/espino_core.v
+Parsing Verilog input from `rtl/espino_core/espino_core.v' to AST representation.
+Generating RTLIL representation for module `\espino_core'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: rtl/espino_core/espino_decoder.v
+Parsing Verilog input from `rtl/espino_core/espino_decoder.v' to AST representation.
+Generating RTLIL representation for module `\espino_decoder'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: rtl/espino_core/espino_id_stage.v
+Parsing Verilog input from `rtl/espino_core/espino_id_stage.v' to AST representation.
+Generating RTLIL representation for module `\espino_id_stage'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: rtl/espino_core/espino_if_stage.v
+Parsing Verilog input from `rtl/espino_core/espino_if_stage.v' to AST representation.
+Generating RTLIL representation for module `\espino_if_stage'.
+Successfully finished Verilog frontend.
+
+14. Executing Verilog-2005 frontend: rtl/espino_core/espino_load_store_unit.v
+Parsing Verilog input from `rtl/espino_core/espino_load_store_unit.v' to AST representation.
+Generating RTLIL representation for module `\espino_load_store_unit'.
+Successfully finished Verilog frontend.
+
+15. Executing Verilog-2005 frontend: rtl/espino_core/espino_register_file.v
+Parsing Verilog input from `rtl/espino_core/espino_register_file.v' to AST representation.
+Generating RTLIL representation for module `\espino_regbank32'.
+Generating RTLIL representation for module `\espino_register_file'.
+Successfully finished Verilog frontend.
+
+16. Executing SYNTH_ICE40 pass.
+
+16.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+16.2. Executing HIERARCHY pass (managing design hierarchy).
+
+16.2.1. Analyzing design hierarchy..
+Top module:  \game_top
+Used module:     \pochoco_soc
+Used module:         \pochoco_spi_slave
+Used module:         \pochoco_price_accel
+Used module:         \pochoco_ram
+Used module:         \espino_core
+Used module:             \espino_controller
+Used module:             \espino_load_store_unit
+Used module:             \espino_register_file
+Used module:                 \espino_regbank32
+Used module:             \espino_id_stage
+Used module:                 \espino_alu
+Used module:                 \espino_decoder
+Used module:             \espino_if_stage
+Parameter \MemFile = 96'011100110111011100101111011101000111001001100001011001000110010100101110011010000110010101111000
+
+16.2.2. Executing AST frontend in derive mode using pre-parsed AST for module `\pochoco_soc'.
+Parameter \MemFile = 96'011100110111011100101111011101000111001001100001011001000110010100101110011010000110010101111000
+Generating RTLIL representation for module `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc'.
+Parameter \NumWords = 128
+Parameter \MemFile = 120'001011100010111000101111011100110111011100101111011000100110110001101001011011100110101100101110011010000110010101111000
+
+16.2.3. Executing AST frontend in derive mode using pre-parsed AST for module `\pochoco_ram'.
+Parameter \NumWords = 128
+Parameter \MemFile = 120'001011100010111000101111011100110111011100101111011000100110110001101001011011100110101100101110011010000110010101111000
+Generating RTLIL representation for module `$paramod$f4283f6b4498a2801658c9ea303ec8a8071a1175\pochoco_ram'.
+Parameter \BootAddr = 0
+
+16.2.4. Executing AST frontend in derive mode using pre-parsed AST for module `\espino_core'.
+Parameter \BootAddr = 0
+Generating RTLIL representation for module `$paramod\espino_core\BootAddr=32'00000000000000000000000000000000'.
+Parameter \BootAddr = 0
+
+16.2.5. Executing AST frontend in derive mode using pre-parsed AST for module `\espino_if_stage'.
+Parameter \BootAddr = 0
+Generating RTLIL representation for module `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000'.
+
+16.2.6. Analyzing design hierarchy..
+Top module:  \game_top
+Used module:     $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc
+Used module:         \pochoco_spi_slave
+Used module:         \pochoco_price_accel
+Used module:         \pochoco_ram
+Used module:         \espino_core
+Used module:             \espino_controller
+Used module:             \espino_load_store_unit
+Used module:             \espino_register_file
+Used module:                 \espino_regbank32
+Used module:             \espino_id_stage
+Used module:                 \espino_alu
+Used module:                 \espino_decoder
+Used module:             $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000
+Parameter \NumWords = 128
+Parameter \MemFile = 96'011100110111011100101111011101000111001001100001011001000110010100101110011010000110010101111000
+
+16.2.7. Executing AST frontend in derive mode using pre-parsed AST for module `\pochoco_ram'.
+Parameter \NumWords = 128
+Parameter \MemFile = 96'011100110111011100101111011101000111001001100001011001000110010100101110011010000110010101111000
+Generating RTLIL representation for module `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram'.
+Parameter \BootAddr = 0
+Found cached RTLIL representation for module `$paramod\espino_core\BootAddr=32'00000000000000000000000000000000'.
+
+16.2.8. Analyzing design hierarchy..
+Top module:  \game_top
+Used module:     $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc
+Used module:         \pochoco_spi_slave
+Used module:         \pochoco_price_accel
+Used module:         $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram
+Used module:         $paramod\espino_core\BootAddr=32'00000000000000000000000000000000
+Used module:             \espino_controller
+Used module:             \espino_load_store_unit
+Used module:             \espino_register_file
+Used module:                 \espino_regbank32
+Used module:             \espino_id_stage
+Used module:                 \espino_alu
+Used module:                 \espino_decoder
+Used module:             \espino_if_stage
+Parameter \BootAddr = 0
+Found cached RTLIL representation for module `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000'.
+
+16.2.9. Analyzing design hierarchy..
+Top module:  \game_top
+Used module:     $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc
+Used module:         \pochoco_spi_slave
+Used module:         \pochoco_price_accel
+Used module:         $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram
+Used module:         $paramod\espino_core\BootAddr=32'00000000000000000000000000000000
+Used module:             \espino_controller
+Used module:             \espino_load_store_unit
+Used module:             \espino_register_file
+Used module:                 \espino_regbank32
+Used module:             \espino_id_stage
+Used module:                 \espino_alu
+Used module:                 \espino_decoder
+Used module:             $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000
+
+16.2.10. Analyzing design hierarchy..
+Top module:  \game_top
+Used module:     $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc
+Used module:         \pochoco_spi_slave
+Used module:         \pochoco_price_accel
+Used module:         $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram
+Used module:         $paramod\espino_core\BootAddr=32'00000000000000000000000000000000
+Used module:             \espino_controller
+Used module:             \espino_load_store_unit
+Used module:             \espino_register_file
+Used module:                 \espino_regbank32
+Used module:             \espino_id_stage
+Used module:                 \espino_alu
+Used module:                 \espino_decoder
+Used module:             $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000
+Removing unused module `$paramod$f4283f6b4498a2801658c9ea303ec8a8071a1175\pochoco_ram'.
+Removing unused module `\espino_if_stage'.
+Removing unused module `\espino_core'.
+Removing unused module `\pochoco_soc'.
+Removing unused module `\pochoco_ram'.
+Removing unused module `\pochoco_periph'.
+Removing unused module `\cycle_counter'.
+Removed 7 unused modules.
+
+16.3. Executing PROC pass (convert processes to netlists).
+
+16.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:35$747'.
+Removing empty process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:35$747'.
+Cleaned up 1 empty switch.
+
+16.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_load_store_unit.v:80$236 in module espino_load_store_unit.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_load_store_unit.v:68$233 in module espino_load_store_unit.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_load_store_unit.v:59$230 in module espino_load_store_unit.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_load_store_unit.v:48$224 in module espino_load_store_unit.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_load_store_unit.v:43$221 in module espino_load_store_unit.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_if_stage.v:37$697 in module $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_id_stage.v:139$208 in module espino_id_stage.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_id_stage.v:104$196 in module espino_id_stage.
+Marked 2 switch rules as full_case in process $proc$rtl/espino_core/espino_id_stage.v:63$194 in module espino_id_stage.
+Removed 2 dead cases from process $proc$rtl/espino_core/espino_decoder.v:102$186 in module espino_decoder.
+Marked 9 switch rules as full_case in process $proc$rtl/espino_core/espino_decoder.v:102$186 in module espino_decoder.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_alu.v:63$171 in module espino_alu.
+Marked 1 switch rules as full_case in process $proc$rtl/espino_core/espino_alu.v:50$167 in module espino_alu.
+Marked 2 switch rules as full_case in process $proc$rtl/pochoco_spi_slave.v:109$162 in module pochoco_spi_slave.
+Marked 1 switch rules as full_case in process $proc$rtl/pochoco_spi_slave.v:104$158 in module pochoco_spi_slave.
+Marked 2 switch rules as full_case in process $proc$rtl/pochoco_spi_slave.v:92$156 in module pochoco_spi_slave.
+Marked 2 switch rules as full_case in process $proc$rtl/pochoco_spi_slave.v:69$150 in module pochoco_spi_slave.
+Marked 1 switch rules as full_case in process $proc$rtl/pochoco_spi_slave.v:41$139 in module pochoco_spi_slave.
+Marked 5 switch rules as full_case in process $proc$rtl/pochoco_ram.v:47$707 in module $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.
+Marked 1 switch rules as full_case in process $proc$rtl/pochoco_soc.v:79$637 in module $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.
+Removed 1 dead cases from process $proc$rtl/pochoco_price_accel.v:23$61 in module pochoco_price_accel.
+Marked 1 switch rules as full_case in process $proc$rtl/pochoco_price_accel.v:23$61 in module pochoco_price_accel.
+Marked 4 switch rules as full_case in process $proc$rtl/pochoco_price_accel.v:27$42 in module pochoco_price_accel.
+Removed a total of 3 dead cases.
+
+16.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 5 redundant assignments.
+Promoted 41 assignments to connections.
+
+16.3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:35$646'.
+  Set init value: \por_cnt = 4'0000
+
+16.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_ni in `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:48$224'.
+Found async reset \rst_ni in `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+Found async reset \rst_ni in `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:63$194'.
+Found async reset \rst_ni in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:109$162'.
+Found async reset \rst_ni in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:104$158'.
+Found async reset \rst_ni in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:92$156'.
+Found async reset \rst_ni in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+Found async reset \rst_ni in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:41$139'.
+Found async reset \rst_ni in `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+Found async reset \rst_ni in `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+
+16.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~45 debug messages>
+
+16.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:80$236'.
+     1/1: $1\rdata_o[31:0]
+Creating decoders for process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:68$233'.
+     1/1: $1\data_wdata_o[31:0]
+Creating decoders for process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:59$230'.
+     1/1: $1\data_be_o[3:0]
+Creating decoders for process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:48$224'.
+     1/1: $0\busy_q[0:0]
+Creating decoders for process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:43$221'.
+     1/1: $1\busy_d[0:0]
+Creating decoders for process `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+     1/3: $0\valid_q[0:0]
+     2/3: $0\pc_id_q[31:0]
+     3/3: $0\pc_q[31:0]
+Creating decoders for process `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:139$208'.
+     1/1: $1\rf_wdata_o[31:0]
+Creating decoders for process `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:104$196'.
+     1/1: $1\operand_a[31:0]
+Creating decoders for process `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:63$194'.
+     1/1: $0\ops_valid_q[0:0]
+Creating decoders for process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+     1/29: $9\illegal_insn_o[0:0]
+     2/29: $8\illegal_insn_o[0:0]
+     3/29: $7\illegal_insn_o[0:0]
+     4/29: $4\alu_operator_o[3:0]
+     5/29: $6\illegal_insn_o[0:0]
+     6/29: $3\lsu_type_o[1:0]
+     7/29: $5\illegal_insn_o[0:0]
+     8/29: $2\lsu_sign_o[0:0]
+     9/29: $2\lsu_type_o[1:0]
+    10/29: $4\illegal_insn_o[0:0]
+    11/29: $3\alu_operator_o[3:0]
+    12/29: $3\illegal_insn_o[0:0]
+    13/29: $2\alu_operator_o[3:0]
+    14/29: $2\illegal_insn_o[0:0]
+    15/29: $1\rf_we_o[0:0]
+    16/29: $1\imm_operand_o[31:0]
+    17/29: $1\alu_op_a_sel_o[1:0]
+    18/29: $1\is_jalr_o[0:0]
+    19/29: $1\is_jal_o[0:0]
+    20/29: $1\is_branch_o[0:0]
+    21/29: $1\rf_wd_sel_o[1:0]
+    22/29: $1\imm_target_o[31:0]
+    23/29: $1\alu_op_b_sel_o[0:0]
+    24/29: $1\alu_operator_o[3:0]
+    25/29: $1\illegal_insn_o[0:0]
+    26/29: $1\lsu_sign_o[0:0]
+    27/29: $1\lsu_type_o[1:0]
+    28/29: $1\lsu_we_o[0:0]
+    29/29: $1\lsu_req_o[0:0]
+Creating decoders for process `\espino_alu.$proc$rtl/espino_core/espino_alu.v:63$171'.
+     1/1: $1\result_o[31:0]
+Creating decoders for process `\espino_alu.$proc$rtl/espino_core/espino_alu.v:50$167'.
+     1/1: $1\cmp_result_o[0:0]
+Creating decoders for process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:109$162'.
+     1/1: $0\rdata_o[31:0]
+Creating decoders for process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:104$158'.
+     1/1: $0\tx_hold[7:0]
+Creating decoders for process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:92$156'.
+     1/2: $0\new_price_q[0:0]
+     2/2: $0\price_q[7:0]
+Creating decoders for process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+     1/3: $0\bit_cnt[3:0]
+     2/3: $0\tx_shift[7:0]
+     3/3: $0\rx_shift[7:0]
+Creating decoders for process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:41$139'.
+     1/3: $0\cs_sync[2:0]
+     2/3: $0\mosi_sync[2:0]
+     3/3: $0\sclk_sync[2:0]
+Creating decoders for process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+     1/24: $2$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$744
+     2/24: $2$memwr$\mem$rtl/pochoco_ram.v:52$704_DATA[31:0]$743
+     3/24: $2$memwr$\mem$rtl/pochoco_ram.v:52$704_ADDR[6:0]$742
+     4/24: $2$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$741
+     5/24: $2$memwr$\mem$rtl/pochoco_ram.v:51$703_DATA[31:0]$740
+     6/24: $2$memwr$\mem$rtl/pochoco_ram.v:51$703_ADDR[6:0]$739
+     7/24: $2$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$738
+     8/24: $2$memwr$\mem$rtl/pochoco_ram.v:50$702_DATA[31:0]$737
+     9/24: $2$memwr$\mem$rtl/pochoco_ram.v:50$702_ADDR[6:0]$736
+    10/24: $2$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$735
+    11/24: $2$memwr$\mem$rtl/pochoco_ram.v:49$701_DATA[31:0]$734
+    12/24: $2$memwr$\mem$rtl/pochoco_ram.v:49$701_ADDR[6:0]$733
+    13/24: $1$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$732
+    14/24: $1$memwr$\mem$rtl/pochoco_ram.v:52$704_DATA[31:0]$731
+    15/24: $1$memwr$\mem$rtl/pochoco_ram.v:52$704_ADDR[6:0]$730
+    16/24: $1$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$729
+    17/24: $1$memwr$\mem$rtl/pochoco_ram.v:51$703_DATA[31:0]$728
+    18/24: $1$memwr$\mem$rtl/pochoco_ram.v:51$703_ADDR[6:0]$727
+    19/24: $1$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$726
+    20/24: $1$memwr$\mem$rtl/pochoco_ram.v:50$702_DATA[31:0]$725
+    21/24: $1$memwr$\mem$rtl/pochoco_ram.v:50$702_ADDR[6:0]$724
+    22/24: $1$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$723
+    23/24: $1$memwr$\mem$rtl/pochoco_ram.v:49$701_DATA[31:0]$722
+    24/24: $1$memwr$\mem$rtl/pochoco_ram.v:49$701_ADDR[6:0]$721
+Creating decoders for process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:43$705'.
+     1/1: $0\a_rdata_o[31:0]
+Creating decoders for process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:35$646'.
+Creating decoders for process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+     1/3: $0\rd_is_accel[0:0]
+     2/3: $0\rd_is_spi[0:0]
+     3/3: $0\rd_is_per[0:0]
+Creating decoders for process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:37$622'.
+     1/1: $0\por_cnt[3:0]
+Creating decoders for process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:23$61'.
+     1/1: $1$mem2reg_rd$\history$rtl/pochoco_price_accel.v:23$32_DATA[7:0]$63
+Creating decoders for process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+     1/18: $2$mem2reg_wr$\history$rtl/pochoco_price_accel.v:40$33_ADDR[2:0]$48
+     2/18: $2$mem2reg_wr$\history$rtl/pochoco_price_accel.v:40$33_DATA[7:0]$49
+     3/18: $1$mem2reg_wr$\history$rtl/pochoco_price_accel.v:40$33_DATA[7:0]$47
+     4/18: $1$mem2reg_wr$\history$rtl/pochoco_price_accel.v:40$33_ADDR[2:0]$46
+     5/18: $1\i[31:0]
+     6/18: $0\history[7][7:0]
+     7/18: $0\history[6][7:0]
+     8/18: $0\history[5][7:0]
+     9/18: $0\history[4][7:0]
+    10/18: $0\history[3][7:0]
+    11/18: $0\history[2][7:0]
+    12/18: $0\history[1][7:0]
+    13/18: $0\history[0][7:0]
+    14/18: $0\position[0:0]
+    15/18: $0\decision[7:0]
+    16/18: $0\count[3:0]
+    17/18: $0\index[2:0]
+    18/18: $0\rdata_o[31:0]
+
+16.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\espino_load_store_unit.\rdata_o' from process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:80$236'.
+No latch inferred for signal `\espino_load_store_unit.\data_wdata_o' from process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:68$233'.
+No latch inferred for signal `\espino_load_store_unit.\data_be_o' from process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:59$230'.
+No latch inferred for signal `\espino_load_store_unit.\busy_d' from process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:43$221'.
+No latch inferred for signal `\espino_id_stage.\rf_wdata_o' from process `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:139$208'.
+No latch inferred for signal `\espino_id_stage.\operand_a' from process `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:104$196'.
+No latch inferred for signal `\espino_decoder.\rf_we_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\lsu_req_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\lsu_we_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\lsu_type_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\lsu_sign_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\illegal_insn_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\alu_operator_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\alu_op_a_sel_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\alu_op_b_sel_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\imm_operand_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\imm_target_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\rf_wd_sel_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\is_branch_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\is_jal_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_decoder.\is_jalr_o' from process `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+No latch inferred for signal `\espino_alu.\result_o' from process `\espino_alu.$proc$rtl/espino_core/espino_alu.v:63$171'.
+No latch inferred for signal `\espino_alu.\cmp_result_o' from process `\espino_alu.$proc$rtl/espino_core/espino_alu.v:50$167'.
+No latch inferred for signal `\pochoco_price_accel.$mem2reg_rd$\history$rtl/pochoco_price_accel.v:23$32_DATA' from process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:23$61'.
+
+16.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\espino_load_store_unit.\busy_q' using process `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:48$224'.
+  created $adff cell `$procdff$1397' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.\pc_q' using process `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+  created $adff cell `$procdff$1402' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.\pc_id_q' using process `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+  created $adff cell `$procdff$1407' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.\valid_q' using process `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+  created $adff cell `$procdff$1412' with positive edge clock and positive level reset.
+Creating register for signal `\espino_id_stage.\ops_valid_q' using process `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:63$194'.
+  created $adff cell `$procdff$1417' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\rdata_o' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:109$162'.
+  created $adff cell `$procdff$1422' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\tx_hold' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:104$158'.
+  created $adff cell `$procdff$1427' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\price_q' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:92$156'.
+  created $adff cell `$procdff$1432' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\new_price_q' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:92$156'.
+  created $adff cell `$procdff$1437' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\rx_shift' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+  created $adff cell `$procdff$1442' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\tx_shift' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+  created $adff cell `$procdff$1447' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\bit_cnt' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+  created $adff cell `$procdff$1452' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\sclk_sync' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:41$139'.
+  created $adff cell `$procdff$1457' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\mosi_sync' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:41$139'.
+  created $adff cell `$procdff$1462' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_spi_slave.\cs_sync' using process `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:41$139'.
+  created $adff cell `$procdff$1467' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.\b_rdata_o' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1468' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:49$701_ADDR' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1469' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:49$701_DATA' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1470' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:49$701_EN' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1471' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:50$702_ADDR' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1472' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:50$702_DATA' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1473' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:50$702_EN' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1474' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:51$703_ADDR' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1475' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:51$703_DATA' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1476' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:51$703_EN' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1477' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:52$704_ADDR' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1478' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:52$704_DATA' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1479' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$memwr$\mem$rtl/pochoco_ram.v:52$704_EN' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+  created $dff cell `$procdff$1480' with positive edge clock.
+Creating register for signal `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.\a_rdata_o' using process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:43$705'.
+  created $dff cell `$procdff$1481' with positive edge clock.
+Creating register for signal `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.\rd_is_per' using process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+  created $adff cell `$procdff$1486' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.\rd_is_spi' using process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+  created $adff cell `$procdff$1491' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.\rd_is_accel' using process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+  created $adff cell `$procdff$1496' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.\por_cnt' using process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:37$622'.
+  created $dff cell `$procdff$1497' with positive edge clock.
+Creating register for signal `\pochoco_price_accel.\i' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1502' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\rdata_o' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1507' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\index' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1512' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\count' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1517' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\decision' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1522' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\position' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1527' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[0]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1532' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[1]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1537' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[2]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1542' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[3]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1547' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[4]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1552' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[5]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1557' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[6]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1562' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.\history[7]' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1567' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.$mem2reg_wr$\history$rtl/pochoco_price_accel.v:40$33_ADDR' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1572' with positive edge clock and positive level reset.
+Creating register for signal `\pochoco_price_accel.$mem2reg_wr$\history$rtl/pochoco_price_accel.v:40$33_DATA' using process `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+  created $adff cell `$procdff$1577' with positive edge clock and positive level reset.
+
+16.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+16.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:80$236'.
+Removing empty process `espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:80$236'.
+Found and cleaned up 1 empty switch in `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:68$233'.
+Removing empty process `espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:68$233'.
+Found and cleaned up 1 empty switch in `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:59$230'.
+Removing empty process `espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:59$230'.
+Removing empty process `espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:48$224'.
+Found and cleaned up 1 empty switch in `\espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:43$221'.
+Removing empty process `espino_load_store_unit.$proc$rtl/espino_core/espino_load_store_unit.v:43$221'.
+Found and cleaned up 1 empty switch in `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+Removing empty process `$paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.$proc$rtl/espino_core/espino_if_stage.v:37$697'.
+Found and cleaned up 1 empty switch in `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:139$208'.
+Removing empty process `espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:139$208'.
+Found and cleaned up 1 empty switch in `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:104$196'.
+Removing empty process `espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:104$196'.
+Found and cleaned up 1 empty switch in `\espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:63$194'.
+Removing empty process `espino_id_stage.$proc$rtl/espino_core/espino_id_stage.v:63$194'.
+Found and cleaned up 9 empty switches in `\espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+Removing empty process `espino_decoder.$proc$rtl/espino_core/espino_decoder.v:102$186'.
+Found and cleaned up 1 empty switch in `\espino_alu.$proc$rtl/espino_core/espino_alu.v:63$171'.
+Removing empty process `espino_alu.$proc$rtl/espino_core/espino_alu.v:63$171'.
+Found and cleaned up 1 empty switch in `\espino_alu.$proc$rtl/espino_core/espino_alu.v:50$167'.
+Removing empty process `espino_alu.$proc$rtl/espino_core/espino_alu.v:50$167'.
+Found and cleaned up 2 empty switches in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:109$162'.
+Removing empty process `pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:109$162'.
+Found and cleaned up 1 empty switch in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:104$158'.
+Removing empty process `pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:104$158'.
+Found and cleaned up 3 empty switches in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:92$156'.
+Removing empty process `pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:92$156'.
+Found and cleaned up 4 empty switches in `\pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+Removing empty process `pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:69$150'.
+Removing empty process `pochoco_spi_slave.$proc$rtl/pochoco_spi_slave.v:41$139'.
+Found and cleaned up 5 empty switches in `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+Removing empty process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:47$707'.
+Found and cleaned up 1 empty switch in `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:43$705'.
+Removing empty process `$paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.$proc$rtl/pochoco_ram.v:43$705'.
+Removing empty process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:35$646'.
+Found and cleaned up 1 empty switch in `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+Removing empty process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:79$637'.
+Found and cleaned up 1 empty switch in `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:37$622'.
+Removing empty process `$paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.$proc$rtl/pochoco_soc.v:37$622'.
+Found and cleaned up 1 empty switch in `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:23$61'.
+Removing empty process `pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:23$61'.
+Found and cleaned up 7 empty switches in `\pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+Removing empty process `pochoco_price_accel.$proc$rtl/pochoco_price_accel.v:27$42'.
+Cleaned up 45 empty switches.
+
+16.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module espino_register_file.
+<suppressed ~2 debug messages>
+Optimizing module espino_regbank32.
+Optimizing module espino_load_store_unit.
+<suppressed ~5 debug messages>
+Optimizing module $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.
+<suppressed ~9 debug messages>
+Optimizing module espino_id_stage.
+<suppressed ~5 debug messages>
+Optimizing module espino_decoder.
+<suppressed ~13 debug messages>
+Optimizing module $paramod\espino_core\BootAddr=32'00000000000000000000000000000000.
+Optimizing module espino_controller.
+Optimizing module espino_alu.
+<suppressed ~1 debug messages>
+Optimizing module pochoco_spi_slave.
+<suppressed ~25 debug messages>
+Optimizing module $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.
+Optimizing module $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.
+<suppressed ~9 debug messages>
+Optimizing module pochoco_price_accel.
+<suppressed ~35 debug messages>
+Optimizing module game_top.
+
+16.4. Executing CHECK pass (checking for obvious problems).
+Checking module espino_register_file...
+Checking module espino_regbank32...
+Checking module espino_load_store_unit...
+Checking module $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000...
+Checking module espino_id_stage...
+Checking module espino_decoder...
+Checking module $paramod\espino_core\BootAddr=32'00000000000000000000000000000000...
+Checking module espino_controller...
+Checking module espino_alu...
+Checking module pochoco_spi_slave...
+Checking module $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram...
+Checking module $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc...
+Checking module pochoco_price_accel...
+Checking module game_top...
+Found and reported 0 problems.
+
+16.5. Executing FLATTEN pass (flatten design).
+Deleting now unused module espino_register_file.
+Deleting now unused module espino_regbank32.
+Deleting now unused module espino_load_store_unit.
+Deleting now unused module $paramod\espino_if_stage\BootAddr=32'00000000000000000000000000000000.
+Deleting now unused module espino_id_stage.
+Deleting now unused module espino_decoder.
+Deleting now unused module $paramod\espino_core\BootAddr=32'00000000000000000000000000000000.
+Deleting now unused module espino_controller.
+Deleting now unused module espino_alu.
+Deleting now unused module pochoco_spi_slave.
+Deleting now unused module $paramod$a30773e7f7bd849e264561ba9c42f3b25f8eb6d9\pochoco_ram.
+Deleting now unused module $paramod$e06101502b32270dd7e207c31b4edc38690fac43\pochoco_soc.
+Deleting now unused module pochoco_price_accel.
+<suppressed ~14 debug messages>
+
+16.6. Executing TRIBUF pass.
+
+16.7. Executing DEMINOUT pass (demote inout ports to input or output).
+
+16.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~1 debug messages>
+
+16.9. Executing CHECK pass (checking for obvious problems).
+Checking module game_top...
+Found and reported 0 problems.
+
+16.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 134 unused cells and 475 unused wires.
+<suppressed ~145 debug messages>
+
+16.11. Executing OPT pass (performing simple optimizations).
+
+16.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 400 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 332 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~204 debug messages>
+Removed a total of 68 cells.
+
+16.11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$883.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$868.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$842.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$957.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$814.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1232.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1226.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1220.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1214.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1208.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1202.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1196.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1190.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1184.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1178.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1172.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_ram.$procmux$1166.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$918.
+Removed 18 multiplexer ports.
+<suppressed ~213 debug messages>
+
+16.11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1034: { $auto$opt_reduce.cc:137:opt_pmux$1597 $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1037_CMP }
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$865: $auto$opt_reduce.cc:137:opt_pmux$1599
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1106: $auto$opt_reduce.cc:137:opt_pmux$1601
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$996: { $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$997_CMP $auto$opt_reduce.cc:137:opt_pmux$1603 }
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1110: { $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1111_CMP $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1112_CMP $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1113_CMP $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1114_CMP $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1115_CMP $flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1116_CMP }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1218:
+      Old ports: A=0, B=255, Y=$flatten\u_pochoco.\u_ram.$procmux$1218_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_pochoco.\u_ram.$procmux$1218_Y [0]
+      New connections: $flatten\u_pochoco.\u_ram.$procmux$1218_Y [31:1] = { 24'000000000000000000000000 $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] $flatten\u_pochoco.\u_ram.$procmux$1218_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1200:
+      Old ports: A=0, B=65280, Y=$flatten\u_pochoco.\u_ram.$procmux$1200_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_pochoco.\u_ram.$procmux$1200_Y [8]
+      New connections: { $flatten\u_pochoco.\u_ram.$procmux$1200_Y [31:9] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [7:0] } = { 16'0000000000000000 $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] $flatten\u_pochoco.\u_ram.$procmux$1200_Y [8] 8'00000000 }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1182:
+      Old ports: A=0, B=16711680, Y=$flatten\u_pochoco.\u_ram.$procmux$1182_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_pochoco.\u_ram.$procmux$1182_Y [16]
+      New connections: { $flatten\u_pochoco.\u_ram.$procmux$1182_Y [31:17] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [15:0] } = { 8'00000000 $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] $flatten\u_pochoco.\u_ram.$procmux$1182_Y [16] 16'0000000000000000 }
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$878: { $auto$opt_reduce.cc:137:opt_pmux$1607 $auto$opt_reduce.cc:137:opt_pmux$1605 }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1164:
+      Old ports: A=0, B=32'11111111000000000000000000000000, Y=$flatten\u_pochoco.\u_ram.$procmux$1164_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_pochoco.\u_ram.$procmux$1164_Y [24]
+      New connections: { $flatten\u_pochoco.\u_ram.$procmux$1164_Y [31:25] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [23:0] } = { $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] $flatten\u_pochoco.\u_ram.$procmux$1164_Y [24] 24'000000000000000000000000 }
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1049: $auto$opt_reduce.cc:137:opt_pmux$1609
+    New ctrl vector for $pmux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$982: $auto$opt_reduce.cc:137:opt_pmux$1611
+  Optimizing cells in module \game_top.
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1262:
+      Old ports: A=0, B=$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$735, Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710
+      New ports: A=1'0, B=$flatten\u_pochoco.\u_ram.$procmux$1218_Y [0], Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0]
+      New connections: $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [31:1] = { 24'000000000000000000000000 $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710 [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1253:
+      Old ports: A=0, B=$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$738, Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713
+      New ports: A=1'0, B=$flatten\u_pochoco.\u_ram.$procmux$1200_Y [8], Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8]
+      New connections: { $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [31:9] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [7:0] } = { 16'0000000000000000 $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713 [8] 8'00000000 }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1244:
+      Old ports: A=0, B=$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$741, Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716
+      New ports: A=1'0, B=$flatten\u_pochoco.\u_ram.$procmux$1182_Y [16], Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16]
+      New connections: { $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [31:17] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [15:0] } = { 8'00000000 $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716 [16] 16'0000000000000000 }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_ram.$procmux$1235:
+      Old ports: A=0, B=$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$744, Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719
+      New ports: A=1'0, B=$flatten\u_pochoco.\u_ram.$procmux$1164_Y [24], Y=$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24]
+      New connections: { $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [31:25] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [23:0] } = { $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] $flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$719 [24] 24'000000000000000000000000 }
+  Optimizing cells in module \game_top.
+Performed a total of 16 changes.
+
+16.11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 322 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 321 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+16.11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 1 unused cells and 88 unused wires.
+<suppressed ~2 debug messages>
+
+16.11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~1 debug messages>
+
+16.11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1049.
+    dead port 2/2 on $mux $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1049.
+Removed 2 multiplexer ports.
+<suppressed ~195 debug messages>
+
+16.11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 319 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+16.11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.11.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.11.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~195 debug messages>
+
+16.11.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.11.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 319 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.11.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.11.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.11.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.11.23. Finished fast OPT passes. (There is nothing left to do.)
+
+16.12. Executing FSM pass (extract and optimize FSM).
+
+16.12.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking game_top.u_pochoco.u_price_accel.decision as FSM state register:
+    Users of register don't seem to benefit from recoding.
+
+16.12.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+16.12.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+16.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.12.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+16.12.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+16.12.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+16.12.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+16.13. Executing OPT pass (performing simple optimizations).
+
+16.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 319 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~195 debug messages>
+
+16.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 319 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.13.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1452 ($adff) from module game_top (D = $flatten\u_pochoco.\u_spi.$0\bit_cnt[3:0], Q = \u_pochoco.u_spi.bit_cnt).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1422 ($adff) from module game_top (D = $flatten\u_pochoco.\u_spi.$procmux$1127_Y, Q = \u_pochoco.u_spi.rdata_o).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1427 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_spi.tx_hold).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1432 ($adff) from module game_top (D = { \u_pochoco.u_spi.rx_shift [6:0] \u_pochoco.u_spi.mosi_sync [1] }, Q = \u_pochoco.u_spi.price_q).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1437 ($adff) from module game_top (D = $flatten\u_pochoco.\u_spi.$0\new_price_q[0:0], Q = \u_pochoco.u_spi.new_price_q).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1442 ($adff) from module game_top (D = { \u_pochoco.u_spi.rx_shift [6:0] \u_pochoco.u_spi.mosi_sync [1] }, Q = \u_pochoco.u_spi.rx_shift).
+Adding EN signal on $flatten\u_pochoco.\u_spi.$procdff$1447 ($adff) from module game_top (D = $flatten\u_pochoco.\u_spi.$0\tx_shift[7:0], Q = \u_pochoco.u_spi.tx_shift).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1552 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[4]).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1507 ($adff) from module game_top (D = $flatten\u_pochoco.\u_price_accel.$ternary$rtl/pochoco_price_accel.v:60$60_Y, Q = \u_pochoco.u_price_accel.rdata_o).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1512 ($adff) from module game_top (D = $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:41$50_Y, Q = \u_pochoco.u_price_accel.index).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1557 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[5]).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1517 ($adff) from module game_top (D = $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:44$52_Y, Q = \u_pochoco.u_price_accel.count).
+Adding EN signal on $flatten\u_pochoco.$procdff$1491 ($adff) from module game_top (D = \u_pochoco.spi_sel, Q = \u_pochoco.rd_is_spi).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1522 ($adff) from module game_top (D = $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y, Q = \u_pochoco.u_price_accel.decision).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1527 ($adff) from module game_top (D = $flatten\u_pochoco.\u_price_accel.$procmux$1367_Y, Q = \u_pochoco.u_price_accel.position).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1562 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[6]).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1532 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[0]).
+Adding EN signal on $flatten\u_pochoco.$procdff$1497 ($dff) from module game_top (D = $flatten\u_pochoco.$add$rtl/pochoco_soc.v:38$624_Y, Q = \u_pochoco.por_cnt).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1537 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[1]).
+Adding EN signal on $flatten\u_pochoco.$procdff$1486 ($adff) from module game_top (D = \u_pochoco.per_sel, Q = \u_pochoco.rd_is_per).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1542 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[2]).
+Adding EN signal on $flatten\u_pochoco.$procdff$1496 ($adff) from module game_top (D = \u_pochoco.accel_sel, Q = \u_pochoco.rd_is_accel).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1567 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[7]).
+Adding EN signal on $flatten\u_pochoco.\u_price_accel.$procdff$1547 ($adff) from module game_top (D = \u_pochoco.u_price_accel.wdata_i [7:0], Q = \u_pochoco.u_price_accel.history[3]).
+Adding EN signal on $flatten\u_pochoco.\u_ram.$procdff$1481 ($dff) from module game_top (D = $flatten\u_pochoco.\u_ram.$memrd$\mem$rtl/pochoco_ram.v:44$706_DATA, Q = \u_pochoco.u_ram.a_rdata_o).
+Adding EN signal on $flatten\u_pochoco.\u_core.\u_if.$procdff$1407 ($adff) from module game_top (D = \u_pochoco.u_core.u_if.pc_q, Q = \u_pochoco.u_core.u_if.pc_id_q).
+Adding EN signal on $flatten\u_pochoco.\u_core.\u_if.$procdff$1412 ($adff) from module game_top (D = \u_pochoco.u_core.u_if.valid_d, Q = \u_pochoco.u_core.u_if.valid_q).
+Adding EN signal on $flatten\u_pochoco.\u_core.\u_if.$procdff$1402 ($adff) from module game_top (D = \u_pochoco.u_core.u_if.pc_next, Q = \u_pochoco.u_core.u_if.pc_q).
+
+16.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 37 unused cells and 37 unused wires.
+<suppressed ~38 debug messages>
+
+16.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~4 debug messages>
+
+16.13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~138 debug messages>
+
+16.13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 303 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 301 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+16.13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+16.13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.13.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.13.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~138 debug messages>
+
+16.13.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.13.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 301 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.13.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.13.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.13.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.13.23. Finished fast OPT passes. (There is nothing left to do.)
+
+16.14. Executing WREDUCE pass (reducing word size of cells).
+Removed top 25 address bits (of 32) from memory init port game_top.$flatten\u_pochoco.\u_ram.$meminit$\mem$rtl/pochoco_ram.v:36$746 (u_pochoco.u_ram.mem).
+Removed top 1 bits (of 8) from FF cell game_top.$auto$ff.cc:337:slice$1625 ($adffe).
+Removed top 1 bits (of 2) from port B of cell game_top.$auto$simple.cc:194:make_patterns_logic$1614 ($ne).
+Removed top 1 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_spi.$eq$rtl/pochoco_spi_slave.v:67$148 ($eq).
+Removed top 3 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_spi.$add$rtl/pochoco_spi_slave.v:80$152 ($add).
+Removed top 4 bits (of 6) from port B of cell game_top.$flatten\u_pochoco.\u_spi.$eq$rtl/pochoco_spi_slave.v:106$160 ($eq).
+Removed top 5 bits (of 6) from port B of cell game_top.$flatten\u_pochoco.\u_spi.$procmux$1128_CMP0 ($eq).
+Removed top 24 bits (of 32) from mux cell game_top.$flatten\u_pochoco.\u_spi.$procmux$1127 ($pmux).
+Removed top 1 bits (of 3) from FF cell game_top.$flatten\u_pochoco.\u_spi.$procdff$1462 ($adff).
+Converting cell game_top.$flatten\u_pochoco.\u_price_accel.$sub$rtl/pochoco_price_accel.v:22$41 ($sub) from signed to unsigned.
+Removed top 1 bits (of 9) from port A of cell game_top.$flatten\u_pochoco.\u_price_accel.$sub$rtl/pochoco_price_accel.v:22$41 ($sub).
+Removed top 1 bits (of 9) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$sub$rtl/pochoco_price_accel.v:22$41 ($sub).
+Removed top 2 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:41$50 ($add).
+Removed top 28 bits (of 32) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$lt$rtl/pochoco_price_accel.v:43$51 ($lt).
+Removed top 3 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:44$52 ($add).
+Removed top 28 bits (of 32) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$ge$rtl/pochoco_price_accel.v:48$53 ($ge).
+Removed top 29 bits (of 32) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$le$rtl/pochoco_price_accel.v:49$55 ($le).
+Removed top 28 bits (of 32) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$ge$rtl/pochoco_price_accel.v:52$57 ($ge).
+Removed top 4 bits (of 6) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$eq$rtl/pochoco_price_accel.v:60$59 ($eq).
+Removed top 24 bits (of 32) from mux cell game_top.$flatten\u_pochoco.\u_price_accel.$ternary$rtl/pochoco_price_accel.v:60$60 ($mux).
+Removed top 1 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$procmux$1327_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$procmux$1337_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_price_accel.$procmux$1348_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1113_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1114_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1115_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_alu.$procmux$1116_CMP0 ($eq).
+Removed top 3 bits (of 4) from mux cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$ternary$rtl/espino_core/espino_decoder.v:156$188 ($mux).
+Removed top 2 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$950_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$954_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$955_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$986_CMP0 ($eq).
+Removed top 2 bits (of 7) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$987_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$997_CMP0 ($eq).
+Removed top 1 bits (of 32) from mux cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$996 ($pmux).
+Removed top 2 bits (of 7) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1011_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1012_CMP0 ($eq).
+Removed top 5 bits (of 7) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1037_CMP0 ($eq).
+Removed top 12 bits (of 32) from mux cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1042 ($mux).
+Removed top 1 bits (of 2) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.$procmux$776_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.$procmux$772_CMP0 ($eq).
+Removed top 29 bits (of 32) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:142$209 ($add).
+Removed top 3 bits (of 4) from mux cell game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$ternary$rtl/espino_core/espino_decoder.v:146$187 ($mux).
+Removed top 1 bits (of 2) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_lsu.$procmux$758_CMP0 ($eq).
+Removed top 3 bits (of 4) from port A of cell game_top.$flatten\u_pochoco.\u_core.\u_lsu.$shl$rtl/espino_core/espino_load_store_unit.v:61$231 ($shl).
+Removed top 1 bits (of 2) from port B of cell game_top.$flatten\u_pochoco.$eq$rtl/pochoco_soc.v:67$628 ($eq).
+Removed top 29 bits (of 32) from port B of cell game_top.$flatten\u_pochoco.\u_core.\u_if.$add$rtl/espino_core/espino_if_stage.v:34$694 ($add).
+Removed top 3 bits (of 4) from port B of cell game_top.$flatten\u_pochoco.$add$rtl/pochoco_soc.v:38$624 ($add).
+Removed top 8 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$741.
+Removed top 16 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$738.
+Removed top 24 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$735.
+Removed top 8 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:51$703_EN[31:0]$716.
+Removed top 16 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:50$702_EN[31:0]$713.
+Removed top 24 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_ram.$0$memwr$\mem$rtl/pochoco_ram.v:49$701_EN[31:0]$710.
+Removed top 3 bits (of 4) from wire game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$ternary$rtl/espino_core/espino_decoder.v:156$188_Y.
+Removed top 3 bits (of 4) from wire game_top.$flatten\u_pochoco.\u_core.\u_id.\u_decoder.$ternary$rtl/espino_core/espino_decoder.v:146$187_Y.
+Removed top 24 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_price_accel.$ternary$rtl/pochoco_price_accel.v:60$60_Y.
+Removed top 24 bits (of 32) from wire game_top.$flatten\u_pochoco.\u_spi.$procmux$1127_Y.
+
+16.15. Executing PEEPOPT pass (run peephole optimizers).
+
+16.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+16.17. Executing SHARE pass (SAT-based resource sharing).
+
+16.18. Executing TECHMAP pass (map to technology primitives).
+
+16.18.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+16.18.2. Continuing TECHMAP pass.
+Using template $paramod$909cd69b6f23bd8cb612659b1263f26e598d4912\_90_lut_cmp_ for cells of type $lt.
+Using template $paramod$62a947ff69aed6b25e12e46f5582449016fdd8d6\_90_lut_cmp_ for cells of type $ge.
+No more expansions possible.
+<suppressed ~165 debug messages>
+
+16.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.20. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+16.21. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module game_top:
+  creating $macc model for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$add$rtl/espino_core/espino_alu.v:76$177 ($add).
+  creating $macc model for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$sub$rtl/espino_core/espino_alu.v:66$173 ($sub).
+  creating $macc model for $flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:135$204 ($add).
+  creating $macc model for $flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:142$209 ($add).
+  creating $macc model for $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:44$52 ($add).
+  creating $macc model for $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:41$50 ($add).
+  creating $macc model for $flatten\u_pochoco.\u_price_accel.$sub$rtl/pochoco_price_accel.v:22$41 ($sub).
+  creating $macc model for $flatten\u_pochoco.\u_core.\u_if.$add$rtl/espino_core/espino_if_stage.v:34$694 ($add).
+  creating $macc model for $flatten\u_pochoco.\u_spi.$add$rtl/pochoco_spi_slave.v:80$152 ($add).
+  creating $macc model for $flatten\u_pochoco.$add$rtl/pochoco_soc.v:38$624 ($add).
+  creating $alu model for $macc $flatten\u_pochoco.$add$rtl/pochoco_soc.v:38$624.
+  creating $alu model for $macc $flatten\u_pochoco.\u_spi.$add$rtl/pochoco_spi_slave.v:80$152.
+  creating $alu model for $macc $flatten\u_pochoco.\u_core.\u_if.$add$rtl/espino_core/espino_if_stage.v:34$694.
+  creating $alu model for $macc $flatten\u_pochoco.\u_price_accel.$sub$rtl/pochoco_price_accel.v:22$41.
+  creating $alu model for $macc $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:41$50.
+  creating $alu model for $macc $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:44$52.
+  creating $alu model for $macc $flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:142$209.
+  creating $alu model for $macc $flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:135$204.
+  creating $alu model for $macc $flatten\u_pochoco.\u_core.\u_id.\u_alu.$sub$rtl/espino_core/espino_alu.v:66$173.
+  creating $alu model for $macc $flatten\u_pochoco.\u_core.\u_id.\u_alu.$add$rtl/espino_core/espino_alu.v:76$177.
+  creating $alu model for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$lt$rtl/espino_core/espino_alu.v:48$166 ($lt): merged with $flatten\u_pochoco.\u_core.\u_id.\u_alu.$sub$rtl/espino_core/espino_alu.v:66$173.
+  creating $alu model for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$lt$rtl/espino_core/espino_alu.v:47$165 ($lt): merged with $flatten\u_pochoco.\u_core.\u_id.\u_alu.$sub$rtl/espino_core/espino_alu.v:66$173.
+  creating $alu model for $flatten\u_pochoco.\u_price_accel.$ge$rtl/pochoco_price_accel.v:52$57 ($ge): new $alu
+  creating $alu model for $flatten\u_pochoco.\u_price_accel.$le$rtl/pochoco_price_accel.v:49$55 ($le): new $alu
+  creating $alu model for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$eq$rtl/espino_core/espino_alu.v:46$164 ($eq): merged with $flatten\u_pochoco.\u_core.\u_id.\u_alu.$sub$rtl/espino_core/espino_alu.v:66$173.
+  creating $alu cell for $flatten\u_pochoco.\u_price_accel.$le$rtl/pochoco_price_accel.v:49$55: $auto$alumacc.cc:578:replace_alu$1699
+  creating $alu cell for $flatten\u_pochoco.\u_price_accel.$ge$rtl/pochoco_price_accel.v:52$57: $auto$alumacc.cc:578:replace_alu$1710
+  creating $alu cell for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$add$rtl/espino_core/espino_alu.v:76$177: $auto$alumacc.cc:578:replace_alu$1725
+  creating $alu cell for $flatten\u_pochoco.\u_core.\u_id.\u_alu.$sub$rtl/espino_core/espino_alu.v:66$173, $flatten\u_pochoco.\u_core.\u_id.\u_alu.$lt$rtl/espino_core/espino_alu.v:48$166, $flatten\u_pochoco.\u_core.\u_id.\u_alu.$lt$rtl/espino_core/espino_alu.v:47$165, $flatten\u_pochoco.\u_core.\u_id.\u_alu.$eq$rtl/espino_core/espino_alu.v:46$164: $auto$alumacc.cc:578:replace_alu$1728
+  creating $alu cell for $flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:135$204: $auto$alumacc.cc:578:replace_alu$1739
+  creating $alu cell for $flatten\u_pochoco.\u_core.\u_id.$add$rtl/espino_core/espino_id_stage.v:142$209: $auto$alumacc.cc:578:replace_alu$1742
+  creating $alu cell for $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:44$52: $auto$alumacc.cc:578:replace_alu$1745
+  creating $alu cell for $flatten\u_pochoco.\u_price_accel.$add$rtl/pochoco_price_accel.v:41$50: $auto$alumacc.cc:578:replace_alu$1748
+  creating $alu cell for $flatten\u_pochoco.\u_price_accel.$sub$rtl/pochoco_price_accel.v:22$41: $auto$alumacc.cc:578:replace_alu$1751
+  creating $alu cell for $flatten\u_pochoco.\u_core.\u_if.$add$rtl/espino_core/espino_if_stage.v:34$694: $auto$alumacc.cc:578:replace_alu$1754
+  creating $alu cell for $flatten\u_pochoco.\u_spi.$add$rtl/pochoco_spi_slave.v:80$152: $auto$alumacc.cc:578:replace_alu$1757
+  creating $alu cell for $flatten\u_pochoco.$add$rtl/pochoco_soc.v:38$624: $auto$alumacc.cc:578:replace_alu$1760
+  created 12 $alu and 0 $macc cells.
+
+16.22. Executing OPT pass (performing simple optimizations).
+
+16.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~1 debug messages>
+
+16.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 311 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.22.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~138 debug messages>
+
+16.22.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.22.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 311 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 310 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+16.22.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$1642 ($adffe) from module game_top.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$1619 ($adffe) from module game_top.
+
+16.22.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+16.22.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.22.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.22.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~138 debug messages>
+
+16.22.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.22.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 310 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.22.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.22.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.22.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.22.16. Finished fast OPT passes. (There is nothing left to do.)
+
+16.23. Executing MEMORY pass.
+
+16.23.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 96 transformations.
+
+16.23.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 6 transformations.
+
+16.23.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing game_top.u_pochoco.u_ram.mem write port 0.
+  Analyzing game_top.u_pochoco.u_ram.mem write port 1.
+  Analyzing game_top.u_pochoco.u_ram.mem write port 2.
+  Analyzing game_top.u_pochoco.u_ram.mem write port 3.
+
+16.23.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+16.23.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\u_pochoco.u_ram.mem'[0] in module `\game_top':
+    merging output FF to cell.
+    Write port 0: non-transparent.
+    Write port 1: non-transparent.
+    Write port 2: non-transparent.
+    Write port 3: non-transparent.
+Checking read port `\u_pochoco.u_ram.mem'[1] in module `\game_top':
+    merging output FF to cell.
+    Write port 0: non-transparent.
+    Write port 1: non-transparent.
+    Write port 2: non-transparent.
+    Write port 3: non-transparent.
+
+16.23.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 2 unused cells and 66 unused wires.
+<suppressed ~3 debug messages>
+
+16.23.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory game_top.u_pochoco.u_ram.mem by address:
+Consolidating write ports of memory game_top.u_pochoco.u_ram.mem by address:
+  Merging ports 0, 1 (address \u_pochoco.u_core.u_id.alu_result [8:2]).
+  Merging ports 0, 2 (address \u_pochoco.u_core.u_id.alu_result [8:2]).
+  Merging ports 0, 3 (address \u_pochoco.u_core.u_id.alu_result [8:2]).
+
+16.23.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+16.23.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 8 unused cells and 8 unused wires.
+<suppressed ~9 debug messages>
+
+16.23.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+16.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.25. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+mapping memory game_top.u_pochoco.u_ram.mem via $__ICE40_RAM4K_
+<suppressed ~82 debug messages>
+
+16.26. Executing TECHMAP pass (map to technology primitives).
+
+16.26.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_RAM4K_'.
+Successfully finished Verilog frontend.
+
+16.26.2. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/spram_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/spram_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_SPRAM_'.
+Successfully finished Verilog frontend.
+
+16.26.3. Continuing TECHMAP pass.
+Using template $paramod$41804cf42333fdcc3a0cf43083d9fecee143c3e9$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$43de5c28f2da4fe2c3688a93bf91889a230b0dfd$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+No more expansions possible.
+<suppressed ~50 debug messages>
+
+16.27. Executing ICE40_BRAMINIT pass.
+
+16.28. Executing OPT pass (performing simple optimizations).
+
+16.28.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~49 debug messages>
+
+16.28.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 314 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 308 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+16.28.3. Executing OPT_DFF pass (perform DFF optimizations).
+Removing always-active EN on $auto$mem.cc:1169:emulate_transparency$1865 ($dffe) from module game_top.
+Adding EN signal on $auto$ff.cc:337:slice$1681 ($adffe) from module game_top (D = \u_pochoco.u_core.u_if.pc_next [1:0], Q = \u_pochoco.u_core.u_if.pc_q [1:0]).
+Adding SRST signal on $auto$mem.cc:1648:emulate_read_first$1838 ($dff) from module game_top (D = { $flatten\u_pochoco.\u_ram.$2$memwr$\mem$rtl/pochoco_ram.v:52$704_EN[31:0]$744 [24] $auto$wreduce.cc:513:run$1682 [16] $auto$wreduce.cc:513:run$1683 [8] $auto$wreduce.cc:513:run$1684 [0] }, Q = $auto$mem.cc:1645:emulate_read_first$1835, rval = 4'0000).
+
+16.28.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 4 unused cells and 103 unused wires.
+<suppressed ~5 debug messages>
+
+16.28.5. Rerunning OPT passes. (Removed registers in this run.)
+
+16.28.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~3 debug messages>
+
+16.28.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 305 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 304 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+16.28.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.28.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+16.28.10. Finished fast OPT passes.
+
+16.29. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+16.30. Executing OPT pass (performing simple optimizations).
+
+16.30.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.30.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 304 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.30.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~95 debug messages>
+
+16.30.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+    New input vector for $reduce_or cell $auto$memory_libmap.cc:1856:emit_port$1891: $auto$mem.cc:1645:emulate_read_first$1835 [3:2]
+    New input vector for $reduce_or cell $auto$memory_libmap.cc:1856:emit_port$1889: $auto$mem.cc:1645:emulate_read_first$1835 [1:0]
+    Consolidated identical input bits for $pmux cell $flatten\u_pochoco.\u_core.\u_lsu.$procmux$753:
+      Old ports: A=\u_pochoco.u_core.u_id.rf_rdata_b_i, B={ \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [15:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [15:0] }, Y={ \u_pochoco.u_ram.b_wdata_i [31:8] \u_pochoco.u_price_accel.wdata_i [7:0] }
+      New ports: A=\u_pochoco.u_core.u_id.rf_rdata_b_i [31:8], B={ \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [15:0] \u_pochoco.u_core.u_id.rf_rdata_b_i [15:8] }, Y=\u_pochoco.u_ram.b_wdata_i [31:8]
+      New connections: \u_pochoco.u_price_accel.wdata_i [7:0] = \u_pochoco.u_core.u_id.rf_rdata_b_i [7:0]
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232:
+      Old ports: A=4'0011, B=4'1100, Y=$flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y
+      New ports: A=2'01, B=2'10, Y={ $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y [2] $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y [0] }
+      New connections: { $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y [3] $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y [1] } = { $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y [2] $flatten\u_pochoco.\u_core.\u_lsu.$ternary$rtl/espino_core/espino_load_store_unit.v:62$232_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_price_accel.$procmux$1374:
+      Old ports: A=8'00000000, B=8'10111111, Y=$flatten\u_pochoco.\u_price_accel.$procmux$1374_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0]
+      New connections: $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [7:1] = { $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] 1'0 $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_core.\u_id.\u_decoder.$procmux$1042:
+      Old ports: A={ \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [7] \u_pochoco.u_ram.a_rdata_o [30:25] \u_pochoco.u_ram.a_rdata_o [11:8] 1'0 }, B={ \u_pochoco.u_ram.a_rdata_o [19:12] \u_pochoco.u_ram.a_rdata_o [20] \u_pochoco.u_ram.a_rdata_o [30:21] 1'0 }, Y=\u_pochoco.u_core.u_id.imm_target [19:0]
+      New ports: A={ \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [31] \u_pochoco.u_ram.a_rdata_o [7] \u_pochoco.u_ram.a_rdata_o [11:8] }, B={ \u_pochoco.u_ram.a_rdata_o [19:12] \u_pochoco.u_ram.a_rdata_o [20] \u_pochoco.u_ram.a_rdata_o [24:21] }, Y={ \u_pochoco.u_core.u_id.imm_target [19:11] \u_pochoco.u_core.u_id.imm_target [4:1] }
+      New connections: { \u_pochoco.u_core.u_id.imm_target [10:5] \u_pochoco.u_core.u_id.imm_target [0] } = { \u_pochoco.u_ram.a_rdata_o [30:25] 1'0 }
+  Optimizing cells in module \game_top.
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_price_accel.$procmux$1377:
+      Old ports: A=$flatten\u_pochoco.\u_price_accel.$procmux$1374_Y, B=8'01111111, Y=$flatten\u_pochoco.\u_price_accel.$procmux$1377_Y
+      New ports: A={ $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] 1'0 $flatten\u_pochoco.\u_price_accel.$procmux$1374_Y [0] }, B=3'011, Y={ $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [7:6] $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] }
+      New connections: $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [5:1] = { $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] }
+  Optimizing cells in module \game_top.
+    Consolidated identical input bits for $mux cell $flatten\u_pochoco.\u_price_accel.$procmux$1379:
+      Old ports: A=8'00000000, B=$flatten\u_pochoco.\u_price_accel.$procmux$1377_Y, Y=$flatten\u_pochoco.\u_price_accel.$procmux$1379_Y
+      New ports: A=3'000, B={ $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [7:6] $flatten\u_pochoco.\u_price_accel.$procmux$1377_Y [0] }, Y={ $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [7:6] $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [0] }
+      New connections: $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [5:1] = { $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [0] $flatten\u_pochoco.\u_price_accel.$procmux$1379_Y [0] }
+  Optimizing cells in module \game_top.
+Performed a total of 8 changes.
+
+16.30.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 304 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.30.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.30.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.30.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~1 debug messages>
+
+16.30.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.30.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~95 debug messages>
+
+16.30.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.30.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 304 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.30.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.30.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.30.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.30.16. Finished fast OPT passes. (There is nothing left to do.)
+
+16.31. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+16.32. Executing TECHMAP pass (map to technology primitives).
+
+16.32.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+16.32.2. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+16.32.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_80_ice40_alu for cells of type $alu.
+Using template $paramod$44a13d10af618e7fbe7b9aad2f6151ffcee1e2fa\_80_ice40_alu for cells of type $alu.
+Using template $paramod$4ccbe221165818e15f326ddee3d1183c7924e12f\_80_ice40_alu for cells of type $alu.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_80_ice40_alu for cells of type $alu.
+Using template $paramod$ebf89ea36a793f0f77858f212141d47c833068ad\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$a999c469eebfb11714d8034f85b1465915105f24\_80_ice40_alu for cells of type $alu.
+Using template $paramod$085438112a9a585bd2301e4fd5091b088904ba66\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $lut.
+Using template $paramod$constmap:574a95964644c704a7e64c257267b27c2c48aa52$paramod$77562a466236eb4a6d905351a0995599b75075cb\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+<suppressed ~665 debug messages>
+
+16.33. Executing OPT pass (performing simple optimizations).
+
+16.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~949 debug messages>
+
+16.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 2846 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 2546 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 2478 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 2461 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~1155 debug messages>
+Removed a total of 385 cells.
+
+16.33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 124 unused cells and 886 unused wires.
+<suppressed ~125 debug messages>
+
+16.33.5. Finished fast OPT passes.
+
+16.34. Executing ICE40_OPT pass (performing simple optimizations).
+
+16.34.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1699.slice[0].carry: CO=\u_pochoco.u_price_accel.new_delta [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1710.slice[0].carry: CO=\u_pochoco.u_price_accel.new_delta [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1742.slice[0].carry: CO=\u_pochoco.u_core.u_if.pc_id_q [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1745.slice[0].carry: CO=\u_pochoco.u_price_accel.count [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1748.slice[0].carry: CO=\u_pochoco.u_price_accel.index [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1751.slice[8].carry: CO=$auto$alumacc.cc:578:replace_alu$1751.C [8]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1754.slice[0].carry: CO=\u_pochoco.u_core.u_if.pc_q [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1757.slice[0].carry: CO=\u_pochoco.u_spi.bit_cnt [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) game_top.$auto$alumacc.cc:578:replace_alu$1760.slice[0].carry: CO=\u_pochoco.por_cnt [0]
+
+16.34.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~2 debug messages>
+
+16.34.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 2335 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 2334 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+16.34.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.34.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+16.34.6. Rerunning OPT passes. (Removed registers in this run.)
+
+16.34.7. Running ICE40 specific optimizations.
+
+16.34.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.34.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 2333 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.34.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.34.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.34.12. Finished OPT passes. (There is nothing left to do.)
+
+16.35. Executing DFFLEGALIZE pass (convert FFs and LATCHes to types supported by the target).
+
+16.36. Executing TECHMAP pass (map to technology primitives).
+
+16.36.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+16.36.2. Continuing TECHMAP pass.
+Using template $_DFF_PP0_ for cells of type $_DFF_PP0_.
+Using template $_DFF_PP1_ for cells of type $_DFF_PP1_.
+Using template $_DFFE_PP0P_ for cells of type $_DFFE_PP0P_.
+Using template $_DFFE_PP_ for cells of type $_DFFE_PP_.
+Using template $_DFF_P_ for cells of type $_DFF_P_.
+Using template $_SDFF_PP0_ for cells of type $_SDFF_PP0_.
+No more expansions possible.
+<suppressed ~341 debug messages>
+
+16.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~200 debug messages>
+
+16.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1742.slice[0].carry ($lut).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1745.slice[0].carry ($lut).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1748.slice[0].carry ($lut).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1751.slice[8].carry ($lut).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1754.slice[0].carry ($lut).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1757.slice[0].carry ($lut).
+Mapping game_top.$auto$alumacc.cc:578:replace_alu$1760.slice[0].carry ($lut).
+
+16.39. Executing ICE40_OPT pass (performing simple optimizations).
+
+16.39.1. Running ICE40 specific optimizations.
+
+16.39.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~140 debug messages>
+
+16.39.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 2434 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 2328 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~318 debug messages>
+Removed a total of 106 cells.
+
+16.39.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.39.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 1 unused cells and 2048 unused wires.
+<suppressed ~10 debug messages>
+
+16.39.6. Rerunning OPT passes. (Removed registers in this run.)
+
+16.39.7. Running ICE40 specific optimizations.
+
+16.39.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.39.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 2327 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.39.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.39.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.39.12. Finished OPT passes. (There is nothing left to do.)
+
+16.40. Executing CHECK pass (checking for obvious problems).
+Checking module game_top...
+Found and reported 0 problems.
+
+16.41. Executing TECHMAP pass (map to technology primitives).
+
+16.41.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `$_DLATCH_N_'.
+Generating RTLIL representation for module `$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+16.41.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+16.42. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/abc9_model.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_CARRY_WRAPPER'.
+Successfully finished Verilog frontend.
+
+16.43. Executing ABC9 pass.
+
+16.43.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+16.43.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+16.43.3. Executing PROC pass (convert processes to netlists).
+
+16.43.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+16.43.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$433 in module SB_DFFER.
+Removed a total of 0 dead cases.
+
+16.43.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 1 assignment to connection.
+
+16.43.3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:660$436'.
+  Set init value: \Q = 1'0
+
+16.43.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \R in `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$433'.
+
+16.43.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~1 debug messages>
+
+16.43.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:660$436'.
+Creating decoders for process `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$433'.
+     1/1: $0\Q[0:0]
+
+16.43.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+16.43.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\SB_DFFER.\Q' using process `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$433'.
+  created $adff cell `$procdff$8320' with positive edge clock and positive level reset.
+
+16.43.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+16.43.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:660$436'.
+Found and cleaned up 1 empty switch in `\SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$433'.
+Removing empty process `SB_DFFER.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:662$433'.
+Cleaned up 1 empty switch.
+
+16.43.4. Executing PROC pass (convert processes to netlists).
+
+16.43.4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+16.43.4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:406$417 in module SB_DFFR.
+Removed a total of 0 dead cases.
+
+16.43.4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 1 assignment to connection.
+
+16.43.4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:404$419'.
+  Set init value: \Q = 1'0
+
+16.43.4.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \R in `\SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:406$417'.
+
+16.43.4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+16.43.4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:404$419'.
+Creating decoders for process `\SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:406$417'.
+     1/1: $0\Q[0:0]
+
+16.43.4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+16.43.4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\SB_DFFR.\Q' using process `\SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:406$417'.
+  created $adff cell `$procdff$8323' with positive edge clock and positive level reset.
+
+16.43.4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+16.43.4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:404$419'.
+Removing empty process `SB_DFFR.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:406$417'.
+Cleaned up 0 empty switches.
+
+16.43.5. Executing PROC pass (convert processes to netlists).
+
+16.43.5.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+16.43.5.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:527$423 in module SB_DFFS.
+Removed a total of 0 dead cases.
+
+16.43.5.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 1 assignment to connection.
+
+16.43.5.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:525$425'.
+  Set init value: \Q = 1'0
+
+16.43.5.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \S in `\SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:527$423'.
+
+16.43.5.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+16.43.5.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:525$425'.
+Creating decoders for process `\SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:527$423'.
+     1/1: $0\Q[0:0]
+
+16.43.5.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+16.43.5.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\SB_DFFS.\Q' using process `\SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:527$423'.
+  created $adff cell `$procdff$8326' with positive edge clock and positive level reset.
+
+16.43.5.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+16.43.5.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:525$425'.
+Removing empty process `SB_DFFS.$proc$/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_sim.v:527$423'.
+Cleaned up 0 empty switches.
+
+16.43.6. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module game_top.
+Found 0 SCCs.
+
+16.43.7. Executing ABC9_OPS pass (helper functions for ABC9).
+
+16.43.8. Executing TECHMAP pass (map to technology primitives).
+
+16.43.8.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+16.43.8.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~136 debug messages>
+
+16.43.9. Executing OPT pass (performing simple optimizations).
+
+16.43.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SB_DFFER.
+Optimizing module SB_DFFR.
+Optimizing module SB_DFFS.
+
+16.43.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SB_DFFER'.
+Computing hashes of 2 cells of `\SB_DFFER'.
+Finding duplicate cells in `\SB_DFFER'.
+Finding identical cells in module `\SB_DFFR'.
+Computing hashes of 2 cells of `\SB_DFFR'.
+Finding duplicate cells in `\SB_DFFR'.
+Finding identical cells in module `\SB_DFFS'.
+Computing hashes of 2 cells of `\SB_DFFS'.
+Finding duplicate cells in `\SB_DFFS'.
+Removed a total of 0 cells.
+
+16.43.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SB_DFFER..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \SB_DFFR..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \SB_DFFS..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+16.43.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SB_DFFER.
+  Optimizing cells in module \SB_DFFR.
+  Optimizing cells in module \SB_DFFS.
+Performed a total of 0 changes.
+
+16.43.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SB_DFFER'.
+Computing hashes of 2 cells of `\SB_DFFER'.
+Finding duplicate cells in `\SB_DFFER'.
+Finding identical cells in module `\SB_DFFR'.
+Computing hashes of 2 cells of `\SB_DFFR'.
+Finding duplicate cells in `\SB_DFFR'.
+Finding identical cells in module `\SB_DFFS'.
+Computing hashes of 2 cells of `\SB_DFFS'.
+Finding duplicate cells in `\SB_DFFS'.
+Removed a total of 0 cells.
+
+16.43.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.43.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SB_DFFER..
+Finding unused cells or wires in module \SB_DFFR..
+Finding unused cells or wires in module \SB_DFFS..
+
+16.43.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SB_DFFER.
+Optimizing module SB_DFFR.
+Optimizing module SB_DFFS.
+
+16.43.9.9. Finished fast OPT passes. (There is nothing left to do.)
+
+16.43.10. Executing TECHMAP pass (map to technology primitives).
+
+16.43.10.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_map.v' to AST representation.
+Lexer warning: The SystemVerilog keyword `bit' (at /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_map.v:35) is not recognized unless read_verilog is called with -sv!
+Generating RTLIL representation for module `$__ABC9_BARRIER_MAP'.
+Successfully finished Verilog frontend.
+
+16.43.10.2. Continuing TECHMAP pass.
+Using template SB_DFFR for cells of type SB_DFFR.
+Using template SB_DFFS for cells of type SB_DFFS.
+Using template SB_DFFER for cells of type SB_DFFER.
+No more expansions possible.
+<suppressed ~206 debug messages>
+
+16.43.11. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_model.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ABC9_DELAY'.
+Generating RTLIL representation for module `$__ABC9_BARRIER'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__DFF_N__$abc9_flop'.
+Generating RTLIL representation for module `$__DFF_P__$abc9_flop'.
+Successfully finished Verilog frontend.
+
+16.43.12. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~589 debug messages>
+
+16.43.13. Executing ABC9_OPS pass (helper functions for ABC9).
+
+16.43.14. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~2 debug messages>
+
+16.43.15. Executing TECHMAP pass (map to technology primitives).
+
+16.43.15.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+16.43.15.2. Continuing TECHMAP pass.
+Using template $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 for cells of type $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1.
+Using template SB_CARRY for cells of type SB_CARRY.
+Using template $paramod\SB_LUT4\LUT_INIT=16'0110100110010110 for cells of type SB_LUT4.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $logic_and.
+No more expansions possible.
+<suppressed ~163 debug messages>
+
+16.43.16. Executing OPT pass (performing simple optimizations).
+
+16.43.16.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+<suppressed ~4 debug messages>
+
+16.43.16.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 30 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 20 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Computing hashes of 18 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+<suppressed ~29 debug messages>
+Removed a total of 12 cells.
+
+16.43.16.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+16.43.16.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.43.16.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 18 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.43.16.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.43.16.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+Removed 0 unused cells and 24 unused wires.
+<suppressed ~1 debug messages>
+
+16.43.16.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.43.16.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.43.16.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \game_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+16.43.16.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \game_top.
+Performed a total of 0 changes.
+
+16.43.16.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\game_top'.
+Computing hashes of 18 cells of `\game_top'.
+Finding duplicate cells in `\game_top'.
+Removed a total of 0 cells.
+
+16.43.16.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.43.16.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \game_top..
+
+16.43.16.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module game_top.
+
+16.43.16.16. Finished fast OPT passes. (There is nothing left to do.)
+
+16.43.17. Executing AIGMAP pass (map logic to AIG).
+Module game_top: replaced 1058 cells with 5999 new cells, skipped 2056 cells.
+  replaced 3 cell types:
+     505 $_MUX_
+     469 $_OR_
+      84 $_XOR_
+  not replaced 24 cell types:
+     581 $_AND_
+     163 $_NOT_
+      14 $scopeinfo
+      75 SB_DFF
+      40 SB_DFFE
+       4 SB_DFFSR
+       7 SB_DFFR
+       3 SB_DFFS
+     190 SB_DFFER
+       8 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000010000101
+     128 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000010100001
+      88 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000011100000
+       8 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000001100010
+      16 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000100001011
+     128 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000100010010
+     119 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000000010101
+      92 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000011001011
+       3 SB_DFFS_$abc9_byp
+       7 SB_DFFR_$abc9_byp
+     190 SB_DFFER_$abc9_byp
+       2 $paramod$77d1cb8b06647635016611882fc00d6894ce7697\SB_RAM40_4K
+       2 $paramod$1ab842df78de675eb3621b28ac35681243507ade\SB_RAM40_4K
+       4 $paramod$23dd8c799cf8365f3c773ea1006e20f1d608155f\SB_RAM40_4K
+     184 $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1
+
+16.43.17.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+16.43.17.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+16.43.17.3. Executing XAIGER2 backend.
+<suppressed ~2608 debug messages>
+Extracted 4241 AND gates and 0 wires from module `game_top' to a netlist network with 1610 inputs and 3480 outputs.
+
+16.43.17.4. Executing ABC9_EXE pass (technology mapping using ABC9).
+
+16.43.17.5. Executing ABC9.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_lut <abc-temp-dir>/input.lut 
+ABC: + read_box <abc-temp-dir>/input.box 
+ABC: + &read <abc-temp-dir>/input.xaig 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =    455/   1573  and =    2512  lev =   33 (3.13)  mem = 0.11 MB  box = 971  bb = 787
+ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 22 carries.
+ABC: + &scorr 
+ABC: Warning: The network is combinational.
+ABC: + &sweep 
+ABC: + &dc2 
+ABC: + &dch -f -r 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =    455/   1573  and =    3014  lev =   26 (2.66)  mem = 0.11 MB  ch =  327  box = 971  bb = 787
+ABC: cst =       0  cls =    286  lit =     327  unused =    4011  proof =     0
+ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 22 carries.
+ABC: + &if -W 250 -v 
+ABC: K = 4. Memory (bytes): Truth =    0. Cut =   64. Obj =  144. Set =  672. CutMin = no
+ABC: Node =    3014.  Ch =   286.  Total mem =    1.24 MB. Peak cut mem =    0.10 MB.
+ABC: P:  Del = 9834.00.  Ar =    1077.0.  Edge =     3912.  Cut =    19985.  T =     0.00 sec
+ABC: P:  Del = 9834.00.  Ar =     968.0.  Edge =     3603.  Cut =    18874.  T =     0.00 sec
+ABC: P:  Del = 9834.00.  Ar =     897.0.  Edge =     2873.  Cut =    21359.  T =     0.00 sec
+ABC: F:  Del = 9834.00.  Ar =     794.0.  Edge =     2679.  Cut =    18832.  T =     0.00 sec
+ABC: A:  Del = 9834.00.  Ar =     785.0.  Edge =     2601.  Cut =    19495.  T =     0.00 sec
+ABC: A:  Del = 9834.00.  Ar =     785.0.  Edge =     2600.  Cut =    19874.  T =     0.00 sec
+ABC: Total time =     0.02 sec
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &mfs 
+ABC: + &ps -l 
+ABC: <abc-temp-dir>/input : i/o =    455/   1573  and =    2191  lev =   27 (2.57)  mem = 0.10 MB  box = 969  bb = 787
+ABC: Mapping (K=4)  :  lut =    780  edge =    2561  lev =   16 (1.69)  levB =   43  mem = 0.04 MB
+ABC: LUT = 780 : 2=147 18.8 %  3=265 34.0 %  4=368 47.2 %  Ave = 3.28
+ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 20 carries.
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &verify 
+ABC: Networks are equivalent.  Time =     0.08 sec
+ABC: + time 
+ABC: elapse: 0.69 seconds, total: 0.69 seconds
+
+16.43.17.6. Executing AIGER frontend.
+<suppressed ~10 debug messages>
+Removed 3065 unused cells and 7297 unused wires.
+
+16.43.17.7. Executing ABC_OPS_REINTEGRATE pass (reintegrate ABC mapped design into module).
+ABC RESULTS:              $lut cells:      787
+ABC RESULTS:   \SB_DFFS_$abc9_byp cells:        3
+ABC RESULTS:   \SB_DFFR_$abc9_byp cells:        7
+ABC RESULTS:   \SB_DFFER_$abc9_byp cells:      190
+ABC RESULTS:   $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 cells:      182
+ABC RESULTS:           input signals:      328
+ABC RESULTS:          output signals:       16
+<suppressed ~2030 debug messages>
+Removing temp directory.
+
+16.43.18. Executing TECHMAP pass (map to technology primitives).
+
+16.43.18.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_unmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/abc9_unmap.v' to AST representation.
+Generating RTLIL representation for module `$__DFF_x__$abc9_flop'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__ABC9_BARRIER'.
+Successfully finished Verilog frontend.
+
+16.43.18.2. Continuing TECHMAP pass.
+Using template SB_DFFER_$abc9_byp for cells of type SB_DFFER_$abc9_byp.
+Using template $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 for cells of type $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1.
+Using template $paramod$77d1cb8b06647635016611882fc00d6894ce7697\SB_RAM40_4K for cells of type $paramod$77d1cb8b06647635016611882fc00d6894ce7697\SB_RAM40_4K.
+Using template $paramod$1ab842df78de675eb3621b28ac35681243507ade\SB_RAM40_4K for cells of type $paramod$1ab842df78de675eb3621b28ac35681243507ade\SB_RAM40_4K.
+Using template SB_DFFR_$abc9_byp for cells of type SB_DFFR_$abc9_byp.
+Using template SB_DFFS_$abc9_byp for cells of type SB_DFFS_$abc9_byp.
+Using template $paramod$23dd8c799cf8365f3c773ea1006e20f1d608155f\SB_RAM40_4K for cells of type $paramod$23dd8c799cf8365f3c773ea1006e20f1d608155f\SB_RAM40_4K.
+No more expansions possible.
+<suppressed ~403 debug messages>
+
+16.44. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+16.45. Executing TECHMAP pass (map to technology primitives).
+
+16.45.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+16.45.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~22 debug messages>
+Removed 114 unused cells and 5931 unused wires.
+
+16.46. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:      992
+  1-LUT                7
+  2-LUT              153
+  3-LUT              442
+  4-LUT              390
+  with \SB_CARRY    (#0)  163
+  with \SB_CARRY    (#1)  163
+
+Eliminating LUTs.
+Number of LUTs:      992
+  1-LUT                7
+  2-LUT              153
+  3-LUT              442
+  4-LUT              390
+  with \SB_CARRY    (#0)  163
+  with \SB_CARRY    (#1)  163
+
+Combining LUTs.
+Number of LUTs:      989
+  1-LUT                7
+  2-LUT              150
+  3-LUT              439
+  4-LUT              393
+  with \SB_CARRY    (#0)  163
+  with \SB_CARRY    (#1)  163
+
+Eliminated 0 LUTs.
+Combined 3 LUTs.
+<suppressed ~5688 debug messages>
+
+16.47. Executing TECHMAP pass (map to technology primitives).
+
+16.47.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `$lut'.
+Successfully finished Verilog frontend.
+
+16.47.2. Continuing TECHMAP pass.
+Using template $paramod$fd904e9e35cfd343a9df248824bd3f1408724879$lut for cells of type $lut.
+Using template $paramod$81222ef5610a5fda47edb055a14a06ce3f531e9d$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11011000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
+Using template $paramod$a81cf453a316218febe7a33c0cf3157f69dfa7dc$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00100000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10101100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11001010 for cells of type $lut.
+Using template $paramod$da98d9e875932ba6a280d468e3b5f7014491d245$lut for cells of type $lut.
+Using template $paramod$47a8214374025465e226fa66bee690ff33268a25$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$17c27ffdda03355f95b2ba5edc73ca082237c935$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$011998c9bc40e79d3b9378981668ce5683b7cfe4$lut for cells of type $lut.
+Using template $paramod$b45e5cb971154e30a797eecb0461619c3eeae12d$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0010 for cells of type $lut.
+Using template $paramod$c558182ca6649a2d62585dbabdcbd4e932559c7e$lut for cells of type $lut.
+Using template $paramod$f430edf78d0851a368056770966ef6ea21be8583$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000100 for cells of type $lut.
+Using template $paramod$f8f63b209b7230e81958663ff24fef1613156af7$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000010 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod$873c285bdccf0ac2b60d2304ea5cd14bf211d2a6$lut for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
+Using template $paramod$bba54c1ef87367812b4c15f4aed5ac70773df775$lut for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9$lut for cells of type $lut.
+Using template $paramod$a06aa83841491819ea0cf939b57a7ccfb595b114$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod$bacdb2105cbfbe75cfbcc2fb021fd3aba864526b$lut for cells of type $lut.
+Using template $paramod$364c9ffbffac467d60dfec81bba4e18476c15602$lut for cells of type $lut.
+Using template $paramod$e96de5e9fcce737e52eacf39c70c8f533dc27d63$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11010000 for cells of type $lut.
+Using template $paramod$e37822881ef9a040a4bdc215e0bb010f3fe4b901$lut for cells of type $lut.
+Using template $paramod$58bd588a49a6a3b9d057d75f907cb4932e1635f6$lut for cells of type $lut.
+Using template $paramod$a5516fc31d1e552de2435200bb732b4d4ad63a9c$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01010011 for cells of type $lut.
+Using template $paramod$5a621b016c894274d07edef48c49b401a15fd796$lut for cells of type $lut.
+Using template $paramod$c707a1fc64694850abea190f07d7585233312c32$lut for cells of type $lut.
+Using template $paramod$3c014941563a279228df79e25630751fec86819c$lut for cells of type $lut.
+Using template $paramod$b40080b643baa8bb528ec249e10d82b2d80dfed9$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000111 for cells of type $lut.
+Using template $paramod$9264cd5418c36d754331aa206e64072e8dbf89db$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10001011 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0110 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1001 for cells of type $lut.
+Using template $paramod$af01034afe1bdbc87587d263805971d96e724ed7$lut for cells of type $lut.
+Using template $paramod$bbb10333e84a7e80f65e1494ebbfbf3f28568fcd$lut for cells of type $lut.
+Using template $paramod$8d7a8d6e3356de09670738ba85f2c6b874f6b06d$lut for cells of type $lut.
+Using template $paramod$a067ca065a0e8fdac308d6893e69914865d54ec4$lut for cells of type $lut.
+Using template $paramod$6eae98d5604a5dc1ced2fc1b35f6d91993b04ef8$lut for cells of type $lut.
+Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8$lut for cells of type $lut.
+Using template $paramod$f03663c7f91be924d1e9df8220b895406b3f6489$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01110000 for cells of type $lut.
+Using template $paramod$be0e39d91dba5e611e5f84c38fc7bc26674c47bc$lut for cells of type $lut.
+Using template $paramod$35369ee2661bc6f22afa7fd33e082ebba93672ba$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01001110 for cells of type $lut.
+Using template $paramod$762dcdf49521c1aa2145fa6746ab6d57dd5df22e$lut for cells of type $lut.
+Using template $paramod$f2d65ac67065693e28d8e118b38ca00c572310a1$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01110100 for cells of type $lut.
+Using template $paramod$a15fd389a2f54cb7b94707b25934d226e68d9e2e$lut for cells of type $lut.
+Using template $paramod$e3f15dbf386eb2d9773236c73b6cf924ec3294ee$lut for cells of type $lut.
+Using template $paramod$be48d952fcad8a16b8d84daa4c48a3065f343e5e$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10001111 for cells of type $lut.
+Using template $paramod$6e46ec5a196ba1a24b8e69ab094cadc07c13ac1f$lut for cells of type $lut.
+Using template $paramod$e3e48d21f7bcbffa01434bd5d29cd02e7b3a4d5d$lut for cells of type $lut.
+Using template $paramod$608f40069c27841a5b3bdf03643a34bdc8974072$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0111 for cells of type $lut.
+Using template $paramod$d6c453c96f09d0af869aeb485039b8e35dece767$lut for cells of type $lut.
+Using template $paramod$8e62b61e89c767f8bd613473dfffc9758798236d$lut for cells of type $lut.
+Using template $paramod$865395c0228487a64a8e4011cecafc2c64b79f2b$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1110 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11110100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10101000 for cells of type $lut.
+Using template $paramod$41cf3e7f9a592734c11550fc575af1ecb816015d$lut for cells of type $lut.
+Using template $paramod$aa87f4b44361d4073f55a64babebb83974861eee$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00100111 for cells of type $lut.
+Using template $paramod$85b36cc3c65c84e4f6c8451518ca3211c7c1cba0$lut for cells of type $lut.
+Using template $paramod$23da582b86241546eace0c8bedadb42614eea4c1$lut for cells of type $lut.
+Using template $paramod$0ee0167fb5dd83bdfe7197fff23e2c7146c57037$lut for cells of type $lut.
+Using template $paramod$9cc51547ab44a72dd506ee5bb84a864365a103da$lut for cells of type $lut.
+Using template $paramod$d21d214a5aa271f2d9da3f90f22432c0ecee130f$lut for cells of type $lut.
+Using template $paramod$4385b611926e5c0509dba4de58311d325da0ff0d$lut for cells of type $lut.
+Using template $paramod$0de052767abdccc3aefc818722bdc3c7850d25d6$lut for cells of type $lut.
+Using template $paramod$e46703b423a661cd7d311c41833ea655969702cc$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1101 for cells of type $lut.
+Using template $paramod$338ce46cf7ff44b9974887dd2adee6c4e0530bed$lut for cells of type $lut.
+Using template $paramod$5c32c59025c0b98f20e63f249d83e7ebb4b085e3$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00111010 for cells of type $lut.
+Using template $paramod$8f0687b3b1e843d1af48a2820ee1e560d6b66240$lut for cells of type $lut.
+Using template $paramod$f9e6b8c8bbaa4b164a91075c553341d15958d0ba$lut for cells of type $lut.
+Using template $paramod$651e836885d95717c36e69441422c3fe04ee5f4d$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01010100 for cells of type $lut.
+Using template $paramod$f5c23b297b0a8ca096118d63d2c74ddd6cbea134$lut for cells of type $lut.
+Using template $paramod$4c3952df7776be69cf592c89df2c49aee6a0eb14$lut for cells of type $lut.
+Using template $paramod$82b4a585d1edcb5c6e755dc9bd3392228a1c1304$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001101 for cells of type $lut.
+Using template $paramod$d1dc785fc5b97e7bec2be30ee7302c8cf250ad22$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00111011 for cells of type $lut.
+Using template $paramod$b1680225cc6a5792caa95f54b8b3218fae21705d$lut for cells of type $lut.
+Using template $paramod$6a3d1b4c6389888034ca851571f0d03f46d1c4e9$lut for cells of type $lut.
+Using template $paramod$d5fa1a09a3d97bc91c12fb1c77f25adbb7789f90$lut for cells of type $lut.
+Using template $paramod$a5ca24457e6d029bf6e2fadc6ac169c07ba7c909$lut for cells of type $lut.
+Using template $paramod$214ce2dbb78cda81e40f1a936faa64a685be5a87$lut for cells of type $lut.
+Using template $paramod$3a0a392069bc969f34c65c546a8c56fbbb67e282$lut for cells of type $lut.
+Using template $paramod$daac9b1e7bb2ac018f7132a3fbe0026ddd7b1a71$lut for cells of type $lut.
+Using template $paramod$219b71aec9a19e7a27754ed85a7d6cdad9e5ec96$lut for cells of type $lut.
+Using template $paramod$526e4703e3f9e5bf75da836fd3d4410dd76747a6$lut for cells of type $lut.
+Using template $paramod$b4410865e8124402796f9dfbf73ef8d279fdbd08$lut for cells of type $lut.
+Using template $paramod$620586420e818d3afa7e5b51fcf19f5c6ea83ad4$lut for cells of type $lut.
+Using template $paramod$c28a8b7ce0535d090c4cfb52e9c74affd52b110c$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11101010 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000101 for cells of type $lut.
+Using template $paramod$f3b603d1450c2c61ce732232fcb5fe1f2884aa83$lut for cells of type $lut.
+Using template $paramod$0d3ac82cf5b8a192d5ff4c23e3143360366ae882$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01111111 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001011 for cells of type $lut.
+Using template $paramod$101238f3d8d49ab12a9b49a2f01cd503b26e9c61$lut for cells of type $lut.
+Using template $paramod$8512f4fb47fa9596f76cdbe5b407a5b54df368e7$lut for cells of type $lut.
+Using template $paramod$df196ed0a1da5c4a58c5e08a1dac304fd3fccaab$lut for cells of type $lut.
+Using template $paramod$fb2de0338fd9cb56279bec3d2d5d229fcea1942b$lut for cells of type $lut.
+Using template $paramod$19f568890ed784cb1efc3ce1b67eed20a6c54d9a$lut for cells of type $lut.
+Using template $paramod$72043e0aa7fa64cb454e3c2ca3dbe1636171896a$lut for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8$lut for cells of type $lut.
+Using template $paramod$150ee00bee81b2fcb159e621f4ef27bccb5ede20$lut for cells of type $lut.
+Using template $paramod$7f7628783c4bce0004ad33a8b19eb7a98c9598af$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11100100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01011100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01010001 for cells of type $lut.
+No more expansions possible.
+<suppressed ~2455 debug messages>
+Removed 0 unused cells and 2427 unused wires.
+
+16.48. Executing AUTONAME pass.
+Renamed 2515 objects in module game_top.
+<suppressed ~2515 debug messages>
+
+16.49. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `game_top'. Setting top module to game_top.
+
+16.49.1. Analyzing design hierarchy..
+Top module:  \game_top
+
+16.49.2. Analyzing design hierarchy..
+Top module:  \game_top
+Removed 0 unused modules.
+
+16.50. Printing statistics.
+
+=== game_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1063 wires
+     2750 wire bits
+     1063 public wires
+     2750 public wire bits
+       21 ports
+       27 port bits
+       22 cells
+       14   $scopeinfo
+        8   SB_RAM40_4K
+     1482 submodules
+      174   SB_CARRY
+       75   SB_DFF
+       40   SB_DFFE
+      190   SB_DFFER
+        7   SB_DFFR
+        3   SB_DFFS
+        4   SB_DFFSR
+      989   SB_LUT4
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+       22 game_top
+
+        +----------Count including submodules.
+        | 
+     1063 wires
+     2750 wire bits
+     1063 public wires
+     2750 public wire bits
+       21 ports
+       27 port bits
+        - memories
+        - memory bits
+        - processes
+       22 cells
+       14   $scopeinfo
+        8   SB_RAM40_4K
+     1482 submodules
+      174   SB_CARRY
+       75   SB_DFF
+       40   SB_DFFE
+      190   SB_DFFER
+        7   SB_DFFR
+        3   SB_DFFS
+        4   SB_DFFSR
+      989   SB_LUT4
+
+16.51. Executing CHECK pass (checking for obvious problems).
+Checking module game_top...
+Found and reported 0 problems.
+
+16.52. Executing JSON backend.
+
+17. Printing statistics.
+
+=== game_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1063 wires
+     2750 wire bits
+     1063 public wires
+     2750 public wire bits
+       21 ports
+       27 port bits
+     1504 cells
+       14   $scopeinfo
+      174   SB_CARRY
+       75   SB_DFF
+       40   SB_DFFE
+      190   SB_DFFER
+        7   SB_DFFR
+        3   SB_DFFS
+        4   SB_DFFSR
+      989   SB_LUT4
+        8   SB_RAM40_4K
+
