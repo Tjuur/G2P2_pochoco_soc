@@ -42,3 +42,10 @@ asic/config/runs/
 # ASIC evidence: preserve CSV reports and verification logs
 !asic/reports/**/*.csv
 !asic/verification/*.log
+
+# Proyecto 4: evidencia experimental
+!results/
+!results/**/
+!results/**/*.csv
+!results/**/*.log
+!results/**/*.txt

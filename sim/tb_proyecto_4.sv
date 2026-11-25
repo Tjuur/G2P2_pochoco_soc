@@ -7,12 +7,14 @@
 `timescale 1ns/1ps
 
 module tb_proyecto_4;
+  int metrics_fd;
+
 
   // Configuración: pueden cambiar estos valores
   localparam string PROGRAMA   = "sw/trade.hex";
   localparam string SERIE      = "tb/practica.csv";
   localparam int    PERIODO_NS = 100000;   // ronda 1: 10000000, ronda 2: 1000000, ronda 3: 100000
-  localparam int    NTICKS     = 2000;     // la serie completa tiene 20000
+  localparam int    NTICKS     = 20000;     // la serie completa tiene 20000
 
   localparam int CAJA0    = 10000;
   localparam int COMISION = 5;
@@ -44,6 +46,7 @@ module tb_proyecto_4;
     r = $fgets(encabezado, fd);
     for (int n = 0; n < NTICKS; n++) r = $fscanf(fd, "%d,%d\n", t, precio[n]);
     $fclose(fd);
+
   endtask
 
   // SPI modo 0: envía el precio y recibe la decisión
@@ -84,29 +87,22 @@ module tb_proyecto_4;
     if (peak - w > max_dd) max_dd = peak - w;
   endtask
 
-  // Mide los ciclos entre que llega el precio y el programa escribe DECISION
+  // Metricas por tick
   int ciclos = 0, peor_caso = 0, respuestas = 0, precios_perdidos = 0;
   bit esperando = 0;
 
-  always @(posedge clk) begin
-    ciclos++;
-    if (dut.u_spi.byte_done) begin
-      if (dut.u_spi.new_price_q) precios_perdidos++;      // el precio anterior no se leyó
-      ciclos = 0;
-      esperando = 1;
-    end else if (esperando && dut.u_spi.wr && dut.u_spi.off == 2) begin
-      if (ciclos > peor_caso) peor_caso = ciclos;
-      respuestas++;
-      esperando = 0;
-    end
-  end
-
-
-  // Metricas de arquitectura: contadores solo para simulacion.
   longint unsigned cpu_cycles = 0;
   longint unsigned retired_instructions = 0;
   longint unsigned processing_cycles = 0;
   longint unsigned processing_instructions = 0;
+
+  int tick_cycles = 0;
+  int tick_ic = 0;
+  int max_tick_cycles = 0;
+  int max_tick_ic = 0;
+  int completed_ticks = 0;
+
+
 
   wire instruction_retired =
       dut.u_core.instr_valid_id && !dut.u_core.stall;
@@ -117,12 +113,54 @@ module tb_proyecto_4;
 
       if (instruction_retired)
         retired_instructions++;
+    end
 
-      if (esperando) begin
+    if (dut.u_spi.byte_done) begin
+      if (dut.u_spi.new_price_q)
+        precios_perdidos++;
+
+      ciclos = 0;
+      tick_cycles = 0;
+      tick_ic = 0;
+      esperando = 1;
+
+    end else if (esperando) begin
+      ciclos++;
+
+      if (dut.rst_ni) begin
         processing_cycles++;
+        tick_cycles++;
 
-        if (instruction_retired)
+        if (instruction_retired) begin
           processing_instructions++;
+          tick_ic++;
+        end
+      end
+
+      if (dut.u_spi.wr && dut.u_spi.off == 2) begin
+        if (ciclos > peor_caso)
+          peor_caso = ciclos;
+
+        if (tick_cycles > max_tick_cycles)
+          max_tick_cycles = tick_cycles;
+
+        if (tick_ic > max_tick_ic)
+          max_tick_ic = tick_ic;
+
+        if (metrics_fd != 0)
+          $fdisplay(metrics_fd,
+                    "%0d,%0d,%0d,%0.4f,%0.4f",
+                    completed_ticks,
+                    tick_cycles,
+                    tick_ic,
+                    tick_ic > 0
+                      ? real'(tick_cycles) / real'(tick_ic)
+                      : 0.0,
+                    real'(tick_cycles) * 0.04);
+
+        completed_ticks++;
+        respuestas++;
+        esperando = 0;
       end
     end
   end
@@ -143,6 +181,8 @@ module tb_proyecto_4;
   initial begin
     leer_serie();
     fd = $fopen("decisiones.csv", "w");
+    metrics_fd = $fopen("metricas_por_tick.csv", "w");
+    $fdisplay(metrics_fd, "tick,ciclos,ic,cpi,tiempo_us");
     $fdisplay(fd, "tick,precio,decision,caja,acciones,patrimonio");
     #4000;
 
@@ -183,6 +223,11 @@ module tb_proyecto_4;
                real'(processing_cycles) / real'(processing_instructions));
 
 
+
+    $display("Ticks medidos:             %0d", completed_ticks);
+    $display("Ciclos maximos por tick:   %0d", max_tick_cycles);
+    $display("IC maximo por tick:        %0d", max_tick_ic);
+    $display("Metricas por tick en metricas_por_tick.csv");
 
     chequear(bits_x == 0,           "MISO sin valores X");
     chequear(respuestas > 0,        "el programa escribe DECISION");

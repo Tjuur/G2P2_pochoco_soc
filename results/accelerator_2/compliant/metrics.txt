@@ -1,0 +1,18 @@
+ACELERADOR 2 - VERSION CORREGIDA
+
+Ticks: 2000
+Patrimonio final: 12257
+Ordenes ejecutadas: 24
+Perdida maxima: 1101
+
+Latencia maxima: 41 ciclos
+Ciclos procesamiento: 65006
+IC procesamiento: 27236
+CPI procesamiento: 2.387
+
+Logic Cells: 1215/1280
+BRAM: 8/16
+Fmax: 43.12 MHz
+
+Testbench: 4/4 PASS
+Diferencias Python: 0

@@ -4,12 +4,12 @@
 // SPDX-License-Identifier: SHL-0.51
 //
 // Course: Arquitectura de Computadores (2026)
-// 
+//
 // Authors:
 // - Nicolás Villegas <navillegas@miuandes.cl>
 
 module pochoco_soc #(
-  parameter NumWords   = 512,
+  parameter NumWords   = 128,
   parameter MemFile    = "../sw/blink.hex"
 ) (
   input  wire       i_Clk,
@@ -109,20 +109,10 @@ module pochoco_soc #(
   // Peripherals
   wire [6:0] seg1, seg2;
 
-  pochoco_periph u_periph (
-    .clk_i     (clk),
-    .rst_ni    (rst_ni),
-    .sel_i     (per_sel),
-    .req_i     (per_req),
-    .we_i      (data_we),
-    .addr_i    (data_addr[7:0]),
-    .wdata_i   (data_wdata),
-    .rdata_o   (per_rdata),
-    .leds_o    (o_LED),
-    .btn_i     (i_Switch),
-    .seg1_o    (seg1),
-    .seg2_o    (seg2)
-  );
+  assign per_rdata = 32'b0;
+  assign o_LED = 4'b0;
+  assign seg1 = 7'b0;
+  assign seg2 = 7'b0;
 
   // Price history accelerator
   pochoco_price_accel u_price_accel (

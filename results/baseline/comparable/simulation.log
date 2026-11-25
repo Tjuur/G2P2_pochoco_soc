@@ -1,0 +1,26 @@
+WARNING: build/synthesis_baseline_comparable/rtl/pochoco_ram.v:36: $readmemh(sw/trade_baseline_comparable.hex): Not enough words in the file for the requested range [0:127].
+Patrimonio final:          12257
+Ordenes ejecutadas:        24
+Perdida maxima:            1101
+No operar:                 10000
+Comprar y mantener:        11375
+Peor caso precio->decision: 54 ciclos (disponibles: 2262)
+Detalle por tick en decisiones.csv
+
+=== METRICAS DE ARQUITECTURA ===
+Ciclos totales:           5000085
+Instrucciones ejecutadas: 1880938
+CPI global:               2.658
+Ciclos de procesamiento:  90189
+IC de procesamiento:      40407
+CPI procesamiento:        2.232
+Ticks medidos:             2000
+Ciclos maximos por tick:   54
+IC maximo por tick:        25
+Metricas por tick en metricas_por_tick.csv
+PASS MISO sin valores X
+PASS el programa escribe DECISION
+PASS el programa lee todos los precios
+PASS la decision llega antes del siguiente tick
+Testbenchs aprobados: 4/4
+build/tb_baseline_comparable.sv:238: $finish called at 200004000000 (1ps)
