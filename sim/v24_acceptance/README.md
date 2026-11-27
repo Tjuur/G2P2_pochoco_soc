@@ -42,3 +42,7 @@ icepack game_top.asc game_top.bin
 Require successful timing at 25 MHz, no overuse of resources, no out-of-bounds ROM/RAM access, and safe maximum latency at 0.1 ms. Save the candidate bitstream and hashes in a separate release; never overwrite V2.3. Verify actual master connection, power-on/reset between rounds, no stale decisions, SPI polarity and pinout. Do not flash until all software/RTL/synthesis checks pass and the user explicitly initiates programming. Implement and benchmark the two hardware alternatives plus software-only baseline required by the assignment; document IC, cycles, CPI, Ops/s, Amdahl, roofline, LUTs/BRAM, Fmax and testbenches. These are not yet completed.
 
 Expected META: $19,239, 76 orders, $380 fees, $3,815 maximum monetary drawdown, 23.9726% maximum relative drawdown. HOLD $10,000; B&H $9,695 on this series. Historical mean +16.2883%, 34/48 positive, worst -18.23%, best +101.18%.
+
+## Actualización de la versión final
+
+La implementación definitiva, los comandos vigentes y los resultados verificados se documentan en el [README principal](../../README.md). Las advertencias sobre síntesis y simulación pendientes corresponden a la etapa inicial de desarrollo.

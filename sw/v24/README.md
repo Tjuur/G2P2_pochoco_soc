@@ -26,3 +26,7 @@ RTL testbench now waits for the actual 10 ms POR, then initial HOLD from firmwar
 ## Pending / no claim of competition readiness
 
 Icarus, Yosys, NextPNR and icepack were unavailable in the generation environment; new RTL has not been compiled or synthesized there. Do not program until local RTL acceptance and synthesis pass. If the fit fails, retain V2.3 and adjust the memory organization without changing decisions. Course hardware variants, measured speedup, Amdahl and roofline still need the final implementation-specific measurements. Do not run bare `make` (default flashes). Only program the exact verified bitstream manually once the physical setup is approved. The training windows are not independent validation; synthetic random streams can lose substantial money.
+
+## Actualización de la versión final
+
+La implementación definitiva, los comandos vigentes y los resultados verificados se documentan en el [README principal](../../README.md). Las advertencias sobre síntesis y simulación pendientes corresponden a la etapa inicial de desarrollo.
