@@ -62,22 +62,22 @@ check_buy:
     j write_decision
 
 check_sell:
-    # Incrementar permanencia hasta 64
-    li x7, 64
+    # Incrementar permanencia hasta 32
+    li x7, 32
     bge x15, x7, evaluate_sell
     addi x15, x15, 1
 
 evaluate_sell:
-    # Stop-loss: price <= entry - 24
-    addi x7, x11, -24
+    # Stop-loss: price <= entry - 16
+    addi x7, x11, -16
     bge x7, x8, stop_loss
 
     # Requiere señal alcista
     andi x7, x13, 4
     beq x7, x0, hold
 
-    # Si lleva 64 ticks, vender
-    li x7, 64
+    # Si lleva 32 ticks, vender
+    li x7, 32
     bge x15, x7, sell
 
     # Ganancia minima: price >= entry + 2
