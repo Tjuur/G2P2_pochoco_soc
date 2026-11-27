@@ -1,0 +1,6 @@
+PASS reset released at 9999960000
+PASS firmware initialized at 10044140000
+PASS round=0 ticks=20000 period_ns=100000 half_spi_ns=500 wealth=19239 orders=76 fees=380 dd=3815 max_cycles=927 mean_cycles=537.853900
+METRICS mean_IC=229.448500 max_IC=411 CPI=2.344116 mean_time_ns=21514.156000 max_time_ns=37080
+PASS RTL SPI, all decisions, per-tick reads/writes and deadlines
+sim/v24_acceptance/tb_v24_acceptance.sv:187: $finish called at 2010044147000 (1ps)
