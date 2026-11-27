@@ -1,0 +1,27 @@
+{
+  "base_commit": "15c53eb",
+  "isa": "RV32E, no shifts, mul or div",
+  "instruction_words": 772,
+  "rom_words": 1024,
+  "data_words": 256,
+  "reference_tests": 62,
+  "ticks": 1240000,
+  "rtl_simulation": "pending",
+  "synthesis": "pending",
+  "physical": "pending",
+  "files": {
+    "rtl/pochoco_soc.v": "abfe92c7c3b81879f259f9d9c7ecd1e98aef9b74c187b4053bcd9954c6fd438f",
+    "rtl/pochoco_v24_mem.v": "25a06b22ef36e343f5530c6308cbe14f51d0913edcbd955d874e3d277afa62a9",
+    "sw/trade.s": "e76029abaa9ab0caddff824da2fac67fe10456ffd096a57eb45e147f0369d8a1",
+    "sw/trade.hex": "b14fc1bd76ffd9d5cb0a14acbde0dea757a50b518b00953b08d9cdef50c3762c",
+    "sw/v24/reference_port.c": "83af7a734d60cb8bcdc4b1cab33503ed9e1da42b0d3c945df65c1d47ae7c3829",
+    "sw/v24/isa_check.c": "7289e97a352c8d0c35e153a9edb7947f102e76241fa754bac994fd62441e434b",
+    "sim/v24_acceptance/reference.py": "238dcbc5e0fb0d67c51d61f38eefe00f6275b1bb3e15a73be8e51dedf5ccb7f9",
+    "sim/v24_acceptance/acceptance.py": "f08d51662a21768ad0dd995d6c753244a9853c50ce69e2f6253b2c5cbf0b9d9d",
+    "sim/v24_acceptance/tb_v24_acceptance.sv": "0c399c65f188abe40c2a0a81d8e28a598f8980bce7cc8b90db422bddcf1b5ed2",
+    "sim/v24_acceptance/tb_v24_mem.sv": "02dbcd550de78497982b60d7f4fdf356a8917e60904a6e7bd786c78ffab50e52",
+    "sim/v24_acceptance/check_isa.py": "84e46dab034b0a047bbb161c4159871f16bb57c380abaef22a8c50a638f97bb4",
+    "sim/v24_acceptance/run_rtl.sh": "8d02c158e022837263c44a9749051655335d8e27a99860044c1cf4a2b20027fd",
+    "sim/v24_acceptance/verified_isa.csv": "dde090c430ffeff67c2b514885a0a41a5e95ccad1225021d6e765c5e29465261"
+  }
+}

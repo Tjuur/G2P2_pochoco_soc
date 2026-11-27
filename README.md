@@ -1,75 +1,132 @@
 # Proyecto 4 — Pochoco Trader
 
-**Asignatura:** Arquitectura de Computadores
-**Plataforma:** Lattice iCE40 HX1K — Go Board
-**Procesador:** Espino Core (RV32E)
-**Sistema:** Pochoco SoC
-**Frecuencia objetivo:** 25 MHz
+## V24-T
+
+**Universidad:** Universidad de los Andes  
+**Asignatura:** Arquitectura de Computadores  
+**Grupo:** 2  
+**Procesador:** Espino Core (RV32E)  
+**Plataforma:** Go Board — Lattice iCE40 HX1K  
+**Frecuencia de operación:** 25 MHz
 
 ## 1. Descripción
 
-Pochoco Trader es un sistema de trading automatizado implementado mediante codiseño hardware/software.
+Pochoco Trader es un agente de inversión automatizado que recibe
+precios mediante SPI, analiza su comportamiento y genera órdenes
+de compra, venta o mantención.
 
-El procesador Espino recibe precios mediante SPI, ejecuta una estrategia de trading y genera decisiones de compra, venta o espera.
+La versión final, V24-T, combina dos estrategias de inversión
+mediante un selector dinámico basado en su desempeño y en las
+condiciones del mercado.
 
-Se implementaron tres arquitecturas para evaluar el impacto de trasladar operaciones desde software hacia hardware:
+Toda la lógica de predicción, contabilidad y decisión se ejecuta
+en assembly sobre Espino Core.
 
-1. Implementación completamente software.
-2. Acelerador de historial y diferencia de precios.
-3. Acelerador de historial, diferencia y evaluación de umbrales.
+## 2. Algoritmo
 
-El procesador Espino mantiene la responsabilidad de generar la decisión final.
+V24-T utiliza dos motores de decisión:
 
-## 2. Arquitectura
+### P12 — Reversión a la media
 
-El sistema está compuesto por:
+Busca oportunidades de compra después de caídas de precio,
+utilizando la diferencia entre el precio actual y el recibido
+ocho ticks antes.
 
-- Espino Core RV32E.
-- Memoria RAM de 128 palabras de 32 bits.
-- Periférico SPI.
-- Acelerador de precios conectado mediante MMIO.
-- Firmware RISC-V Assembly.
+Incorpora:
 
-Flujo de procesamiento:
+- Stop loss.
+- Trailing stop.
+- Períodos de bloqueo después de pérdidas.
+- Evaluación virtual de rentabilidad.
+- Presupuesto acumulado de pérdidas.
+
+P12 debe demostrar rentabilidad virtual antes de ser habilitado
+para operar con el patrimonio real.
+
+### V17 — Seguimiento de tendencias
+
+Clasifica el comportamiento del mercado utilizando diferencias
+de precio a 8 y 64 ticks, además de máximos, mínimos y precios
+de cierre de bloques de 128 ticks.
+
+Identifica tendencias alcistas, bajistas y laterales, y utiliza
+señales de recuperación y ruptura para determinar oportunidades.
+
+### Selector V24-T
+
+Selecciona entre ambos motores según sus señales y el estado
+del patrimonio.
+
+Incluye trailing stops dinámicos para proteger ganancias de P12
+y deshabilita permanentemente dicho motor durante la ronda
+cuando se alcanza su presupuesto de pérdidas.
+
+El presupuesto no garantiza una pérdida máxima efectiva,
+debido a la ejecución diferida de las órdenes.
+
+Las órdenes solicitan hasta 63 acciones. La cantidad realmente
+ejecutada está limitada por el patrimonio disponible, la comisión
+y las acciones mantenidas.
+
+## 3. Arquitectura
+
+El sistema conserva Espino Core como procesador principal.
 
 ```text
-SPI → Pochoco SoC → Espino → Acelerador → Espino → SPI
+FPGA maestra
+     |
+     | SPI
+     v
+Pochoco SPI Slave
+     |
+     | MMIO
+     v
+Espino Core RV32E
+     |         |
+     v         v
+    ROM       RAM
 ```
 
-El acelerador no sustituye al procesador: únicamente realiza operaciones específicas de la estrategia.
+| Componente | Capacidad |
+|---|---:|
+| ROM de instrucciones | 1024 palabras de 32 bits |
+| RAM de datos | 256 palabras de 32 bits |
+| Programa | 772 instrucciones |
+| Registros | 16 de 32 bits |
+| Historial circular | 64 precios |
+| Frecuencia | 25 MHz |
 
-## 3. Protocolo SPI
+La separación de ROM y RAM permite implementar un algoritmo
+más complejo sin superar los recursos físicos de la FPGA.
 
-La comunicación utiliza SPI modo 0, con palabras de 8 bits transmitidas MSB-first.
+La versión final no utiliza el acelerador de precios anterior.
+Espino realiza todos los cálculos del algoritmo.
 
-La frecuencia máxima especificada es de 1 MHz.
+Las operaciones de multiplicación, división y desplazamiento
+se resuelven mediante instrucciones soportadas por el procesador,
+incluyendo sumas, operaciones lógicas y comparaciones.
 
-Cada precio recibido corresponde a un valor entero entre 1 y 255.
+## 4. Protocolo SPI
 
-La decisión generada utiliza el siguiente formato:
+- Modo 0: CPOL = 0, CPHA = 0.
+- Palabras de 8 bits.
+- Transmisión MSB-first.
+- SCLK máximo de 1 MHz.
+- Precios enteros entre 1 y 255.
+- Una transacción por tick.
 
-| Bits | Significado |
+La decisión calculada después del tick n se ejecuta al precio
+recibido en el tick n+1.
+
+| Decisión | Byte |
 |---|---|
-| 7:6 | Acción |
-| 5:0 | Cantidad |
+| HOLD | 0x00 |
+| BUY 63 | 0x7F |
+| SELL 63 | 0xBF |
 
-Acciones:
+### Mapa MMIO
 
-| Bits | Acción |
-|---|---|
-| 00 | HOLD |
-| 01 | BUY |
-| 10 | SELL |
-
-La cantidad máxima por orden es 63.
-
-La decisión calculada después del tick n se aplica en el tick n+1.
-
-## 4. Mapa de memoria MMIO
-
-### Periférico SPI
-
-Base: `0x80010000`
+Base del periférico SPI: `0x80010000`.
 
 | Offset | Registro |
 |---|---|
@@ -77,283 +134,434 @@ Base: `0x80010000`
 | 0x04 | Precio recibido |
 | 0x08 | Decisión |
 
-### Acelerador
+## 5. Contabilidad
 
-Base: `0x80020000`
+El agente mantiene una copia local de la contabilidad oficial:
 
-| Offset | Registro |
-|---|---|
-| 0x00 | Escritura del precio |
-| 0x04 | Diferencia de precios (acelerador 1) |
-| 0x08 | Historial listo (acelerador 1) |
-| 0x0C | Flags de decisión (acelerador 2) |
+- Caja inicial: 10000.
+- Acciones iniciales: 0.
+- Comisión: 5 por orden ejecutada.
+- Máximo de 63 acciones por orden.
+- Compras parciales cuando el efectivo es insuficiente.
+- Sin ventas en corto.
+- Sin endeudamiento.
 
-Los flags del acelerador 2 son:
-
-| Bit | Significado |
-|---|---|
-| 0 | Historial válido |
-| 1 | Diferencia <= -4 |
-| 2 | Diferencia >= 4 |
-
-## 5. Estrategia de trading
-
-Se utiliza una estrategia de reversión basada en la diferencia entre el precio actual y el precio recibido ocho ticks antes.
+El patrimonio se calcula como:
 
 ```text
-delta = precio_actual - precio_hace_8_ticks
+Patrimonio = Caja + Acciones * Precio
 ```
 
-Reglas:
+Los portfolios virtuales se utilizan exclusivamente para
+evaluar señales. No representan operaciones reales.
 
-- Durante los primeros ocho ticks: HOLD.
-- Si no existe una posición abierta y delta <= -4: BUY 63.
-- Si existe una posición abierta y delta >= 4: SELL 63.
-- En cualquier otro caso: HOLD.
-
-El firmware controla el estado de la posición.
-
-Las decisiones se codifican como:
-
-| Decisión | Valor |
-|---|---|
-| HOLD | 0x00 |
-| BUY 63 | 0x7F |
-| SELL 63 | 0xBF |
-
-El simulador financiero aplica las restricciones de capital, disponibilidad de acciones y comisión.
-
-## 6. Implementaciones
-
-### Software
-
-Archivo: `sw/trade_baseline_comparable.s`
-
-El procesador mantiene el historial circular en RAM, calcula la diferencia y evalúa los umbrales.
-
-El historial ocupa ocho palabras desde la dirección `0x1E0`.
-
-### Acelerador 1
-
-Firmware: `sw/trade_accel1.s`
-
-RTL: `rtl/pochoco_price_accel_v1.v.bak`
-
-El hardware almacena el historial y calcula la diferencia de precios.
-
-Espino interpreta el resultado y determina la decisión.
-
-### Acelerador 2
-
-Firmware: `sw/trade.s`
-
-RTL: `rtl/pochoco_price_accel.v`
-
-El hardware mantiene el historial, calcula la diferencia y evalúa los umbrales.
-
-Espino consulta los flags, controla la posición y escribe la decisión final.
-
-Esta es la arquitectura seleccionada para la implementación principal.
-
-## 7. Compilación del firmware
-
-Se requiere una toolchain RISC-V con:
-
-- `riscv64-elf-as`
-- `riscv64-elf-ld`
-- `riscv64-elf-objcopy`
-
-Para generar los tres programas:
-
-```bash
-make -C sw trade_baseline_comparable
-make -C sw trade_accel1
-make -C sw trade
-```
-
-Los programas utilizan RV32E y ABI ILP32E.
-
-No requieren instrucciones de multiplicación, división ni desplazamiento.
-
-## 8. Simulación
-
-Se requiere Icarus Verilog y el modelo de primitivas iCE40 de Yosys.
-
-El testbench principal está en:
+## 6. Estructura del repositorio
 
 ```text
-sim/tb_proyecto_4.sv
+rtl/
+    espino_core/
+    pochoco_soc.v
+    pochoco_v24_mem.v
+
+sw/
+    trade.s
+    trade.hex
+    v24/
+        reference_port.c
+        isa_check.c
+        build_firmware.sh
+        manifest.json
+
+sim/
+    v24_acceptance/
+        reference.py
+        acceptance.py
+        check_isa.py
+        tb_v24_acceptance.sv
+        tb_v24_mem.sv
+        run_rtl.sh
+        synth_v24.sh
+        results/
+
+docs/
+    README_pre_v24.md
 ```
 
-Para ejecutar la arquitectura final:
+El directorio `results/` original conserva evidencia de
+implementaciones anteriores.
+
+## 7. Herramientas requeridas
+
+- Python 3.9 o posterior.
+- Compilador C.
+- GNU RISC-V Toolchain.
+- Icarus Verilog.
+- Yosys.
+- NextPNR iCE40.
+- IceStorm: icepack e iceprog.
+
+El modelo de referencia Python utiliza únicamente la biblioteca
+estándar.
+
+## 8. Ensamblaje del firmware
+
+Desde la raíz del repositorio:
 
 ```bash
-iverilog -g2012 \
-  -s tb_proyecto_4 \
-  -o build/tb_p4 \
-  /opt/homebrew/share/yosys/ice40/cells_sim.v \
-  sim/tb_proyecto_4.sv \
-  rtl/*.v \
-  rtl/espino_core/*.v
-
-vvp build/tb_p4
+bash sw/v24/build_firmware.sh
 ```
 
-La ruta de `cells_sim.v` depende de la instalación de Yosys.
+Este script ensambla `sw/trade.s` utilizando RV32E e ILP32E
+y verifica que el resultado coincida byte por byte con el
+firmware entregado en `sw/trade.hex`.
 
-El testbench permite verificar la recepción de precios, generación de decisiones, ausencia de valores desconocidos y cumplimiento del plazo de respuesta.
+No reemplaza el firmware validado si encuentra diferencias.
 
-## 9. Pruebas unitarias
+Si la toolchain utiliza otro prefijo:
 
-El testbench unitario está en:
+```bash
+PREFIX=riscv64-unknown-elf- bash sw/v24/build_firmware.sh
+```
+
+## 9. Modelo de referencia y datos de prueba
+
+La versión de referencia se encuentra en:
 
 ```text
-tb/tb_price_accel.sv
+sim/v24_acceptance/reference.py
 ```
 
-Acelerador 1:
+La función `candidate()` selecciona la configuración definitiva
+V24-T.
+
+Los datos históricos y sintéticos se utilizan exclusivamente
+para desarrollo y validación fuera de la FPGA.
+
+No se incorporan series de precios externas al firmware ni
+se utiliza información futura durante la toma de decisiones.
+
+### Reproducir META desde un clon limpio
+
+La serie de precios puede recuperarse desde el CSV de evidencia
+RTL incluido en el repositorio.
 
 ```bash
-iverilog -g2012 \
-  -s tb_price_accel \
-  -Ptb_price_accel.VERSION=1 \
-  -o build/tb_price_accel_v1.vvp \
-  tb/tb_price_accel.sv \
-  rtl/pochoco_price_accel_v1.v.bak
+python3 - <<'PY'
+import csv
+from pathlib import Path
 
-vvp build/tb_price_accel_v1.vvp
+src = Path("sim/v24_acceptance/results/META_20000_100000_500_7_1.csv")
+dst = Path("sim/data/practica_meta.csv")
+
+with src.open() as f:
+    rows = list(csv.DictReader(f))
+
+assert len(rows) == 20000
+assert all(int(r["tick"]) == i for i, r in enumerate(rows))
+
+dst.parent.mkdir(parents=True, exist_ok=True)
+
+with dst.open("w") as f:
+    w = csv.writer(f)
+    w.writerow(["tick", "price"])
+    w.writerows((r["tick"], r["precio"]) for r in rows)
+PY
 ```
 
-Acelerador 2:
+Verificar el código máquina RV32E con META:
 
 ```bash
-iverilog -g2012 \
-  -s tb_price_accel \
-  -Ptb_price_accel.VERSION=2 \
-  -o build/tb_price_accel_v2.vvp \
-  tb/tb_price_accel.sv \
-  rtl/pochoco_price_accel.v
-
-vvp build/tb_price_accel_v2.vvp
+python3 sim/v24_acceptance/check_isa.py --meta-only
 ```
 
-Ambas implementaciones aprobaron cinco verificaciones funcionales.
-
-## 10. Verificación Python
-
-La referencia de decisiones está implementada en:
-
-```text
-trading/verify.py
-```
-
-Después de ejecutar la simulación completa:
+Generar las decisiones esperadas utilizando Python:
 
 ```bash
-python3 trading/verify.py
+PYTHONPATH=sim/v24_acceptance python3 - <<'PY'
+from pathlib import Path
+from acceptance import load, simulate, export, compare
+
+prices = load(Path("sim/data/practica_meta.csv"))
+result = simulate(prices)
+
+assert result["wealth"] == 19239
+
+out = Path("build/v24_acceptance")
+export(out, "META", result)
+
+compare(
+    out / "META/expected.csv",
+    Path("sim/v24_acceptance/results/META_20000_100000_500_7_1.csv")
+)
+PY
 ```
 
-El programa compara las decisiones generadas por Espino con las decisiones calculadas en Python.
+### Validación extendida
 
-La simulación completa de 20.000 ticks del acelerador 2 produjo cero diferencias respecto a la referencia.
+Con los datasets históricos y sintéticos disponibles localmente:
 
-## 11. Resultados de rendimiento
+```bash
+python3 sim/v24_acceptance/acceptance.py
+python3 sim/v24_acceptance/check_isa.py
+```
 
-Comparación con 2.000 ticks, frecuencia de 25 MHz e instrumentación homogénea:
+La validación extendida requiere:
 
-| Métrica | Software | Acelerador 1 | Acelerador 2 |
+- `sim/data/practica_meta.csv`
+- 48 series históricas bajo `sim/data/pochoco_v16/`
+- 3 series sintéticas bajo `sim/data/pochoco_tests_20000/`
+
+Estos datasets adicionales no forman parte del firmware
+ni se incluyen en el repositorio principal.
+
+## 10. Simulación RTL
+
+Prueba inicial:
+
+```bash
+bash sim/v24_acceptance/run_rtl.sh smoke
+```
+
+Validación completa de META y pruebas adicionales:
+
+```bash
+bash sim/v24_acceptance/run_rtl.sh quick
+```
+
+Pruebas extendidas, con todos los datasets disponibles:
+
+```bash
+bash sim/v24_acceptance/run_rtl.sh full
+bash sim/v24_acceptance/run_rtl.sh all
+```
+
+Las últimas dos modalidades requieren tiempos de simulación
+considerablemente mayores.
+
+El testbench verifica:
+
+- Protocolo SPI.
+- Ausencia de bits indefinidos en MISO.
+- Lectura de cada precio.
+- Escritura de cada decisión.
+- Equivalencia con la referencia Python.
+- Contabilidad interna.
+- Cumplimiento de deadlines.
+- Reinicio del algoritmo.
+- IC, ciclos, CPI y tiempo de procesamiento.
+
+La memoria ROM/RAM cuenta además con un testbench independiente.
+
+## 11. Resultados financieros
+
+Serie oficial META de 20000 ticks.
+
+| Métrica | No operar | Buy & Hold | V24-T |
 |---|---:|---:|---:|
-| Ciclos/tick | 45.094 | 33.099 | 33.084 |
-| Instrucciones/tick | 20.203 | 14.208 | 14.198 |
-| Latencia máxima (ciclos) | 54 | 43 | 41 |
-| Speedup | 1.000x | 1.362x | 1.363x |
+| Patrimonio inicial | 10000 | 10000 | 10000 |
+| Patrimonio final | 10000 | 9695 | 19239 |
+| Rentabilidad | 0% | -3.05% | +92.39% |
+| Órdenes | 0 | 1 | 76 |
+| Comisiones | 0 | 5 | 380 |
+| Drawdown absoluto máximo | 0 | 9300 | 3815 |
+| Drawdown relativo máximo | 0% | 60.41% | 23.97% |
 
-El acelerador 2 reduce aproximadamente un 26,6 % los ciclos de procesamiento respecto al software.
+Buy & Hold solicita 63 acciones al comienzo y adquiere
+60 al precio del segundo tick, respetando la comisión y
+el efectivo disponible.
 
-## 12. Recursos FPGA
+La versión final reproduce exactamente las decisiones de
+Python sobre los 20000 ticks de META en simulación RTL.
 
-Resultados de síntesis y Place & Route con firmware correspondiente a cada arquitectura:
+## 12. Resultados de rendimiento
 
-| Recurso | Software | Acelerador 1 | Acelerador 2 |
-|---|---:|---:|---:|
-| Logic Cells | 1035 | 1243 | 1215 |
-| BRAM | 8 | 8 | 8 |
-| Fmax | 43.47 MHz | 44.37 MHz | 41.43 MHz |
-
-Las tres implementaciones cumplen la frecuencia objetivo de 25 MHz.
-
-Los resultados y bitstreams se encuentran en:
-
-```text
-results/synthesis/final/
-```
-
-## 13. Resultados financieros
-
-En la simulación completa de 20.000 ticks del acelerador 2:
+Mediciones sobre RTL real de Espino, utilizando META completa
+con un período de 100 microsegundos.
 
 | Métrica | Resultado |
 |---|---:|
-| Patrimonio inicial | 10000 |
-| Patrimonio final | 16584 |
-| Órdenes ejecutadas | 183 |
-| Máxima pérdida desde un máximo | 4802 |
-| No operar | 10000 |
-| Comprar y mantener | 9695 |
+| IC promedio | 229.4485 |
+| IC máximo | 411 |
+| Ciclos promedio | 537.8539 |
+| Ciclos máximos | 927 |
+| CPI agregado | 2.344116 |
+| Tiempo promedio | 21.514 us |
+| Tiempo máximo | 37.080 us |
+| Deadlines incumplidos | 0 |
+| Diferencias respecto a Python | 0 |
 
-La simulación considera una comisión de 5 unidades monetarias por operación ejecutada.
+El presupuesto bruto de la ronda más exigente es de 2500 ciclos.
 
-## 14. Generación del bitstream
+El peor caso observado consume 927 ciclos de procesamiento,
+equivalentes al 37.08% del período total, sin contabilizar
+por separado el tiempo de transmisión SPI.
 
-Herramientas:
+## 13. Recursos FPGA
 
-- Yosys.
-- NextPNR iCE40.
-- IceStorm.
+Resultados de síntesis y Place & Route:
 
-El Makefile principal permite sintetizar, realizar Place & Route y generar el bitstream:
+| Recurso | Utilización |
+|---|---:|
+| LUTs de cuatro entradas | 817 |
+| Celdas lógicas | 899 / 1280 |
+| Ocupación lógica | 70.23% |
+| BRAM | 14 / 16 |
+| Ocupación BRAM | 87.50% |
+| Fmax post-route | 48.37 MHz |
+| Frecuencia de operación | 25 MHz |
+| Timing | PASS |
+
+La implementación cumple las restricciones físicas de la
+Go Board y el objetivo de frecuencia.
+
+## 14. Síntesis y generación del bitstream
 
 ```bash
-make game_top.bin
+bash sim/v24_acceptance/synth_v24.sh
 ```
 
-Para programar una Go Board conectada:
+El script utiliza Yosys, NextPNR e Icepack, verifica los hashes
+del código validado y genera:
+
+```text
+build/v24_acceptance/synth/game_top.bin
+```
+
+No programa automáticamente la FPGA.
+
+SHA-256 del bitstream de competición validado:
+
+```text
+a063fe8ad4c216156cd6e904e856f45d44e3470c4339ed96da907b958c79f2aa
+```
+
+Una nueva síntesis con diferentes versiones de herramientas
+puede generar un bitstream con otro hash.
+
+## 15. Programación de la FPGA
+
+Conectar la Go Board por USB y ejecutar:
 
 ```bash
-make prog
+iceprog build/v24_acceptance/synth/game_top.bin
 ```
 
-**Advertencia:** `make prog` programa físicamente la FPGA.
-
-La arquitectura final utiliza `sw/trade.hex`.
-
-Los bitstreams de las tres arquitecturas se encuentran en:
+La programación del bitstream de competición fue realizada
+exitosamente, obteniendo:
 
 ```text
-results/synthesis/final/
+VERIFY OK
+cdone: high
 ```
 
-La generación del bitstream y el cumplimiento de timing fueron verificados. La prueba física de trading mediante SPI en la placa no está documentada como completada.
+No ejecutar `make` sin especificar un objetivo, ya que puede
+programar automáticamente la FPGA.
 
-## 15. Limitaciones
+## 16. Reinicio entre rondas
 
-- La estrategia utiliza un historial fijo de ocho precios.
-- La comparación de rendimiento se realizó mediante simulación RTL.
-- El throughput sostenido depende del período de llegada de los precios.
-- Los testbenches unitarios cubren los casos funcionales básicos, pero no constituyen verificación exhaustiva.
-- No se ha documentado una validación física completa del protocolo SPI en la FPGA.
-- Los modelos analíticos de rendimiento deben distinguirse de las mediciones experimentales.
+El sistema utiliza un contador de power-on reset de
+250000 ciclos, equivalente aproximadamente a 10 ms.
 
-## 16. Documentación anterior
+El firmware inicializa su memoria, contabilidad y estado
+antes de comenzar a recibir precios.
 
-El README del Proyecto 2 se conserva en:
+Se requiere reiniciar la FPGA entre rondas para asegurar
+que la caja, las acciones y el estado del algoritmo coincidan
+con la contabilidad oficial.
+
+Se recomienda dejar al menos 11 ms desde el encendido
+antes de comenzar las transacciones SPI.
+
+## 17. Validación adicional
+
+V24-T fue evaluado mediante Python y emulación funcional RV32E:
+
+- Serie oficial META.
+- 48 ventanas históricas.
+- 3 series sintéticas.
+- 10 escenarios de stress.
+- 1240000 ticks verificados.
+
+Resultados sobre las 48 ventanas históricas:
+
+| Métrica | Resultado |
+|---|---:|
+| Rentabilidad promedio | +16.29% |
+| Rentabilidad mediana | +12.71% |
+| Series positivas | 34 / 48 |
+| Mejor rentabilidad | +101.18% |
+| Peor rentabilidad | -18.23% |
+| Drawdown relativo promedio | 20.42% |
+
+Las ventanas históricas fueron utilizadas durante el
+desarrollo, por lo que no constituyen un conjunto de
+validación completamente independiente.
+
+## 18. Evidencia experimental
+
+Los resultados de la implementación definitiva se encuentran en:
 
 ```text
-docs/README_proyecto_2.md
+sim/v24_acceptance/results/
 ```
 
-El informe anterior se encuentra en:
+Incluyen las decisiones y contabilidad de los 20000 ticks
+de META, las métricas RTL y los reportes de síntesis
+y Place & Route.
+
+## 19. Co-diseño hardware/software
+
+Durante el desarrollo se implementaron versiones de software
+y aceleradores de historial, diferencias de precio y umbrales.
+
+La documentación de estas versiones anteriores se conserva en
+[README_pre_v24.md](docs/README_pre_v24.md).
+
+La arquitectura seleccionada para la competencia utiliza
+V24-T con memorias separadas y sin acelerador de trading.
+
+Esta implementación prioriza la calidad del algoritmo,
+el cumplimiento de deadlines y la utilización eficiente
+de recursos físicos.
+
+Las comparaciones anteriores corresponden a otra estrategia.
+No constituyen una comparación controlada de aceleradores
+ejecutando V24-T.
+
+## 20. Limitaciones
+
+- La rentabilidad depende del comportamiento del mercado.
+- Los resultados históricos no garantizan ganancias futuras.
+- Las pruebas RTL completas corresponden a META.
+- Las 62 series fueron verificadas funcionalmente en RV32E,
+  no todas mediante simulación RTL.
+- La programación física fue exitosa, pero la comunicación
+  con la FPGA maestra física todavía requiere validación.
+- Se asume un reinicio de la placa entre rondas.
+- La comparación de dos alternativas hardware sobre V24-T
+  y el análisis completo de Amdahl y roofline están pendientes.
+
+## 21. Referencias
+
+- Enunciado Proyecto 4 — Arquitectura de Computadores.
+- Repositorio original Pochoco SoC.
+- Especificación RISC-V RV32E.
+- Documentación de Yosys, NextPNR e IceStorm.
+- Documentación de Nandland Go Board.
+
+## 22. Versiones de herramientas
 
 ```text
-docs/informe_G2_P2.pdf
+Python 3.13.2
+Apple clang version 21.0.0 (clang-2100.1.1.101)
+GNU assembler (GNU Binutils) 2.47.20260726
+GNU ld (GNU Binutils) 2.47.20260726
+Icarus Verilog version 13.0 (stable) (v13_0)
+Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+"nextpnr-ice40" -- Next Generation Place and Route (Version )
+icarus-verilog 13.0
+icestorm 1.1_1
+nextpnr-ice40 0.11.1_2
+riscv64-elf-binutils 2.47
+yosys 0.70
 ```
