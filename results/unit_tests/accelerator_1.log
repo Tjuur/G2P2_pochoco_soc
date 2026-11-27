@@ -1,0 +1,7 @@
+PASS: Historial incompleto
+PASS: Historial completo
+PASS: Delta negativo -4
+PASS: Delta positivo +5
+PASS: Delta dentro del umbral
+PASS: Acelerador 1, 5 verificaciones
+tb/tb_price_accel.sv:154: $finish called at 1400000 (1ps)

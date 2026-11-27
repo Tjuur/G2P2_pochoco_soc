@@ -1,0 +1,19 @@
+Version: Software baseline
+Ticks: 20000
+Clock: 25 MHz
+Tick period: 100000 ns
+
+Initial wealth: 10000
+Final wealth: 16584
+Return: 65.84%
+Executed orders: 183
+Maximum drawdown (absolute): 4802
+
+Hold benchmark: 10000
+Buy and hold benchmark: 9695
+
+Worst price-to-decision latency: 55 cycles
+Available cycles: 2262
+
+Hardware tests: 4/4
+Full simulation wall time: 16:54.23

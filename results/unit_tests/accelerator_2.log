@@ -1,0 +1,7 @@
+PASS: Flags invalidos durante warmup
+PASS: Octavo precio aun en warmup
+PASS: Flag de compra con delta -4
+PASS: Flag de venta con delta +5
+PASS: Sin senal de compra o venta
+PASS: Acelerador 2, 5 verificaciones
+tb/tb_price_accel.sv:154: $finish called at 1400000 (1ps)

@@ -42,3 +42,21 @@ asic/config/runs/
 # ASIC evidence: preserve CSV reports and verification logs
 !asic/reports/**/*.csv
 !asic/verification/*.log
+
+# Proyecto 4: evidencia experimental
+!results/
+!results/**/
+!results/**/*.csv
+!results/**/*.log
+!results/**/*.txt
+
+# Pochoco V24 development artifacts
+/build/
+/sim/data/
+/releases/
+/.venv/
+__pycache__/
+*.pyc
+*.vcd
+*.bak
+.DS_Store

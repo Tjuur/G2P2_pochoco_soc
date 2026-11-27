@@ -1,0 +1,18 @@
+Version: Accelerator 1
+Ticks: 2000
+
+Total instructions: 1877939
+Total CPU cycles: 5000085
+Global CPI: 2.663
+
+Processing instructions: 27255
+Processing cycles: 65036
+Processing CPI: 2.386
+
+Worst price-to-decision latency: 43 cycles
+Available cycles: 2262
+
+Final wealth: 12257
+Executed orders: 24
+Python mismatches: 0
+Hardware tests: 4/4

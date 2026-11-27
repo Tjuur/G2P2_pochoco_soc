@@ -4,12 +4,12 @@
 // SPDX-License-Identifier: SHL-0.51
 //
 // Course: Arquitectura de Computadores (2026)
-// 
+//
 // Authors:
 // - Nicolás Villegas <navillegas@miuandes.cl>
 
 module pochoco_soc #(
-  parameter NumWords   = 512,
+  parameter NumWords   = 1024,
   parameter MemFile    = "../sw/blink.hex"
 ) (
   input  wire       i_Clk,
@@ -32,12 +32,15 @@ module pochoco_soc #(
   assign clk = i_Clk;
 
   // Power-on reset
-  reg  [3:0] por_cnt = 4'b0;
-  wire       rst_ni;
+  reg [17:0] por_cnt = 18'd0;
+  wire rst_ni;
+
   always @(posedge clk) begin
-    if (por_cnt != 4'hF) por_cnt <= por_cnt + 4'd1;
+    if (por_cnt != 18'd249999)
+      por_cnt <= por_cnt + 18'd1;
   end
-  assign rst_ni = (por_cnt == 4'hF);
+
+  assign rst_ni = (por_cnt == 18'd249999);
 
   // Core-memory wiring
   wire        instr_req;
@@ -61,32 +64,39 @@ module pochoco_soc #(
     .data_rdata_i  (data_rdata)
   );
 
-  wire is_mmio, spi_sel, per_sel;
-  assign is_mmio = data_addr[31];
-  assign per_sel = is_mmio & ~data_addr[16];
-  assign spi_sel = is_mmio &  data_addr[16];
+  wire is_mmio, spi_sel, per_sel, accel_sel;
+  assign is_mmio  = data_addr[31];
+  assign per_sel  = is_mmio & (data_addr[17:16] == 2'b00);
+  assign spi_sel  = is_mmio & (data_addr[17:16] == 2'b01);
+  assign accel_sel = is_mmio & (data_addr[17:16] == 2'b10);
 
-  wire ram_b_req, per_req, spi_req;
+  wire ram_b_req, per_req, spi_req, accel_req;
   assign ram_b_req = data_req & ~is_mmio;
-  assign per_req   = data_req &  per_sel;
-  assign spi_req   = data_req &  spi_sel;
+  assign per_req   = data_req & per_sel;
+  assign spi_req   = data_req & spi_sel;
+  assign accel_req = data_req & accel_sel;
 
-  wire [31:0] ram_b_rdata, per_rdata, spi_rdata;
+  wire [31:0] ram_b_rdata, per_rdata, spi_rdata, accel_rdata;
 
-  reg rd_is_per, rd_is_spi;
+  reg rd_is_per, rd_is_spi, rd_is_accel;
   always @(posedge clk or negedge rst_ni) begin
     if (!rst_ni) begin
-      rd_is_per <= 1'b0;
-      rd_is_spi <= 1'b0;
+      rd_is_per   <= 1'b0;
+      rd_is_spi   <= 1'b0;
+      rd_is_accel <= 1'b0;
     end else if (data_req & ~data_we) begin
-      rd_is_per <= per_sel;
-      rd_is_spi <= spi_sel;
+      rd_is_per   <= per_sel;
+      rd_is_spi   <= spi_sel;
+      rd_is_accel <= accel_sel;
     end
   end
-  assign data_rdata = rd_is_per ? per_rdata :
-                      rd_is_spi ? spi_rdata : ram_b_rdata;
 
-  pochoco_ram #(.NumWords(NumWords), .MemFile(MemFile)) u_ram (
+  assign data_rdata = rd_is_per   ? per_rdata :
+                      rd_is_spi   ? spi_rdata :
+                      rd_is_accel ? accel_rdata :
+                                    ram_b_rdata;
+
+  pochoco_v24_mem #(.NumWords(NumWords), .MemFile(MemFile)) u_ram (
     .clk_i     (clk),
     .a_req_i   (instr_req),
     .a_addr_i  (instr_addr),
@@ -102,20 +112,20 @@ module pochoco_soc #(
   // Peripherals
   wire [6:0] seg1, seg2;
 
-  pochoco_periph u_periph (
-    .clk_i     (clk),
-    .rst_ni    (rst_ni),
-    .sel_i     (per_sel),
-    .req_i     (per_req),
-    .we_i      (data_we),
-    .addr_i    (data_addr[7:0]),
-    .wdata_i   (data_wdata),
-    .rdata_o   (per_rdata),
-    .leds_o    (o_LED),
-    .btn_i     (i_Switch),
-    .seg1_o    (seg1),
-    .seg2_o    (seg2)
-  );
+  assign per_rdata = 32'b0;
+  wire [3:0] spi_debug;
+
+
+
+  assign o_LED = spi_debug;
+
+
+
+  assign seg1 = 7'b0;
+  assign seg2 = 7'b0;
+
+  // V24-T software baseline: no trading accelerator.
+  assign accel_rdata = 32'b0;
 
   // SPI Slave
   pochoco_spi_slave u_spi (
@@ -130,7 +140,8 @@ module pochoco_soc #(
     .spi_sclk_i (i_SPI_SCLK),
     .spi_mosi_i (i_SPI_MOSI),
     .spi_cs_n_i (i_SPI_CS_n),
-    .spi_miso_o (o_SPI_MISO)
+    .spi_miso_o (o_SPI_MISO),
+    .debug_o    (spi_debug)
   );
 
   // 7-seg is active-low on the board

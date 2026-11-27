@@ -1,0 +1,17 @@
+Version: Software baseline
+Ticks: 2000
+
+Total instructions: 1880938
+Total CPU cycles: 5000085
+Global CPI: 2.658
+
+Processing instructions: 39246
+Processing cycles: 89028
+Processing CPI: 2.268
+
+Worst price-to-decision latency: 54 cycles
+Available cycles: 2262
+
+Final wealth: 12257
+Executed orders: 24
+Hardware tests: 4/4

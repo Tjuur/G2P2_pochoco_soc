@@ -12,7 +12,7 @@
 # files consumed by the pochoco_soc RTL.
 
 # Change if needed
-PREFIX  ?= riscv64-unknown-elf-
+PREFIX  ?= riscv64-elf-
 AS      = $(PREFIX)as
 LD      = $(PREFIX)ld
 OBJCOPY = $(PREFIX)objcopy

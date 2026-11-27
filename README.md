@@ -1,272 +1,359 @@
-# Proyecto 2 — Juego de Reflejos en RISC-V
+# Proyecto 4 — Pochoco Trader
 
-**Asignatura:** Arquitectura de Computadores  
-**Plataforma:** Lattice iCE40 HX1K — Go Board  
-**Procesador:** Espino Core (RV32E)  
+**Asignatura:** Arquitectura de Computadores
+**Plataforma:** Lattice iCE40 HX1K — Go Board
+**Procesador:** Espino Core (RV32E)
 **Sistema:** Pochoco SoC
+**Frecuencia objetivo:** 25 MHz
 
-## 1. Descripción del proyecto
+## 1. Descripción
 
-Este proyecto implementa un juego de reflejos en una FPGA Go Board mediante el procesador RISC-V Espino Core y el sistema Pochoco SoC.
+Pochoco Trader es un sistema de trading automatizado implementado mediante codiseño hardware/software.
 
-El jugador debe presionar el botón correspondiente al LED que se enciende. El sistema mide el tiempo de reacción, registra diez respuestas correctas y muestra su promedio.
+El procesador Espino recibe precios mediante SPI, ejecuta una estrategia de trading y genera decisiones de compra, venta o espera.
 
-El juego está programado en Assembly RISC-V. Además, se desarrolló un assembler propio en Python que genera el archivo hexadecimal utilizado para inicializar la memoria del procesador.
+Se implementaron tres arquitecturas para evaluar el impacto de trasladar operaciones desde software hacia hardware:
 
-## 2. Funcionamiento del juego
+1. Implementación completamente software.
+2. Acelerador de historial y diferencia de precios.
+3. Acelerador de historial, diferencia y evaluación de umbrales.
 
-1. Al comenzar cada ronda, se encienden los cuatro LEDs durante al menos tres segundos.
-2. Una vez transcurrida la espera y liberados los botones, se selecciona un LED mediante el estado del contador de ciclos.
-3. Los otros LEDs se apagan y comienza la medición del tiempo de reacción.
-4. El usuario presiona el botón correspondiente.
+El procesador Espino mantiene la responsabilidad de generar la decisión final.
 
-**Si la respuesta es correcta:**
+## 2. Arquitectura
 
-- Se calcula y muestra el tiempo de reacción en decisegundos.
-- Se incrementa el contador de respuestas correctas.
-- El tiempo permanece visible mientras el botón está presionado.
-- Al soltarlo, comienza la siguiente ronda.
+El sistema está compuesto por:
 
-**Si la respuesta es incorrecta:**
+- Espino Core RV32E.
+- Memoria RAM de 128 palabras de 32 bits.
+- Periférico SPI.
+- Acelerador de precios conectado mediante MMIO.
+- Firmware RISC-V Assembly.
 
-- Los LEDs se apagan y los displays muestran `EE`.
-- La respuesta no se contabiliza.
-- Al soltar el botón, se reinicia la ronda sin perder el progreso anterior.
-
-Al completar **10 respuestas correctas**, los LEDs se apagan y los displays muestran el promedio de los tiempos. El programa permanece en ese estado hasta reiniciar la placa.
-
-## 3. Arquitectura
-
-| Componente | Función |
-|---|---|
-| Espino Core | Ejecuta el programa RISC-V. |
-| Pochoco SoC | Integra procesador, RAM y periféricos. |
-| Pochoco RAM | Almacena las instrucciones generadas por el assembler. |
-| Pochoco Periph | Controla LEDs, botones y displays mediante MMIO. |
-| Cycle Counter | Cuenta ciclos de reloj para medir intervalos. |
-| Game Top | Conecta el SoC con las señales físicas de la Go Board. |
-
-El banco de registros del procesador utiliza **16 registros** (`x0` a `x15`), correspondientes a RV32E. El juego no requiere multiplicación, división ni instrucciones de desplazamiento.
-
-En esta configuración, la memoria dispone de **512 palabras de 32 bits** para el programa. El archivo `sw/game.hex` generado contiene **87 instrucciones**.
-
-## 4. Periféricos mediante MMIO
-
-Los periféricos se acceden mediante direcciones de memoria (*Memory-Mapped I/O*):
-
-| Dirección | Periférico | Operación |
-|---|---|---|
-| `0x80000000` | Displays de siete segmentos | Escritura |
-| `0x80000004` | LEDs | Escritura |
-| `0x80000008` | Botones | Lectura |
-| `0x8000000C` | Contador de ciclos | Lectura |
-
-### LEDs y botones
-
-Los cuatro bits menos significativos representan los cuatro LEDs o botones:
-
-| Máscara | Elemento |
-|---|---|
-| `0x1` | LED/botón 1 |
-| `0x2` | LED/botón 2 |
-| `0x4` | LED/botón 3 |
-| `0x8` | LED/botón 4 |
-| `0xF` | Cuatro LEDs encendidos |
-
-La respuesta es correcta solo cuando la máscara de botones leída coincide exactamente con la máscara del LED seleccionado.
-
-### Displays
-
-Cada display recibe un dígito hexadecimal de cuatro bits. Para representar un número decimal de dos cifras se convierte a dígitos empaquetados: por ejemplo, para mostrar `25` se escribe `0x25`, no el valor binario decimal 25 (`0x19`).
-
-## 5. Medición del tiempo
-
-El contador de ciclos es un registro de **32 bits** que se incrementa en cada ciclo del reloj del sistema. El programa consulta su valor mediante MMIO.
-
-La implementación utiliza una frecuencia nominal de **25 MHz**:
-
-- **1 segundo:** 25.000.000 ciclos.
-- **3 segundos:** 75.000.000 ciclos.
-- **1 decisegundo:** 2.500.000 ciclos.
-
-El tiempo transcurrido se obtiene restando dos lecturas del contador:
+Flujo de procesamiento:
 
 ```text
-ciclos_transcurridos = contador_final - contador_inicial
+SPI → Pochoco SoC → Espino → Acelerador → Espino → SPI
 ```
 
-El tiempo en decisegundos se calcula mediante:
+El acelerador no sustituye al procesador: únicamente realiza operaciones específicas de la estrategia.
+
+## 3. Protocolo SPI
+
+La comunicación utiliza SPI modo 0, con palabras de 8 bits transmitidas MSB-first.
+
+La frecuencia máxima especificada es de 1 MHz.
+
+Cada precio recibido corresponde a un valor entero entre 1 y 255.
+
+La decisión generada utiliza el siguiente formato:
+
+| Bits | Significado |
+|---|---|
+| 7:6 | Acción |
+| 5:0 | Cantidad |
+
+Acciones:
+
+| Bits | Acción |
+|---|---|
+| 00 | HOLD |
+| 01 | BUY |
+| 10 | SELL |
+
+La cantidad máxima por orden es 63.
+
+La decisión calculada después del tick n se aplica en el tick n+1.
+
+## 4. Mapa de memoria MMIO
+
+### Periférico SPI
+
+Base: `0x80010000`
+
+| Offset | Registro |
+|---|---|
+| 0x00 | Estado |
+| 0x04 | Precio recibido |
+| 0x08 | Decisión |
+
+### Acelerador
+
+Base: `0x80020000`
+
+| Offset | Registro |
+|---|---|
+| 0x00 | Escritura del precio |
+| 0x04 | Diferencia de precios (acelerador 1) |
+| 0x08 | Historial listo (acelerador 1) |
+| 0x0C | Flags de decisión (acelerador 2) |
+
+Los flags del acelerador 2 son:
+
+| Bit | Significado |
+|---|---|
+| 0 | Historial válido |
+| 1 | Diferencia <= -4 |
+| 2 | Diferencia >= 4 |
+
+## 5. Estrategia de trading
+
+Se utiliza una estrategia de reversión basada en la diferencia entre el precio actual y el precio recibido ocho ticks antes.
 
 ```text
-tiempo_ds = piso(ciclos_transcurridos / 2.500.000)
+delta = precio_actual - precio_hace_8_ticks
 ```
 
-Como el juego no utiliza una instrucción de división, la conversión se realiza mediante restas sucesivas. Para mostrar el resultado, se convierte a dos dígitos decimales. Los valores superiores a `99` se limitan a `99` **solo para la visualización**.
+Reglas:
 
-La resta de lecturas permite calcular intervalos cortos incluso si el contador pasa por cero. A 25 MHz, el contador de 32 bits se desborda aproximadamente cada 171,8 segundos.
+- Durante los primeros ocho ticks: HOLD.
+- Si no existe una posición abierta y delta <= -4: BUY 63.
+- Si existe una posición abierta y delta >= 4: SELL 63.
+- En cualquier otro caso: HOLD.
 
-**Nota de precisión:** las pruebas con cronómetro fueron manuales; no constituyen una calibración instrumental de la frecuencia ni de la precisión temporal.
+El firmware controla el estado de la posición.
 
-## 6. Selección del LED
+Las decisiones se codifican como:
 
-El programa utiliza los dos bits menos significativos del contador de ciclos:
-
-```asm
-lw x8, 12(x5)
-andi x8, x8, 3
-```
-
-El valor obtenido está entre 0 y 3 y se transforma en una máscara (`1`, `2`, `4` u `8`). Así se evita utilizar una lista fija de LEDs. La selección depende del instante de lectura del contador y no constituye un generador aleatorio criptográfico.
-
-## 7. Assembler propio en Python
-
-El assembler se encuentra en `tools/assembler.py` y traduce el código fuente `sw/game.s` a palabras de máquina de 32 bits.
-
-Utiliza **dos pasadas**:
-
-1. Identifica constantes y etiquetas, calcula direcciones y contempla la expansión de pseudoinstrucciones como `li`.
-2. Codifica instrucciones, resuelve desplazamientos de saltos y escribe el archivo hexadecimal.
-
-Admite las siguientes instrucciones:
-
-| Categoría | Instrucciones |
+| Decisión | Valor |
 |---|---|
-| Aritméticas | `add`, `sub`, `addi`, `slt`, `sltu` |
-| Lógicas | `and`, `or`, `xor`, `andi`, `ori`, `xori`, `slti`, `sltiu` |
-| Memoria | `lw`, `sw`, `lb`, `lh`, `lbu`, `lhu`, `sb`, `sh` |
-| Branches | `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu` |
-| Saltos | `jal`, `jalr` |
-| Inmediatos superiores | `lui`, `auipc` |
-| Pseudoinstrucciones | `li`, `mv`, `j`, `nop`, `ret` |
+| HOLD | 0x00 |
+| BUY 63 | 0x7F |
+| SELL 63 | 0xBF |
 
-El assembler valida los registros RV32E (`x0` a `x15`), los rangos de inmediatos y el tamaño máximo del programa. Las instrucciones no reconocidas producen un error explícito.
+El simulador financiero aplica las restricciones de capital, disponibilidad de acciones y comisión.
 
-**Generación del programa:**
+## 6. Implementaciones
 
-```bash
-python3 tools/assembler.py sw/game.s sw/game.hex
-```
+### Software
 
-**Verificación del tamaño:**
+Archivo: `sw/trade_baseline_comparable.s`
 
-```bash
-wc -l sw/game.hex
-```
+El procesador mantiene el historial circular en RAM, calcula la diferencia y evalúa los umbrales.
 
-También se incluye un programa de prueba del assembler en `tests/test.s`, con su salida `tests/test.hex`.
+El historial ocupa ocho palabras desde la dirección `0x1E0`.
 
-## 8. Compilación y programación de la FPGA
+### Acelerador 1
 
-### Herramientas
+Firmware: `sw/trade_accel1.s`
 
-- Python 3
-- Yosys
-- NextPNR para iCE40
-- IceStorm (`icepack`, `iceprog`)
-- Make
+RTL: `rtl/pochoco_price_accel_v1.v.bak`
 
-### Procedimiento
+El hardware almacena el historial y calcula la diferencia de precios.
 
-Desde la raíz del repositorio:
+Espino interpreta el resultado y determina la decisión.
 
-**1. Generar las instrucciones del juego:**
+### Acelerador 2
 
-```bash
-python3 tools/assembler.py sw/game.s sw/game.hex
-```
+Firmware: `sw/trade.s`
 
-**2. Limpiar los archivos de compilación anteriores:**
+RTL: `rtl/pochoco_price_accel.v`
 
-```bash
-make clean
-```
+El hardware mantiene el historial, calcula la diferencia y evalúa los umbrales.
 
-**3. Sintetizar y ejecutar Place & Route:**
+Espino consulta los flags, controla la posición y escribe la decisión final.
+
+Esta es la arquitectura seleccionada para la implementación principal.
+
+## 7. Compilación del firmware
+
+Se requiere una toolchain RISC-V con:
+
+- `riscv64-elf-as`
+- `riscv64-elf-ld`
+- `riscv64-elf-objcopy`
+
+Para generar los tres programas:
 
 ```bash
-make game_top.asc
+make -C sw trade_baseline_comparable
+make -C sw trade_accel1
+make -C sw trade
 ```
 
-**4. Generar el bitstream:**
+Los programas utilizan RV32E y ABI ILP32E.
+
+No requieren instrucciones de multiplicación, división ni desplazamiento.
+
+## 8. Simulación
+
+Se requiere Icarus Verilog y el modelo de primitivas iCE40 de Yosys.
+
+El testbench principal está en:
+
+```text
+sim/tb_proyecto_4.sv
+```
+
+Para ejecutar la arquitectura final:
+
+```bash
+iverilog -g2012 \
+  -s tb_proyecto_4 \
+  -o build/tb_p4 \
+  /opt/homebrew/share/yosys/ice40/cells_sim.v \
+  sim/tb_proyecto_4.sv \
+  rtl/*.v \
+  rtl/espino_core/*.v
+
+vvp build/tb_p4
+```
+
+La ruta de `cells_sim.v` depende de la instalación de Yosys.
+
+El testbench permite verificar la recepción de precios, generación de decisiones, ausencia de valores desconocidos y cumplimiento del plazo de respuesta.
+
+## 9. Pruebas unitarias
+
+El testbench unitario está en:
+
+```text
+tb/tb_price_accel.sv
+```
+
+Acelerador 1:
+
+```bash
+iverilog -g2012 \
+  -s tb_price_accel \
+  -Ptb_price_accel.VERSION=1 \
+  -o build/tb_price_accel_v1.vvp \
+  tb/tb_price_accel.sv \
+  rtl/pochoco_price_accel_v1.v.bak
+
+vvp build/tb_price_accel_v1.vvp
+```
+
+Acelerador 2:
+
+```bash
+iverilog -g2012 \
+  -s tb_price_accel \
+  -Ptb_price_accel.VERSION=2 \
+  -o build/tb_price_accel_v2.vvp \
+  tb/tb_price_accel.sv \
+  rtl/pochoco_price_accel.v
+
+vvp build/tb_price_accel_v2.vvp
+```
+
+Ambas implementaciones aprobaron cinco verificaciones funcionales.
+
+## 10. Verificación Python
+
+La referencia de decisiones está implementada en:
+
+```text
+trading/verify.py
+```
+
+Después de ejecutar la simulación completa:
+
+```bash
+python3 trading/verify.py
+```
+
+El programa compara las decisiones generadas por Espino con las decisiones calculadas en Python.
+
+La simulación completa de 20.000 ticks del acelerador 2 produjo cero diferencias respecto a la referencia.
+
+## 11. Resultados de rendimiento
+
+Comparación con 2.000 ticks, frecuencia de 25 MHz e instrumentación homogénea:
+
+| Métrica | Software | Acelerador 1 | Acelerador 2 |
+|---|---:|---:|---:|
+| Ciclos/tick | 45.094 | 33.099 | 33.084 |
+| Instrucciones/tick | 20.203 | 14.208 | 14.198 |
+| Latencia máxima (ciclos) | 54 | 43 | 41 |
+| Speedup | 1.000x | 1.362x | 1.363x |
+
+El acelerador 2 reduce aproximadamente un 26,6 % los ciclos de procesamiento respecto al software.
+
+## 12. Recursos FPGA
+
+Resultados de síntesis y Place & Route con firmware correspondiente a cada arquitectura:
+
+| Recurso | Software | Acelerador 1 | Acelerador 2 |
+|---|---:|---:|---:|
+| Logic Cells | 1035 | 1243 | 1215 |
+| BRAM | 8 | 8 | 8 |
+| Fmax | 43.47 MHz | 44.37 MHz | 41.43 MHz |
+
+Las tres implementaciones cumplen la frecuencia objetivo de 25 MHz.
+
+Los resultados y bitstreams se encuentran en:
+
+```text
+results/synthesis/final/
+```
+
+## 13. Resultados financieros
+
+En la simulación completa de 20.000 ticks del acelerador 2:
+
+| Métrica | Resultado |
+|---|---:|
+| Patrimonio inicial | 10000 |
+| Patrimonio final | 16584 |
+| Órdenes ejecutadas | 183 |
+| Máxima pérdida desde un máximo | 4802 |
+| No operar | 10000 |
+| Comprar y mantener | 9695 |
+
+La simulación considera una comisión de 5 unidades monetarias por operación ejecutada.
+
+## 14. Generación del bitstream
+
+Herramientas:
+
+- Yosys.
+- NextPNR iCE40.
+- IceStorm.
+
+El Makefile principal permite sintetizar, realizar Place & Route y generar el bitstream:
 
 ```bash
 make game_top.bin
 ```
 
-**5. Programar la placa conectada por USB:**
+Para programar una Go Board conectada:
 
 ```bash
 make prog
 ```
 
-El Makefile utiliza `game_top` como módulo superior y `iceprog` para programar la placa.
+**Advertencia:** `make prog` programa físicamente la FPGA.
 
-**Importante:** al modificar `sw/game.s`, hay que regenerar `sw/game.hex` y reconstruir el bitstream. El Makefile actual no declara `game.hex` como dependencia de síntesis; por eso se recomienda ejecutar `make clean` antes de recompilar.
+La arquitectura final utiliza `sw/trade.hex`.
 
-## 9. Pruebas realizadas
-
-Las pruebas funcionales se ejecutaron sobre la Go Board.
-
-| Prueba | Resultado observado |
-|---|---|
-| 10 respuestas correctas consecutivas | Se muestra el promedio final. |
-| 3 errores iniciales y luego 10 aciertos | Los errores no se cuentan y se muestra el promedio. |
-| 2 errores, 5 aciertos, 2 errores y 5 aciertos | Se conserva el progreso y se muestra el promedio. |
-| Mantener un botón durante el inicio | El juego espera el tiempo inicial y la liberación del botón. |
-| Mantener presionado el botón después de acertar | El tiempo permanece visible y no se registra otro acierto. |
-| Mantener un botón entre rondas | La selección del siguiente LED espera la liberación del botón. |
-| Comparación manual con cronómetro | Diferencias aproximadas de 350–450 ms, compatibles con el inicio manual del cronómetro; no es una calibración precisa. |
-| Dos botones simultáneos | La comparación de máscaras indica error por inspección del código; no se realizó prueba física controlada. |
-
-## 10. Utilización de recursos
-
-La síntesis y el proceso de Place & Route finalizaron correctamente:
-
-| Recurso | Utilización |
-|---|---|
-| ICESTORM_LC | 1175 / 1280 (91%) |
-| ICESTORM_RAM | 12 / 16 (75%) |
-| SB_IO | 27 / 72 (37%) |
-| SB_GB | 3 / 8 (37%) |
-
-## 11. Estructura del repositorio
+Los bitstreams de las tres arquitecturas se encuentran en:
 
 ```text
-G2P2_pochoco_soc/
-├── Makefile
-├── goboard.pcf
-├── README.md
-├── rtl/
-│   ├── game_top.v
-│   ├── cycle_counter.v
-│   ├── pochoco_soc.v
-│   ├── pochoco_ram.v
-│   ├── pochoco_periph.v
-│   ├── pochoco_spi_slave.v
-│   └── espino_core/
-│       └── ...
-├── sw/
-│   ├── game.s
-│   ├── game.hex
-│   └── ...
-├── tools/
-│   └── assembler.py
-└── tests/
-    ├── test.s
-    └── test.hex
+results/synthesis/final/
 ```
 
-## 12. Limitaciones y consideraciones
+La generación del bitstream y el cumplimiento de timing fueron verificados. La prueba física de trading mediante SPI en la placa no está documentada como completada.
 
-- La resolución de visualización es de un decisegundo.
-- Los displays muestran valores entre `00` y `99`.
-- Los tiempos superiores a 99 decisegundos se saturan para su presentación.
-- La selección del LED utiliza el estado del contador, no un PRNG independiente.
-- La división se realiza mediante restas sucesivas.
-- La medición depende de la frecuencia efectiva del reloj de la placa.
-- El contador de 32 bits se desborda periódicamente.
-- La partida finaliza después de diez aciertos y requiere reiniciar la placa para comenzar otra.
+## 15. Limitaciones
 
-## 13. Conclusión
+- La estrategia utiliza un historial fijo de ocho precios.
+- La comparación de rendimiento se realizó mediante simulación RTL.
+- El throughput sostenido depende del período de llegada de los precios.
+- Los testbenches unitarios cubren los casos funcionales básicos, pero no constituyen verificación exhaustiva.
+- No se ha documentado una validación física completa del protocolo SPI en la FPGA.
+- Los modelos analíticos de rendimiento deben distinguirse de las mediciones experimentales.
 
-Se implementó un juego de reflejos funcional en Assembly RISC-V sobre Espino Core y Pochoco SoC, utilizando los periféricos físicos de la Go Board. El proyecto integra software de bajo nivel, acceso a periféricos mediante MMIO, un contador de ciclos incorporado al hardware y un assembler propio en Python. Las pruebas realizadas confirmaron el funcionamiento de las rondas, la recuperación frente a errores, el manejo de botones mantenidos y la presentación del promedio final.
+## 16. Documentación anterior
+
+El README del Proyecto 2 se conserva en:
+
+```text
+docs/README_proyecto_2.md
+```
+
+El informe anterior se encuentra en:
+
+```text
+docs/informe_G2_P2.pdf
+```
