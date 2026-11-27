@@ -165,6 +165,7 @@ module tb_proyecto_4;
     end
   end
 
+
   // Chequeos
   int total_tests = 0, tests_aprobados = 0;
 
@@ -184,7 +185,8 @@ module tb_proyecto_4;
     metrics_fd = $fopen("metricas_por_tick.csv", "w");
     $fdisplay(metrics_fd, "tick,ciclos,ic,cpi,tiempo_us");
     $fdisplay(fd, "tick,precio,decision,caja,acciones,patrimonio");
-    #4000;
+    wait (dut.rst_ni === 1'b1);
+    #1000;
 
     for (int n = 0; n < NTICKS; n++) begin
       spi(precio[n], decision);                            // decisión tomada con el precio anterior

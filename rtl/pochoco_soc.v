@@ -9,7 +9,7 @@
 // - Nicolás Villegas <navillegas@miuandes.cl>
 
 module pochoco_soc #(
-  parameter NumWords   = 128,
+  parameter NumWords   = 1024,
   parameter MemFile    = "../sw/blink.hex"
 ) (
   input  wire       i_Clk,
@@ -96,7 +96,7 @@ module pochoco_soc #(
                       rd_is_accel ? accel_rdata :
                                     ram_b_rdata;
 
-  pochoco_ram #(.NumWords(NumWords), .MemFile(MemFile)) u_ram (
+  pochoco_v24_mem #(.NumWords(NumWords), .MemFile(MemFile)) u_ram (
     .clk_i     (clk),
     .a_req_i   (instr_req),
     .a_addr_i  (instr_addr),
@@ -124,19 +124,8 @@ module pochoco_soc #(
   assign seg1 = 7'b0;
   assign seg2 = 7'b0;
 
-  // Price history accelerator
-  pochoco_price_accel u_price_accel (
-    .clk_i   (clk),
-    .rst_ni  (rst_ni),
-    .sel_i   (accel_sel),
-    .req_i   (accel_req),
-    .we_i    (data_we),
-    .addr_i  (data_addr[7:0]),
-    .wdata_i (data_wdata),
-    .rdata_o (accel_rdata)
-  );
-
-
+  // V24-T software baseline: no trading accelerator.
+  assign accel_rdata = 32'b0;
 
   // SPI Slave
   pochoco_spi_slave u_spi (

@@ -49,3 +49,14 @@ asic/config/runs/
 !results/**/*.csv
 !results/**/*.log
 !results/**/*.txt
+
+# Pochoco V24 development artifacts
+/build/
+/sim/data/
+/releases/
+/.venv/
+__pycache__/
+*.pyc
+*.vcd
+*.bak
+.DS_Store
